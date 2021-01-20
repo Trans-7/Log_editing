@@ -24,26 +24,3 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg nav navbar-dark static-top">
-    <div class="container">
-        <div class="ks-logo-shadow navbar-brand">
-            <img src="/img/logo_trans7.png">
-        </div>
-        <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="margin-left:150px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
-                </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('nik') == $priviledge_R->logeditingpriviledge_nik) && ($priviledge_R->logeditingpriviledge_level == 1)){echo "Non Reference";}?></a></h5>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <ul class="navbar-nav mr-auto" style="margin-left:300px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/logout">Logout ( <?php echo session()->get('nik'); ?> )</a></h5>
-                </li>
-    </ul>
-</nav>

@@ -8,6 +8,7 @@ use App\Transaction_logediting;
 use App\Transaction_bookingediting;
 use App\Transaction_bookingeditingdetail;
 use App\Transaction_logeditingpriviledge;
+use App\User;
 
 class NonReferenceController extends Controller
 {
@@ -15,7 +16,8 @@ class NonReferenceController extends Controller
         $non_reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',0)->get();
         $non_reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $data_N = Transaction_logediting::latest('id')->first();
-        return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N'));
+        $priviledge = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
+        return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N','priviledge'));
     }
     public function fetch_NR(Request $request)
     {
