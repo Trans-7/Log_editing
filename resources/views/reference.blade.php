@@ -65,7 +65,7 @@
                                                 <center>
                                                 <H1 style="color:#1b215a;">
                                                 <?php 
-                                                if ($data_R->logediting_isreferenced != 0){
+                                                if (($data_R->logediting_isreferenced != 0) && (($data_R->logediting_generatedby) == (session()->get('nik'))) ){
                                                     echo $data_R->logediting_code;
                                                 }
                                                 ?>
@@ -96,6 +96,7 @@
                             </thead>
                             @foreach($reference_N as $r)
                             <tbody class="table-body text-center">
+                                @if (($r->logediting_generatedby) == (session()->get('nik')))
                                     <td>{{ $r->logediting_code }}</td>
                                     <td>{{ $r->logediting_reference_id }}</td>
                                     <td>{{ $r->logediting_reference_line }}</td>
@@ -230,6 +231,7 @@
                                             </div>    
                                         </div>
                                     </td>
+                                @endif
                             </tbody>
                             @endforeach
                         </table>

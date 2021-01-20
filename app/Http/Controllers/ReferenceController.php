@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Transaction_logediting;
 use App\Transaction_bookingediting;
@@ -13,12 +14,15 @@ use App\User;
 
 class ReferenceController extends Controller
 {
-    public function reference()
+    public function reference(Request $request)
     {
-        $reference_N = Transaction_logediting::all()->whereIn('logediting_isreferenced',1);
-        $reference_R = Transaction_bookingediting::get();
+        $reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',1)->get();
+        $reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $data_R = Transaction_logediting::latest('id')->first();
-        return view('reference', compact('reference_N', 'reference_R','data_R'));
+        $priviledge_R = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
+        $priviledge = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',0)->first();
+        return view('reference', compact('reference_N', 'reference_R','data_R','priviledge_R', 'priviledge'));
+        
     }
     public function fetch(Request $request)
     {

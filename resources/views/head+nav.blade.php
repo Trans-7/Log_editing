@@ -10,8 +10,11 @@
     <link href="/typicon/typicons.css" rel="stylesheet">
     <!-- <link href="/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="/log/css/log.css" rel="stylesheet">
+    <link rel="stylesheet" href="datepicker/css/datepicker.css">
 
     <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script src="datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/kit.fontawesome/a227f1119f.js"></script>
@@ -33,7 +36,7 @@
                     <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
                 </li>
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;">Non Reference</a></h5>
+                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('nik') == $priviledge_R->logeditingpriviledge_nik) && ($priviledge_R->logeditingpriviledge_level == 1)){echo "Non Reference";}?></a></h5>
                 </li>
             </ul>
         </div>

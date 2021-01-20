@@ -12,8 +12,8 @@ use App\Transaction_logeditingpriviledge;
 class NonReferenceController extends Controller
 {
     public function non_reference(){
-        $non_reference_N = Transaction_logediting::all()->whereIn('logediting_isreferenced',0);
-        $non_reference_R = Transaction_bookingediting::get();
+        $non_reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',0)->get();
+        $non_reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $data_N = Transaction_logediting::latest('id')->first();
         return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N'));
     }
