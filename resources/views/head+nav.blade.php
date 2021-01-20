@@ -29,7 +29,7 @@
         <div class="ks-logo-shadow navbar-brand">
             <img src="/img/logo_trans7.png">
         </div>
-        <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/reference" style="color:white;">Log Editing </a></h4></div>
+        <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="margin-left:150px;">
                 <li class="nav-item">
