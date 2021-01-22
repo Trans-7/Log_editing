@@ -38,7 +38,7 @@
                                         Editing Date
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input class="form-control dynamic" id="editing_date" name="editing_date" value="Editing Date" placeholder="Editing Date" required>
+                                        <input class="form-control dynamic" id="editing_date" name="editing_date" value="YYYY - MM - DD" placeholder="Editing Date" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Shift
