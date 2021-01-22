@@ -124,7 +124,7 @@
                                 @foreach($reference_N as $r)
                                 <tbody class="table-body text-center">
                                     @if (($r->logediting_generatedby) == (session()->get('nik')))
-                                        <td><p id="textToCopy-{{$r->id}}">{{ $r->logediting_code }}</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-{{$r->id}}">Copy Text</button></td>
+                                        <td><p id="textToCopy-{{$r->id}}">{{ $r->logediting_code }}</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-{{$r->id}}">Copy Code</button></td>
                                         <td>{{ $r->logediting_reference_id }}</td>
                                         <td>{{ $r->logediting_reference_line }}</td>
                                         <td>{{ $r->logediting_reference_code }}</td>
