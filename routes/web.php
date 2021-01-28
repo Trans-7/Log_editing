@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', 'ReferenceController@reference');
 });
-//REFERENCE
 
+//REPORT
+Route::get('/report', 'ReportController@report');
+Route::get('/report/export_excel', 'ReportController@export_excel');
+
+//REFERENCE
 Route::get('/reference/store_R', 'ReferenceController@store_R');
 Route::post('/reference/fetch', 'ReferenceController@fetch')->name('reference.fetch');
 Route::post('/reference/autofill', 'ReferenceController@autofill')->name('reference.autofill');

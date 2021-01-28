@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('nik') == $priviledge_R->logeditingpriviledge_nik) && ($priviledge_R->logeditingpriviledge_level == 1)){echo "Non Reference";}?></a></h5>
                 </li>
+                <li class="nav-item">
+                    <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>
+                </li>
             </ul>
         </div>
     </div>
