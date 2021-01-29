@@ -29,7 +29,7 @@
 </nav>
 <br />
 <div class="container box">
-    <h3 align="center" style="color:#1b215a;">Report Log Editing</h3><br />
+    <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
