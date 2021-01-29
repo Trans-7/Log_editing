@@ -33,15 +33,15 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-md-5"> Report -  Total Records - <b><span id="total_records"></span>
+                <div class="col-md-5" style="color:#1b215a;"> Report - Total Records - <b><span style="color:#1b215a;" id="total_records"></span>
                 </b></div>
                 <div class="col-md-5">
                     <div class="input-group">
-                        <input type="text" name="from_date" id="from_date" class="form-control">
+                        <input type="text" name="from_date" id="from_date" placeholder="start date" class="form-control">
                         <div class="input-group-prepend">
                             <span class="input-group-text">to</span>
                         </div>
-                        <input type="text" name="to_date" id="to_date" class="form-control">
+                        <input type="text" name="to_date" id="to_date" placeholder="end date" class="form-control">
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -56,7 +56,7 @@
                 <table class="table table-striped table-bordered">
                     <thead class="table-head text-center">
                         <tr>
-                            <th>ID</th>
+                            <th>ID.</th>
                             <th>Editor_NIK</th>
                             <th>Editor_Name</th>
                             <th>Editor_Email</th>
