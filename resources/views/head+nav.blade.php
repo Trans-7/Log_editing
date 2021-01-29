@@ -11,7 +11,7 @@
     <!-- <link href="/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="/log/css/log.css" rel="stylesheet">
     <link rel="stylesheet" href="datepicker/css/datepicker.css">
-
+  
     <script src="/jquery/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.16/clipboard.min.js"></script>
     <script src="datepicker/js/bootstrap-datepicker.js"></script>
