@@ -18,6 +18,6 @@ class ReportController extends Controller
         return view('report', compact('report','priviledge_R'));
     }
     public function export_excel(){
-		return Excel::download(new ReportExport, 'Report_Logediting.csv');
+		return Excel::download(new ReportExport, 'Report_Logediting.xlsx');
 	}
 }
