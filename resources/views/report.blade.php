@@ -127,7 +127,7 @@
                         + '<div class="table-responsive">'
                         + '<table class="table table-striped table-bordered">'
                         + '<thead class="table-head text-center">'
-                        + '<tr><th>Code</th><th>User Pendamping</th><th>Request ID</th><th>Remark</th><th>Booth</th><th>Alasan (WFO)</th><th>Alat (WFH)</th><th>Provider (WFH)</th><th>Downloadspeed (WFH)</th><th>Quotausage (WFH)</th><th>Screenshoot (WFH)</th><th>Remark (WFH)</th><th>Copy Size</th><th>Copy Segment (WFH)</th><th>Copy Date (WFH)</th><th>Copy Remark</th>'
+                        + '<tr><th>Code</th><th>User Pendamping</th><th>Request ID</th><th>Remark</th><th>Booth</th><th>Alasan (WFO)</th><th>Alat (WFH)</th><th>Provider (WFH)</th><th>Downloadspeed (WFH)</th><th>Quotausage (WFH)</th><th>Screenshoot (WFH)</th><th>Remark (WFH)</th><th>Copy Size</th><th>Copy Segment</th><th>Copy Date</th><th>Copy Remark</th>'
                         + '<tr></thead>'
                         + '<tbody class="table-body text-center"><td>' + data[count].logediting_code + '</td>'
                         + '<td>' + data[count].logeditingreport_userpendamping + '</td>'
