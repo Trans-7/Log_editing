@@ -56,16 +56,16 @@
                 <table class="table table-striped table-bordered">
                     <thead class="table-head text-center">
                         <tr>
-                            <th>Editor_NIK</th>
-                            <th>Editor _Name</th>
-                            <th>Editor_Email</th>
-                            <th>System_Kerja</th>
+                            <th>Editor NIK</th>
+                            <th>Editor Name</th>
+                            <th>Editor Email</th>
+                            <th>System Kerja</th>
                             <th>Date</th>
                             <th>Shift</th>
                             <th>Program</th>
                             <th>Episode</th>
                             <th>Segment</th>
-                            <th>Detail_Report</th>
+                            <th>Detail Report</th>
                         </tr>
                     </thead>
                     <tbody class="table-body text-center">
@@ -108,7 +108,7 @@
                         output += '<td>' + data[count].logeditingreport_editor_name + '</td>';
                         output += '<td>' + data[count].logeditingreport_editor_email + '</td>';
                         output += '<td>' + data[count].logeditingreport_systemkerja + '</td>';
-                        output += '<td>' + data[count].logeditingreport_date + '</td>';
+                        output += '<td>' + moment(data[count].logeditingreport_date).format('YYYY-MM-DD');+ '</td>';
                         output += '<td>' + data[count].logeditingreport_shift + '</td>';
                         output += '<td>' + data[count].logeditingreport_program + '</td>';
                         output += '<td>' + data[count].logeditingreport_episode + '</td>';
@@ -143,7 +143,7 @@
                         + '<td>' + data[count].logeditingreport_wfh_remark + '</td>'
                         + '<td>' + data[count].logeditingreport_copy_size + '</td>'
                         + '<td>' + data[count].logeditingreport_copy_segment + '</td>'
-                        + '<td>' + data[count].logeditingreport_copy_date + '</td>'
+                        + '<td>' + data[count].logeditingreport_copy_date+ '</td>'
                         + '<td>' + data[count].logeditingreport_copy_remark + '</td>'
                         + '</tbody>'
                         + '</table>'

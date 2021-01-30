@@ -18,15 +18,15 @@ class ReportController extends Controller
         $priviledge_R = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
         return view('report', compact('report','priviledge_R'));
     }
-    public function export_excel(){
-		return Excel::download(new ReportExport, 'Report_Logediting.xlsx');
+    public function export_excel(Request $request){
+        return Excel::download(new ReportExport, 'Report_Logediting.xlsx');
     }
     public function fetch_data(Request $request){
         if($request->ajax()){
             $start = Carbon::parse($request->from_date)->startOfDay();
             $end = Carbon::parse($request->to_date)->endOfDay(); 
             if($start != '' && $end != ''){
-                $data = Transaction_report::whereBetween(('logeditingreport_date'), [$start, $end])->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
+                $data = Transaction_report::whereBetween(('logeditingreport_date'), [$start, $end])->orderBy('logeditingreport_id', 'ASC')->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
             }
             else
             {
