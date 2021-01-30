@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 class ReportController extends Controller
 {
     public function report(){
-        $report = Transaction_report::orderBy('logeditingreport_id', 'asc')->get();
+        $report = Transaction_report::orderBy('logeditingreport_id', 'ASC')->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
         $priviledge_R = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
         return view('report', compact('report','priviledge_R'));
     }
@@ -26,11 +26,11 @@ class ReportController extends Controller
             $start = Carbon::parse($request->from_date)->startOfDay();
             $end = Carbon::parse($request->to_date)->endOfDay(); 
             if($start != '' && $end != ''){
-                $data = Transaction_report::whereBetween(('logeditingreport_date'), [$start, $end])->get();
+                $data = Transaction_report::whereBetween(('logeditingreport_date'), [$start, $end])->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
             }
             else
             {
-                $data = Transaction_report::orderBy('logeditingreport_date','asc')->get();
+                $data = Transaction_report::orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
             }
             echo json_encode($data);
         }

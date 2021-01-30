@@ -56,31 +56,16 @@
                 <table class="table table-striped table-bordered">
                     <thead class="table-head text-center">
                         <tr>
-                            <th>ID.</th>
                             <th>Editor_NIK</th>
-                            <th>Editor_Name</th>
+                            <th>Editor _Name</th>
                             <th>Editor_Email</th>
-                            <th>Program</th>
+                            <th>System_Kerja</th>
                             <th>Date</th>
                             <th>Shift</th>
-                            <th>System_Kerja</th>
-                            <th>Segment</th>
+                            <th>Program</th>
                             <th>Episode</th>
-                            <th>User_Pendamping</th>
-                            <th>Request_ID</th>
-                            <th>Remark</th>
-                            <th>Booth</th>
-                            <th>Alasan_WFO</th>
-                            <th>Alat_WFH</th>
-                            <th>Provider_WFH</th>
-                            <th>Download Speed_WFH</th>
-                            <th>Quotausage_WFH</th>
-                            <th>Screenshoot_WFH</th>
-                            <th>Remark_WFH</th>
-                            <th>Copy_Size</th>
-                            <th>Copy_Segment</th>
-                            <th>Copy_Date</th>
-                            <th>Copy_Remark</th>
+                            <th>Segment</th>
+                            <th>Detail_Report</th>
                         </tr>
                     </thead>
                     <tbody class="table-body text-center">
@@ -91,86 +76,6 @@
         </div>
     </div>
 </div>
-<!-- <div class="table-responsive" style="padding-bottom:2rem">
-    <div class="col-sm-12">
-        <h2 style="color:#1b215a;padding-top:2rem;padding-left:1rem;"> Report </h2>
-            <br>
-            <div class="col-md-5">
-                <div class="input-group">
-                    <input type="date" name="from_date" id="from_date" class="form-control">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">to</span>
-                    </div>
-                    <input type="date" name="to_date" id="to_date" class="form-control">
-                    <div class="col-md-5">
-                        <button type="button" name="filter" id="filter" class="btn btn-blue btn-md"> Filter Date </button>
-                        <a class="btn btn-blue btn-md" href="/report/export_excel">Download Data</a>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <table class="table table-sm table-bordered" style="overflow-x:auto;">
-                <thead class="table-head text-center">
-                    <th>No.</th>
-                    <th>Editor_NIK</th>
-                    <th>Editor_Name</th>
-                    <th>Editor_Email</th>
-                    <th>Program</th>
-                    <th>Date</th>
-                    <th>Shift</th>
-                    <th>System_Kerja</th>
-                    <th>Segment</th>
-                    <th>Episode</th>
-                    <th>User_Pendamping</th>
-                    <th>Request_ID</th>
-                    <th>Remark</th>
-                    <th>Booth</th>
-                    <th>Alasan_WFO</th>
-                    <th>Alat_WFH</th>
-                    <th>Provider_WFH</th>
-                    <th>Download Speed_WFH</th>
-                    <th>Quotausage_WFH</th>
-                    <th>Screenshoot_WFH</th>
-                    <th>Remark_WFH</th>
-                    <th>Copy_Size</th>
-                    <th>Copy_Segment</th>
-                    <th>Copy_Date</th>
-                    <th>Copy_Remark</th>
-                </thead>
-                @php $i=1 @endphp
-                @foreach($report as $rep)
-                <tbody class="table-body text-center">
-                    <td>{{$i++}}</td>
-                    <td>{{$rep->logeditingreport_editor_nik}}</td>
-                    <td>{{$rep->logeditingreport_editor_name}}</td>
-                    <td>{{$rep->logeditingreport_editor_email}}</td>
-                    <td>{{$rep->logeditingreport_program}}</td>
-                    <td>{{$rep->logeditingreport_date}}</td>
-                    <td>{{$rep->logeditingreport_shift}}</td>
-                    <td>{{$rep->logeditingreport_systemkerja}}</td>
-                    <td>{{$rep->logeditingreport_segment}}</td>
-                    <td>{{$rep->logeditingreport_episode}}</td>
-                    <td>{{$rep->logeditingreport_userpendamping}}</td>
-                    <td>{{$rep->logeditingreport_requestid}}</td>
-                    <td>{{$rep->logeditingreport_remark}}</td>
-                    <td>{{$rep->logeditingreport_booth}}</td>
-                    <td>{{$rep->logeditingreport_wfo_alasan}}</td>
-                    <td>{{$rep->logeditingreport_wfh_alat}}</td>
-                    <td>{{$rep->logeditingreport_wfh_provider}}</td>
-                    <td>{{$rep->logeditingreport_wfh_downloadspeed}}</td>
-                    <td>{{$rep->logeditingreport_wfh_quotausage}}</td>
-                    <td>{{$rep->logeditingreport_wfh_screenshoot}}</td>
-                    <td>{{$rep->logeditingreport_wfh_remark}}</td>
-                    <td>{{$rep->logeditingreport_copy_size}}</td>
-                    <td>{{$rep->logeditingreport_copy_segment}}</td>
-                    <td>{{$rep->logeditingreport_copy_date}}</td>
-                    <td>{{$rep->logeditingreport_copy_remark}}</td>
-                </tbody>
-                @endforeach
-            </table>
-            {{ csrf_field() }}
-    </div>
-<div> -->
 </body>
 <script>
     $(document).ready(function(){
@@ -199,31 +104,58 @@
                     $('#total_records').text(data.length);
                     for(var count=0; count<data.length;count++){
                         output += '<tr>';
-                        output += '<td>' + data[count].logeditingreport_id+ '</td>';
                         output += '<td>' + data[count].logeditingreport_editor_nik + '</td>';
                         output += '<td>' + data[count].logeditingreport_editor_name + '</td>';
                         output += '<td>' + data[count].logeditingreport_editor_email + '</td>';
-                        output += '<td>' + data[count].logeditingreport_program + '</td>';
+                        output += '<td>' + data[count].logeditingreport_systemkerja + '</td>';
                         output += '<td>' + data[count].logeditingreport_date + '</td>';
                         output += '<td>' + data[count].logeditingreport_shift + '</td>';
-                        output += '<td>' + data[count].logeditingreport_systemkerja + '</td>';
-                        output += '<td>' + data[count].logeditingreport_segment + '</td>';
+                        output += '<td>' + data[count].logeditingreport_program + '</td>';
                         output += '<td>' + data[count].logeditingreport_episode + '</td>';
-                        output += '<td>' + data[count].logeditingreport_userpendamping + '</td>';
-                        output += '<td>' + data[count].logeditingreport_requestid + '</td>';
-                        output += '<td>' + data[count].logeditingreport_remark + '</td>';
-                        output += '<td>' + data[count].logeditingreport_booth + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfo_alasan + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_alat + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_provider + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_downloadspeed + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_quotausage + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_screenshoot + '</td>';
-                        output += '<td>' + data[count].logeditingreport_wfh_remark + '</td>';
-                        output += '<td>' + data[count].logeditingreport_copy_size + '</td>';
-                        output += '<td>' + data[count].logeditingreport_copy_segment + '</td>';
-                        output += '<td>' + data[count].logeditingreport_copy_date + '</td>';
-                        output += '<td>' + data[count].logeditingreport_copy_remark + '</td></tr>';
+                        output += '<td>' + data[count].logeditingreport_segment + '</td>';
+                        output += '<td>' + 
+                        '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#modalDetail-' + data[count].logeditingreport_id + '"> View Detail </button>' 
+                        + '<div class="modal fade bd-example-modal-lg" id="modalDetail-' + data[count].logeditingreport_id + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
+                        + '<div class="modal-dialog modal-lg" role="document">'
+                        + '<div class="modal-content">'
+                        + '<div class="modal-header">'
+                        + '<h3 class="modal-title" id="exampleModalLabel" style="color:#1b215a;">Detail Report</h3>'
+                        + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                        + '</div>'
+                        + '<div class="modal-body">'
+                        + '<div class="panel-body">' 
+                        + '<div class="table-responsive">'
+                        + '<table class="table table-striped table-bordered">'
+                        + '<thead class="table-head text-center">'
+                        + '<tr><th>Code</th><th>User Pendamping</th><th>Request ID</th><th>Remark</th><th>Booth</th><th>Alasan (WFO)</th><th>Alat (WFH)</th><th>Provider (WFH)</th><th>Downloadspeed (WFH)</th><th>Quotausage (WFH)</th><th>Screenshoot (WFH)</th><th>Remark (WFH)</th><th>Copy Size</th><th>Copy Segment (WFH)</th><th>Copy Date (WFH)</th><th>Copy Remark</th>'
+                        + '<tr></thead>'
+                        + '<tbody class="table-body text-center"><td>' + data[count].logediting_code + '</td>'
+                        + '<td>' + data[count].logeditingreport_userpendamping + '</td>'
+                        + '<td>' + data[count].logeditingreport_requestid + '</td>'
+                        + '<td>' + data[count].logeditingreport_remark + '</td>'
+                        + '<td>' + data[count].logeditingreport_booth + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfo_alasan + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_alat + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_provider + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_downloadspeed + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_quotausage + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_screenshoot + '</td>'
+                        + '<td>' + data[count].logeditingreport_wfh_remark + '</td>'
+                        + '<td>' + data[count].logeditingreport_copy_size + '</td>'
+                        + '<td>' + data[count].logeditingreport_copy_segment + '</td>'
+                        + '<td>' + data[count].logeditingreport_copy_date + '</td>'
+                        + '<td>' + data[count].logeditingreport_copy_remark + '</td>'
+                        + '</tbody>'
+                        + '</table>'
+                        + '</div>' 
+                        + '</div>'
+                        + '<div class="modal-footer"><button type="button" class="btn btn-blue btn-md" data-dismiss="modal">Close</button></div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</td>';
+                        output += '</tr>';
                     }
                     $('tbody').html(output);
                 }
