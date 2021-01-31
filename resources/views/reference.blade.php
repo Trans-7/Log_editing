@@ -86,18 +86,23 @@
                                         <br><br><br>
                                         <div class="col-md-12 col-form-label">
                                             <h4 style="color:#1b215a;">Your Code</h4>
-                                            <div class="card shadow-sm mb-2" style="padding:60px;">
-                                            
+                                            <div class="card shadow-sm mb-2" style="padding:60px;"> 
                                                 <center>
                                                 <H1 style="color:#1b215a;">
                                                 <?php 
-                                                if (($data_R->logediting_isreferenced != 0) && (($data_R->logediting_generatedby) == (session()->get('nik'))) ){
-                                                    echo $data_R->logediting_code;
+                                                if (is_array($data_R)) {
+                                                    foreach ($data_R as $t) 
+                                                    {
+                                                        if(($t->logediting_isreferenced == NULL || $t->logediting_generatedby == NULL) || ($t->logediting_isreferenced == NULL && $t->logediting_generatedby == NULL)){
+                                                            echo " ";
+                                                        }else if($t->logediting_isreferenced == 1 && ($t->logediting_generatedby == (session()->get('nik')))){
+                                                            echo $t->logediting_code;
+                                                        }
+                                                    }
                                                 }
                                                 ?>
                                                 </H1>
                                                 </center>
-                                            
                                             </div>
                                         </div>
                                 </div>

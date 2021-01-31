@@ -40,11 +40,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Start Date</span>
                         </div>
-                        <input type="date" name="from_date" id="from_date" placeholder="start date" class="form-control">
+                        <input type="text" name="from_date" id="from_date" value="YYYY - MM - DD" class="form-control">
                         <div class="input-group-prepend">
                             <span class="input-group-text" style="margin-left:10px;">End Date</span>
                         </div>
-                        <input type="date" name="to_date" id="to_date" placeholder="end date" class="form-control">
+                        <input type="text" name="to_date" id="to_date" value="YYYY - MM - DD" class="form-control">
                     </div>
                     <div class="input-group-prepend">
                             <input type="text" name="nik" id="nik" placeholder="Editor NIK" class="form-control">
@@ -91,10 +91,16 @@
 </body>
 <script>
     $(document).ready(function(){
-        var nik = $('nik').val();
-        var name = $('name').val();
-        var program = $('program').val();
-        var kerja = $('kerja').val();
+        $("#from_date").datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
+        $("#to_date").datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
         var _token = $('input[name="_token"]').val();
     
         fetch_data();
@@ -175,7 +181,7 @@
             var program = $('#program').val();
             var kerja = $('#kerja').val();
 
-            if(from_date != '' || to_date != '' || nik != '' || name != '' || program != '' || kerja != ''){
+            if(from_date != '' && to_date != '' || nik != '' || name != '' || program != '' || kerja != ''){
                 fetch_data(from_date, to_date, nik, name, program, kerja)
             }
             else{
