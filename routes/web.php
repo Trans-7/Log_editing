@@ -26,10 +26,6 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('/report', 'ReportController@report');
 Route::get('/report/export_excel', 'ReportController@export_excel');
 Route::post('/report/fetch_data', 'ReportController@fetch_data')->name('report.fetch_data');
-Route::post('/report/fetch_dataNIK', 'ReportController@fetch_dataNIK')->name('report.fetch_dataNIK');
-Route::post('/report/fetch_dataName', 'ReportController@fetch_dataName')->name('report.fetch_dataName');
-Route::post('/report/fetch_dataProgram', 'ReportController@fetch_dataProgram')->name('report.fetch_dataProgram');
-Route::post('/report/fetch_dataKerja', 'ReportController@fetch_dataKerja')->name('report.fetch_dataKerja');
 
 //REFERENCE
 Route::get('/reference/store_R', 'ReferenceController@store_R');

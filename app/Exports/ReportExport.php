@@ -15,17 +15,17 @@ class ReportExport implements FromCollection, WithHeadings
     {
         return [
             'ID',
-            'Editor_NIK',
-            'Editor_Name',
-            'Editor_Email',
+            'Editor NIK',
+            'Editor Name',
+            'Editor Email',
             'Program',
             'Date',
             'Shift',
-            'System_Kerja',
+            'System Kerja',
             'Segment',
             'Episode',
-            'User_Pendamping',
-            'Request_ID',
+            'User Pendamping',
+            'Request ID',
             'Remark',
             'Booth',
             'Alasan_WFO',
@@ -35,10 +35,10 @@ class ReportExport implements FromCollection, WithHeadings
             'Quotausage_WFH',
             'Screenshoot_WFH',
             'Remark_WFH',
-            'Copy_Size',
-            'Copy_Segment',
-            'Copy_Date',
-            'Copy_Remark'
+            'Copy Size',
+            'Copy Segment',
+            'Copy Date',
+            'Copy Remark'
         ];
     }
     public function collection()
