@@ -175,7 +175,7 @@
             var program = $('#program').val();
             var kerja = $('#kerja').val();
 
-            if(from_date != '' && to_date != '' && nik != '' && name != '' && program != '' && kerja != ''){
+            if(from_date != '' || to_date != '' || nik != '' || name != '' || program != '' || kerja != ''){
                 fetch_data(from_date, to_date, nik, name, program, kerja)
             }
             else{
