@@ -29,8 +29,24 @@ class ReportController extends Controller
             $name = $request->name;
             $program = $request->program;
             $kerja = $request->kerja;
-            if($start != '' && $end != '' || $nik != '' || $name != '' || $program != '' || $kerja != ''){
-                $data = Transaction_report::where('logeditingreport_date', '>=', $start->toDateTimeString())->where('logeditingreport_date', '<=', $end->toDateTimeString())->where('logeditingreport_editor_nik','like',"%".$nik."%")->where('logeditingreport_editor_name','like',"%".$name."%")->where('logeditingreport_program','like',"%".$program."%")->where('logeditingreport_systemkerja','like',"%".$kerja."%")->orderBy('logeditingreport_id', 'ASC')->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
+            if($nik != '' || $name != '' || $program != '' || $kerja != ''){
+                $data = Transaction_report::where('logeditingreport_editor_nik','like',"%".$nik."%")
+                ->where('logeditingreport_editor_name','like',"%".$name."%")
+                ->where('logeditingreport_program','like',"%".$program."%")
+                ->where('logeditingreport_systemkerja','like',"%".$kerja."%")
+                // ->where('logeditingreport_date', '>=', $start->toDateTimeString())
+                // ->where('logeditingreport_date', '<=', $end->toDateTimeString())
+                ->orderBy('logeditingreport_id', 'ASC')
+                ->orderBy('logeditingreport_date','ASC')
+                ->orderBy('logeditingreport_shift','ASC')
+                ->get();
+            }else if($start != '' && $end != ''){
+                $data = Transaction_report::where('logeditingreport_date', '>=', $start->toDateTimeString())
+                ->where('logeditingreport_date', '<=', $end->toDateTimeString())
+                ->orderBy('logeditingreport_id', 'ASC')
+                ->orderBy('logeditingreport_date','ASC')
+                ->orderBy('logeditingreport_shift','ASC')
+                ->get();
             }
             else
             {

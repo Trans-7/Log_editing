@@ -94,7 +94,7 @@
                                                     foreach ($data_R as $t) 
                                                     {
                                                         if(($t->logediting_isreferenced == NULL || $t->logediting_generatedby == NULL) || ($t->logediting_isreferenced == NULL && $t->logediting_generatedby == NULL)){
-                                                            echo " ";
+                                                            echo $t->logediting_code;
                                                         }else if($t->logediting_isreferenced == 1 && ($t->logediting_generatedby == (session()->get('nik')))){
                                                             echo $t->logediting_code;
                                                         }
