@@ -36,13 +36,17 @@
                 <div class="col-md-5" style="color:#1b215a;padding-bottom:1rem"> Report - Total Records - <b><span style="color:#1b215a;" id="total_records"></span>
                 </b></div>
                 <div class="col-md-12">
-                    <div class="input-group-prepend">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
                             <span class="input-group-text">Start Date</span>
-                            <input type="date" name="from_date" id="from_date" placeholder="start date" class="form-control">
+                        </div>
+                        <input type="date" name="from_date" id="from_date" placeholder="start date" class="form-control">
+                        <div class="input-group-prepend">
                             <span class="input-group-text" style="margin-left:10px;">End Date</span>
-                            <input type="date" name="to_date" id="to_date" placeholder="end date" class="form-control">
+                        </div>
+                        <input type="date" name="to_date" id="to_date" placeholder="end date" class="form-control">
                     </div>
-                    <div class="input-group-prepend" style="padding-top:1rem">
+                    <div class="input-group-prepend">
                             <input type="text" name="nik" id="nik" placeholder="Editor NIK" class="form-control">
                             <input type="text" name="name" id="name" placeholder="Editor Name" class="form-control" style="margin-left:15px;">
                     </div>
