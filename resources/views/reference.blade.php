@@ -90,14 +90,9 @@
                                                 <center>
                                                 <H1 style="color:#1b215a;">
                                                 <?php 
-                                                if (is_array($data_R)) {
-                                                    foreach ($data_R as $t) 
-                                                    {
-                                                        if(($t->logediting_isreferenced == NULL || $t->logediting_generatedby == NULL) || ($t->logediting_isreferenced == NULL && $t->logediting_generatedby == NULL)){
-                                                            echo $t->logediting_code;
-                                                        }else if($t->logediting_isreferenced == 1 && ($t->logediting_generatedby == (session()->get('nik')))){
-                                                            echo $t->logediting_code;
-                                                        }
+                                                if (is_object($data_R)) {
+                                                    if ((($data_R->logediting_isreferenced == 1 || $data_R->logediting_isreferenced == NULL || $data_R->logediting_generatedby == NULL ) && ($data_R->logediting_generatedby == session()->get('nik')))){
+                                                         echo $data_R->logediting_code;
                                                     }
                                                 }
                                                 ?>
