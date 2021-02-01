@@ -65,7 +65,7 @@
                                                 <option value="{{$booking->bookingediting_id}}">{{$booking->bookingediting_id}}</option>
                                                 @endforeach
                                         </select>
-                                        <p style="color:grey;">*Ketik Booking Editing ID (JIKA ADA - TIDAK WAJIB DIISI)
+                                        <p style="color:grey;">*Pilih Booking Editing ID (JIKA ADA - TIDAK WAJIB DIISI)
                                     </div>
                                     
                                     <div class="col-md-2 col-form-label">
