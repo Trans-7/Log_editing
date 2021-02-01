@@ -13,7 +13,7 @@
                     <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
                 </li>
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('nik') == $priviledge->logeditingpriviledge_nik) && ($priviledge->logeditingpriviledge_level == 1)){echo "Non Reference";}?></a></h5>
+                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
                 </li>
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>

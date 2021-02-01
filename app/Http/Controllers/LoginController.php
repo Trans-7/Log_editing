@@ -57,14 +57,15 @@ class LoginController extends Controller
         session()->put('internal_user', (bool) $user->internal);
 
         $userInstance = $this->findUser($user);
-
+        
         if($userInstance) {
             auth()->login($userInstance);
             $client->setSid($user->token);
 
-            // dd($user->user['nik']);
+            // dd($userInstance);
             //create session
             session()->put('nik', $user->user['nik']);
+            session()->put('priviledge', $userInstance->logeditingpriviledge_level);
             return redirect()->intended();
         } else {
             session()->put('no_access', true);

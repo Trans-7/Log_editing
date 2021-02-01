@@ -19,8 +19,7 @@ class ReferenceController extends Controller
         $reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',1)->get();
         $reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $data_R = Transaction_logediting::latest('id')->first();
-        $priviledge_R = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
-        return view('reference', compact('reference_N', 'reference_R','data_R','priviledge_R'));
+        return view('reference', compact('reference_N', 'reference_R','data_R'));
         
     }
     public function fetch(Request $request)
