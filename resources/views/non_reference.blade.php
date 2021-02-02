@@ -59,34 +59,30 @@
                                         Program Name
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="program_name" id="program_name" class="form-control dynamic" required>
+                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="bookingeditingdetail_line" required>
                                             <option value="" selected="false">--Select Program Name--</option>
+                                            @foreach ($non_reference_R2 as $booking2)
+                                            <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
+                                            @endforeach
                                         </select>
                                         <p style="color:grey;">*Pilih Nama Program</p>
                                     </div>
                                     <div class="col-md-2 col-form-label">
+                                        Booking Editing Date & Shift
+                                    </div>
+                                    <div class="col-md-10 col-form-label">
+                                        <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()" required>
+                                            <option value="" selected="false">--Select Booking Editing Date & Shift--</option>     
+                                        </select>
+                                        <p style="color:grey;">*Pilih Booking Editing Date & Shift</p>
+                                    </div>
+                                    {{ csrf_field() }}
+                                    <div class="col-md-2 col-form-label">
                                         Booking Editing ID
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="bookingediting_id" id="bookingediting_id" class="form-control dynamic" data-dependent="bookingeditingdetail_line">
-                                            <option value="" selected="false">--Select Booking Editing ID--</option>
-                                            @foreach ($non_reference_R as $booking)
-                                                <option value="{{$booking->bookingediting_id}}">{{$booking->bookingediting_id}}</option>
-                                                @endforeach
-                                        </select>
-                                        <p style="color:grey;">*Pilih Booking Editing ID (JIKA ADA - TIDAK WAJIB DIISI)
+                                        <input type="text" class="form-control dynamic" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
                                     </div>
-                                    
-                                    <div class="col-md-2 col-form-label">
-                                        Booking Editing Line
-                                    </div>
-                                    <div class="col-md-10 col-form-label">
-                                        <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()">
-                                            <option value="" selected="false">--Select Booking Editing Line--</option>
-                                        </select>
-                                        <p style="color:grey;">*Pilih Booking Editing Line (JIKA ADA - TIDAK WAJIB DIISI)</p>
-                                    </div>
-                                    {{ csrf_field() }}
                                     <div class="col-md-2 col-form-label">
                                         Kode Eps
                                     </div>
@@ -130,6 +126,7 @@
                             <table class="table table-sm-9 table-bordered">
                                 <thead class="table-head text-center">
                                     <th>Code</th>
+                                    <th>Program Name</th>
                                     <th>Booking Editing ID</th>
                                     <th>Booking Editing Line</th>
                                     <th>Kode Eps</th>
@@ -144,6 +141,7 @@
                                 <tbody class="table-body text-center">
                                     @if (($n->logediting_generatedby) == (session()->get('nik')))
                                         <td><p id="textToCopy-{{$n->id}}">{{ $n->logediting_code }}</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-{{$n->id}}">Copy Code</button></td>
+                                        <td>{{ $n->logediting_program }}</td>
                                         <td>{{ $n->logediting_reference_id }}</td>
                                         <td>{{ $n->logediting_reference_line }}</td>
                                         <td>{{ $n->logediting_reference_code }}</td>
@@ -172,6 +170,12 @@
                                                             <div class="col-sm-8 col-form-label">
                                                                 <p style="font-size:17px;">{{ $n->logediting_code }}</p>
                                                             </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                    <p style="font-size:17px;">Program Name</p>
+                                                                </div>
+                                                                <div class="col-sm-8 col-form-label">
+                                                                    <p style="font-size:17px;">{{ $n->logediting_program }}</p>
+                                                                </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Login</p>
                                                             </div>
@@ -327,26 +331,33 @@
         $('.dynamic').on('change', function(){
                 if($(this).val() != ''){
                     var booking_line = $('#bookingeditingdetail_line').val();
-                    var booking_id = $('#bookingediting_id').val();
+                    var show_name = $('#show_name').val();
                     var _token = $('input[name="_token"]').val();
-                    console.log(booking_id, booking_line);
+                    console.log(show_name, booking_line);
                     $.ajax({
                         url:"{{ route('non_reference.autofill_NR') }}",
                         method:"POST",
-                        data:{_token:_token, booking_id:booking_id, booking_line:booking_line },
+                        data:{_token:_token, show_name:show_name, booking_line:booking_line },
                         success:function(result){
                             result = JSON.parse(result);
                             console.log(result);
-                            if($("#kode_eps").val() != $("#kode_eps").val(result[0].eps_code)){
-                                $("#kode_eps").val(result[0].eps_code);
+                            // $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id);
+                            // $("#kode_eps").val(result.slice(-1)[0].eps_code);
+                            // $("#editing_date").val(result.slice(-1)[0].bookingeditingdetail_date);
+                            // $("#editing_shift").val(result.slice(-1)[0].bookingeditingdetail_shift);
+                            if($("#bookingediting_id").val() != $("#bookingediting_id").val(result[0].bookingediting_id)){
+                                $("#bookingediting_id").val(result[0].bookingediting_id);
+                            }
+                            if($("#kode_eps").val() != $("#kode_eps").val(result.slice(-1)[0].eps_code)){
+                                $("#kode_eps").val(result.slice(-1)[0].eps_code);
                             }
                             if($("#editing_shift").val() == 0){
-                                $("#editing_shift").val(result[0].bookingeditingdetail_shift);
+                                $("#editing_shift").val(result.slice(-1)[0].bookingeditingdetail_shift);
                             }else{
                                 $("#editing_shift").val()
                             }
                             if($("#editing_date").val() == 0){
-                                $("#editing_date").val(result[0].bookingeditingdetail_date);
+                                $("#editing_date").val(result.slice(-1)[0].bookingeditingdetail_date);
                             }else{
                                 $("#editing_date").val()
                             }
