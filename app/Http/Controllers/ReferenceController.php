@@ -35,7 +35,7 @@ class ReferenceController extends Controller
                     ->orderBy('bookingeditingdetail_date', 'DESC')
                     ->orderBy('bookingeditingdetail_shift')
                     ->get();
-        $output = '<option value="">--Select Booking Editing Line--</option>';
+        $output = '<option value="">--Select Booking Editing Date & Shift--</option>';
         foreach($data as $row){
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>';
             $output .= '<option value="'.$row->$dependent.'">'." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift.'</option>';

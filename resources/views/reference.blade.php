@@ -54,10 +54,10 @@
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                                 <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill()"  required>
-                                                    <option value="" selected="false">--Select Booking Editing Line--</option>
+                                                    <option value="" selected="false">--Select Booking Editing Date & Shift--</option>
                                                     
                                                 </select>
-                                                <p style="color:grey;">*Pilih Booking Editing Line</p>
+                                                <p style="color:grey;">*Pilih Booking Editing Date & Shift</p>
                                         </div>
                                         {{ csrf_field() }}
                                         <div class="col-md-2 col-form-label">
