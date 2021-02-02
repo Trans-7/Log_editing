@@ -59,7 +59,7 @@
                                         Program Name
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="bookingeditingdetail_line" required>
+                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="bookingeditingdetail_line">
                                             <option value="" selected="false">--Select Program Name--</option>
                                             @foreach ($non_reference_R2 as $booking2)
                                             <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
@@ -71,7 +71,7 @@
                                         Booking Editing Date & Shift
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()" required>
+                                        <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()">
                                             <option value="" selected="false">--Select Booking Editing Date & Shift--</option>     
                                         </select>
                                         <p style="color:grey;">*Pilih Booking Editing Date & Shift</p>
