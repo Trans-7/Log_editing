@@ -61,25 +61,25 @@
                                         </div>
                                         {{ csrf_field() }}
                                         <div class="col-md-2 col-form-label">
-                                            Booking Editing ID
+                                            Booking Editing ID (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                             <input type="text" class="form-control dynamic" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
-                                            Kode Eps
+                                            Kode Eps (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                             <input type="text" class="form-control dynamic" id="kode_eps" name="kode_eps" value="" placeholder="Episode Code" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
-                                            Editing Date
+                                            Editing Date (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                             <input type="text" class="form-control dynamic" id="editing_date" name="editing_date" value="" placeholder="Editing Date" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
-                                            Editing Shift
+                                            Editing Shift (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                             <input type="text" class="form-control dynamic" id="editing_shift" name="editing_shift" value="" placeholder="Editing Shift" readonly/>
@@ -89,7 +89,7 @@
                                         </div>
                                         <br><br><br>
                                         <div class="col-md-12 col-form-label">
-                                            <h4 style="color:#1b215a;">Your Code</h4>
+                                            <h3 style="color:#1b215a;">Your Code</h3>
                                             <div class="card shadow-sm mb-2" style="padding:60px;"> 
                                                 <center>
                                                 <H1 style="color:#1b215a;">
