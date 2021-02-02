@@ -18,7 +18,7 @@ class ReferenceController extends Controller
     {
         $reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',1)->get();
         $reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
-        $reference_R2 = Transaction_bookingediting::select('show_name')->distinct()->get();
+        $reference_R2 = Transaction_bookingediting::select('show_name')->distinct()->orderBy('show_name', 'asc')->get();
         $data_R = Transaction_logediting::latest('id')->first();
         return view('reference', compact('reference_N', 'reference_R','data_R', 'reference_R2'));
         
