@@ -174,7 +174,15 @@
                                                                     <p style="font-size:17px;">Program Name</p>
                                                                 </div>
                                                                 <div class="col-sm-8 col-form-label">
-                                                                    <p style="font-size:17px;">{{ $n->logediting_program }}</p>
+                                                                    <p style="font-size:17px;">
+                                                                    <?php 
+                                                                    if ($n->logediting_program != NULL){
+                                                                        echo $n->logediting_program;
+                                                                    }else{
+                                                                        echo "- -";
+                                                                    }
+                                                                    ?>
+                                                                    </p>
                                                                 </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Login</p>
