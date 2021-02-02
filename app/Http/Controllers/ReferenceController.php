@@ -52,6 +52,7 @@ class ReferenceController extends Controller
                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
                     ->where('show_name', $show_name)
                     ->where('bookingeditingdetail_line', $booking_line)
+                    ->orderBy('transaction_bookingediting.show_name')
                     ->select('transaction_bookingediting.bookingediting_id', 'transaction_bookingeditingdetail.eps_code', 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
                     ->get();
         echo $data;

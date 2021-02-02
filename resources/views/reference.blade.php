@@ -323,10 +323,10 @@
                         success:function(result){
                             result = JSON.parse(result);
                             console.log(result);
-                            $("#bookingediting_id").val(result[0].bookingediting_id);
-                            $("#kode_eps").val(result[0].eps_code);
-                            $("#editing_date").val(result[0].bookingeditingdetail_date);
-                            $("#editing_shift").val(result[0].bookingeditingdetail_shift);
+                            $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id);
+                            $("#kode_eps").val(result.slice(-1)[0].eps_code);
+                            $("#editing_date").val(result.slice(-1)[0].bookingeditingdetail_date);
+                            $("#editing_shift").val(result.slice(-1)[0].bookingeditingdetail_shift);
                         }
                     });
                 }
