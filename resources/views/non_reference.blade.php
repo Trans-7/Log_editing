@@ -56,6 +56,15 @@
                                         <input type="text" class="form-control dynamic" name="editing_reason" value="" placeholder="Input Editing Reason" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
+                                        Program Name
+                                    </div>
+                                    <div class="col-md-10 col-form-label">
+                                        <select name="program_name" id="program_name" class="form-control dynamic" required>
+                                            <option value="" selected="false">--Select Program Name--</option>
+                                        </select>
+                                        <p style="color:grey;">*Pilih Nama Program</p>
+                                    </div>
+                                    <div class="col-md-2 col-form-label">
                                         Booking Editing ID
                                     </div>
                                     <div class="col-md-10 col-form-label">

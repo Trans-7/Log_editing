@@ -18,8 +18,9 @@ class ReferenceController extends Controller
     {
         $reference_N = Transaction_logediting::orderBy('id', 'DESC')->where('logediting_isreferenced',1)->get();
         $reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
+        $reference_R2 = Transaction_bookingediting::select('show_name')->distinct()->get();
         $data_R = Transaction_logediting::latest('id')->first();
-        return view('reference', compact('reference_N', 'reference_R','data_R'));
+        return view('reference', compact('reference_N', 'reference_R','data_R', 'reference_R2'));
         
     }
     public function fetch(Request $request)
@@ -27,25 +28,31 @@ class ReferenceController extends Controller
         $select = $request->get('select');
         $value = $request->get('value');
         $dependent = $request->get('dependent');
-        $data = DB::table('transaction_bookingediting')
-                    ->join(('transaction_bookingeditingdetail'),
-                     ('transaction_bookingediting.'.$select), '=', ('transaction_bookingeditingdetail.'.$select))
-                    ->select('transaction_bookingeditingdetail.'.$dependent.'', 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
-                    ->where('transaction_bookingeditingdetail.'.$select, $value)
+        $data = DB::table('transaction_bookingeditingdetail')
+                    ->leftJoin(('transaction_bookingediting'),
+                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
+                    ->where($select, $value)
+                    ->orderBy('bookingeditingdetail_date', 'DESC')
+                    ->orderBy('bookingeditingdetail_shift')
                     ->get();
         $output = '<option value="">--Select Booking Editing Line--</option>';
         foreach($data as $row){
-            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>';
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>';
+            $output .= '<option value="'.$row->$dependent.'">'." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift.'</option>';
         }
         echo $output;
     }
     public function autofill(Request $request)
     {
-        $booking_id = $request->get('booking_id');
+        
+        $show_name = $request->get('show_name');
         $booking_line = $request->get('booking_line');
-        $data = Transaction_bookingeditingdetail::select('eps_code', 'bookingeditingdetail_date', 'bookingeditingdetail_shift')
-                    ->where('transaction_bookingeditingdetail.bookingediting_id', $booking_id)
-                    ->where('transaction_bookingeditingdetail.bookingeditingdetail_line', $booking_line)
+        $data = DB::table('transaction_bookingeditingdetail')
+                    ->leftJoin(('transaction_bookingediting'),
+                    ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
+                    ->where('show_name', $show_name)
+                    ->where('bookingeditingdetail_line', $booking_line)
+                    ->select('transaction_bookingediting.bookingediting_id', 'transaction_bookingeditingdetail.eps_code', 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
                     ->get();
         echo $data;
     }
@@ -63,7 +70,8 @@ class ReferenceController extends Controller
             'logediting_isreferenced' => 1,
             'logediting_generatedby' => $request->session()->get('nik'),
             'logediting_generateddate' => date('Y-m-d H:i:s.').$time,
-            'logediting_generatedtime' => date('H:i:s.').$time
+            'logediting_generatedtime' => date('H:i:s.').$time,
+            'logediting_program' => $request->show_name
             //sisanya null
         ]);
         
