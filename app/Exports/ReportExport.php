@@ -38,7 +38,10 @@ class ReportExport implements FromCollection, WithHeadings
             'Copy Size',
             'Copy Segment',
             'Copy Date',
-            'Copy Remark'
+            'Copy Remark',
+            'Code',
+            ' ',
+            ' '
         ];
     }
     public function collection()

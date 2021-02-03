@@ -19,7 +19,8 @@ class ReportController extends Controller
         return view('report', compact('report','priviledge_R'));
     }
     public function export_excel(){
-        return Excel::download(new ReportExport, 'Report_Logediting.xlsx');
+        $nama_file = 'Report_Logediting_'.date('Y-m-d').'.xlsx';
+        return Excel::download(new ReportExport, $nama_file);
     }
     public function fetch_data(Request $request){
         if($request->ajax()){
