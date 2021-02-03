@@ -37,21 +37,19 @@ class ReportController extends Controller
                 ->where('logeditingreport_systemkerja','like',"%".$kerja."%")
                 // ->where('logeditingreport_date', '>=', $start->toDateTimeString())
                 // ->where('logeditingreport_date', '<=', $end->toDateTimeString())
-                ->orderBy('logeditingreport_id', 'ASC')
-                ->orderBy('logeditingreport_date','ASC')
+                ->orderBy('logeditingreport_date','DESC')
                 ->orderBy('logeditingreport_shift','ASC')
                 ->get();
             }else if($start != '' && $end != ''){
                 $data = Transaction_report::where('logeditingreport_date', '>=', $start->toDateTimeString())
                 ->where('logeditingreport_date', '<=', $end->toDateTimeString())
-                ->orderBy('logeditingreport_id', 'ASC')
-                ->orderBy('logeditingreport_date','ASC')
+                ->orderBy('logeditingreport_date','DESC')
                 ->orderBy('logeditingreport_shift','ASC')
                 ->get();
             }
             else
             {
-                $data = Transaction_report::orderBy('logeditingreport_id', 'ASC')->orderBy('logeditingreport_date','ASC')->orderBy('logeditingreport_shift','ASC')->get();
+                $data = Transaction_report::orderBy('logeditingreport_date','DESC')->orderBy('logeditingreport_shift','ASC')->get();
             }
             echo json_encode($data);
         }

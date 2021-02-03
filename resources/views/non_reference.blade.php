@@ -294,6 +294,11 @@
                                 </tbody>
                                 @endforeach
                             </table>
+                            Halaman : {{ $non_reference_N->currentPage() }} <br/>
+                            Jumlah Data : {{ $non_reference_N->total() }} <br/>
+                            Data Per Halaman : {{ $non_reference_N->perPage() }} <br/><br/>
+                        
+                            {{ $non_reference_N->links() }}
                         </div>
                     </div>
 </body>
