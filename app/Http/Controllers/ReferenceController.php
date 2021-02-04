@@ -28,17 +28,18 @@ class ReferenceController extends Controller
         $select = $request->get('select');
         $value = $request->get('value');
         $dependent = $request->get('dependent');
-        $data = DB::table('transaction_bookingeditingdetail')
-                    ->leftJoin(('transaction_bookingediting'),
-                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
+        $data = DB::table('transaction_bookingediting')
+                    ->leftJoin(('relation_bookingediting_editingrequest'),
+                    ('transaction_bookingediting.bookingediting_id'),'=',('relation_bookingediting_editingrequest.bookingediting_id'))
                     ->where($select, $value)
-                    ->orderBy('bookingeditingdetail_date', 'DESC')
-                    ->orderBy('bookingeditingdetail_shift')
+                    ->orderBy($dependent, 'DESC')
+                    ->select($dependent)
+                    ->distinct()
                     ->get();
-        $output = '<option value="">--Select Booking Editing Date & Shift--</option>';
+        $output = '<option value="">--Selected--</option>';
         foreach($data as $row){
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>';
-            $output .= '<option value="'.$row->$dependent.'">'." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift.'</option>';
+            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
         }
         echo $output;
     }
@@ -47,12 +48,14 @@ class ReferenceController extends Controller
         
         $show_name = $request->get('show_name');
         $booking_line = $request->get('booking_line');
+        $request_id = $request->get('request_id');
+        $bookingediting_ref_id = $request->get('bookingediting_ref_id');
         $data = DB::table('transaction_bookingeditingdetail')
                     ->leftJoin(('transaction_bookingediting'),
                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
                     ->where('show_name', $show_name)
                     ->where('bookingeditingdetail_line', $booking_line)
-                    ->orderBy('transaction_bookingediting.show_name')
+                    ->where('bookingediting_ref_id', $bookingediting_ref_id)
                     ->select('transaction_bookingediting.bookingediting_id', 'transaction_bookingeditingdetail.eps_code', 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
                     ->get();
         echo $data;
@@ -72,7 +75,9 @@ class ReferenceController extends Controller
             'logediting_generatedby' => $request->session()->get('nik'),
             'logediting_generateddate' => date('Y-m-d H:i:s.').$time,
             'logediting_generatedtime' => date('H:i:s.').$time,
-            'logediting_program' => $request->show_name
+            'logediting_program' => $request->show_name,
+            'logediting_requestid' => $request->request_id,
+            'logediting_prabudgetid' => $request->bookingediting_ref_id
             //sisanya null
         ]);
         
