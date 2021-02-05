@@ -59,7 +59,7 @@
                                         Program Name
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="bookingeditingdetail_line">
+                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id">
                                             <option value="" selected="false">--Select Program Name--</option>
                                             @foreach ($non_reference_R2 as $booking2)
                                             <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
@@ -68,14 +68,33 @@
                                         <p style="color:grey;">*Pilih Nama Program</p>
                                     </div>
                                     <div class="col-md-2 col-form-label">
-                                        Booking Editing Date & Shift
-                                    </div>
-                                    <div class="col-md-10 col-form-label">
-                                        <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()">
-                                            <option value="" selected="false">--Select Booking Editing Date & Shift--</option>     
-                                        </select>
-                                        <p style="color:grey;">*Pilih Booking Editing Date & Shift</p>
-                                    </div>
+                                            Request ID
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                                <select name="request_id" id="request_id" class="form-control dynamic" data-dependent="bookingediting_ref_id" required>
+                                                    <option value="" selected="false">--Select Request ID--</option>
+                                                </select>
+                                                <p style="color:grey;">*Pilih Request ID</p>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Prabudget ID
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                                <select name="bookingediting_ref_id" id="bookingediting_ref_id" class="form-control dynamic" data-dependent="bookingeditingdetail_line" required>
+                                                    <option value="" selected="false">--Select Prabudget ID--</option>
+                                                </select>
+                                                <p style="color:grey;">*Pilih Prabudget ID</p>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Booking Editing Line
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()" required>
+                                                    <option value="" selected="false">--Select Booking Editing Line--</option>
+                                                    
+                                                </select>
+                                                <p style="color:grey;">*Pilih Booking Editing Line</p>
+                                        </div>
                                     {{ csrf_field() }}
                                     <div class="col-md-2 col-form-label">
                                         Booking Editing ID (auto-isi)
@@ -127,6 +146,8 @@
                                 <thead class="table-head text-center">
                                     <th>Code</th>
                                     <th>Program Name</th>
+                                    <th>Request ID</th>
+                                    <th>Prabudget ID</th>
                                     <th>Booking Editing ID</th>
                                     <th>Booking Editing Line</th>
                                     <th>Kode Eps</th>
@@ -143,6 +164,8 @@
                                     @if (($n->logediting_generatedby) == (session()->get('nik')))
                                         <td><p id="textToCopy-{{$n->id}}">{{ $n->logediting_code }}</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-{{$n->id}}">Copy Code</button></td>
                                         <td>{{ $n->logediting_program }}</td>
+                                        <td>{{ $n->logediting_requestid }}</td>
+                                        <td>{{ $n->logediting_prabudgetid }}</td>
                                         <td>{{ $n->logediting_reference_id }}</td>
                                         <td>{{ $n->logediting_reference_line }}</td>
                                         <td>{{ $n->logediting_reference_code }}</td>
@@ -347,12 +370,14 @@
                 if($(this).val() != ''){
                     var booking_line = $('#bookingeditingdetail_line').val();
                     var show_name = $('#show_name').val();
+                    var request_id = $('#request_id').val();
+                    var bookingediting_ref_id = $('#bookingediting_ref_id').val();
                     var _token = $('input[name="_token"]').val();
                     console.log(show_name, booking_line);
                     $.ajax({
                         url:"{{ route('non_reference.autofill_NR') }}",
                         method:"POST",
-                        data:{_token:_token, show_name:show_name, booking_line:booking_line },
+                        data:{_token:_token, show_name:show_name, booking_line:booking_line, request_id:request_id,bookingediting_ref_id:bookingediting_ref_id},
                         success:function(result){
                             result = JSON.parse(result);
                             console.log(result);

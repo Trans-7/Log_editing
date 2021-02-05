@@ -38,10 +38,11 @@ class ReferenceController extends Controller
                     ->get();
         $output = '<option value="">--Selected--</option>';
         foreach($data as $row){
-            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>';
             $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
         }
         echo $output;
+            
     }
     public function autofill(Request $request)
     {
