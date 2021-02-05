@@ -140,7 +140,7 @@
 </form>
                     <div class="row m-5" style="padding-bottom:2rem">
                         <div class="col-sm-12">
-                            <h3 style="color:#1b215a;"> History</h3>
+                            <h2 style="color:#1b215a;"> History</h2>
                             <br>
                             
                             <input type="search" placeholder="Search Data..." class="form-control search-input" data-table="logediting-list" style="width: 500px;margin-right: auto;float: left; margin-bottom:20px;">
