@@ -143,7 +143,7 @@
                             <h2 style="color:#1b215a;"> History</h2>
                             <br>
                             
-                            <input type="search" placeholder="Search Data..." class="form-control search-input" data-table="logediting-list" style="width: 500px;margin-right: auto;float: left; margin-bottom:20px;">
+                            <input type="search" placeholder="Search Data..." class="form-control search-input" data-table="logediting-list" style="width: 300px;margin-right: auto;float: left; margin-bottom:20px;">
 
                             <table class="table table-sm-9 table-bordered logediting-list">
                                 <thead class="table-head text-center">
