@@ -80,16 +80,16 @@
                                             Prabudget ID
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="bookingediting_ref_id" id="bookingediting_ref_id" class="form-control dynamic" data-dependent="bookingeditingdetail_line" required>
+                                                <select name="bookingediting_ref_id" id="bookingediting_ref_id" class="form-control dynamics" data-dependent="bookingeditingdetail_line" required>
                                                     <option value="" selected="false">--Select Prabudget ID--</option>
                                                 </select>
                                                 <p style="color:grey;">*Pilih Prabudget ID</p>
                                         </div>
                                         <div class="col-md-2 col-form-label">
-                                            Booking Editing Line
+                                            Booking Editing Line (Date & Shift)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamic" onchange="autofill_NR()" required>
+                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamics" onchange="autofill_NR()" required>
                                                     <option value="" selected="false">--Select Booking Editing Line--</option>
                                                     
                                                 </select>
@@ -100,13 +100,13 @@
                                         Booking Editing ID (auto-isi)
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control dynamic" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
+                                        <input type="text" class="form-control dynamics" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Kode Eps (auto-isi)
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control dynamic" id="kode_eps" name="kode_eps" value="" placeholder="Episode Code" readonly/>
+                                        <input type="text" class="form-control dynamics" id="kode_eps" name="kode_eps" value="" placeholder="Episode Code" readonly/>
                                     </div>
                                     <br><br><br>
                                     <div class="col-md-12">
@@ -142,6 +142,26 @@
                         <div class="col-sm-12">
                             <h3 style="color:#1b215a;"> History</h3>
                             <br>
+                            <!-- <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Start Date</span>
+                                    </div>
+                                    <input type="text" name="from_date" id="from_date" value="YYYY - MM - DD" class="form-control">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="margin-left:10px;">End Date</span>
+                                    </div>
+                                    <input type="text" name="to_date" id="to_date" value="YYYY - MM - DD" class="form-control">
+                                </div>
+                                <div class="input-group-prepend">
+                                    <input type="text" name="program" id="program" placeholder="Nama Program" class="form-control">
+                                    <input type="text" name="request_id" id="request_id" placeholder="Request ID (EQ)" class="form-control" style="margin-left:15px;">
+                                    <input type="text" name="pb_id" id="pb_id" placeholder="Prabudget ID (PB)" class="form-control" style="margin-left:15px;">
+                                </div>
+                                <div style="padding-top:1rem; padding-bottom:1rem">
+                                    <button type="button" name="filter" id="filter" class="btn btn-blue">Search Data</button>
+                                </div>
+                            </div> -->
                             <table class="table table-sm-9 table-bordered">
                                 <thead class="table-head text-center">
                                     <th>Code</th>
@@ -362,11 +382,28 @@
                     });
                 }
             });
+            $('.dynamics').on('change', function(){
+                if($(this).val() != ''){
+                    var select = $(this).attr("id");
+                    var value = $(this).val();
+                    var dependent = $(this).data('dependent');
+                    var _token = $('input[name="_token"]').val();
+                    console.log(select, value, dependent);
+                    $.ajax({
+                        url:"{{ route('non_reference.fetchs_NR') }}",
+                        method:"POST",
+                        data:{select:select, value:value, _token:_token, dependent:dependent},
+                        success:function(result){
+                            $('#'+dependent).html(result);
+                        }
+                    });
+                }
+            });
         });
     </script>
     <script type="text/javascript">
     function autofill_NR(){
-        $('.dynamic').on('change', function(){
+        $('.dynamics').on('change', function(){
                 if($(this).val() != ''){
                     var booking_line = $('#bookingeditingdetail_line').val();
                     var show_name = $('#show_name').val();
@@ -381,12 +418,8 @@
                         success:function(result){
                             result = JSON.parse(result);
                             console.log(result);
-                            // $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id);
-                            // $("#kode_eps").val(result.slice(-1)[0].eps_code);
-                            // $("#editing_date").val(result.slice(-1)[0].bookingeditingdetail_date);
-                            // $("#editing_shift").val(result.slice(-1)[0].bookingeditingdetail_shift);
-                            if($("#bookingediting_id").val() != $("#bookingediting_id").val(result[0].bookingediting_id)){
-                                $("#bookingediting_id").val(result[0].bookingediting_id);
+                            if($("#bookingediting_id").val() != $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id)){
+                                $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id);
                             }
                             if($("#kode_eps").val() != $("#kode_eps").val(result.slice(-1)[0].eps_code)){
                                 $("#kode_eps").val(result.slice(-1)[0].eps_code);

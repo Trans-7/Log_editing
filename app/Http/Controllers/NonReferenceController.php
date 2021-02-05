@@ -38,7 +38,27 @@ class NonReferenceController extends Controller
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
         }
         echo $output;
-
+    }
+    public function fetchs_NR(Request $request)
+    {
+        $select = $request->get('select');
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        $data = DB::table('transaction_bookingeditingdetail')
+                    ->leftJoin(('transaction_bookingediting'),
+                    ('transaction_bookingeditingdetail.bookingediting_id'),'=',('transaction_bookingediting.bookingediting_id'))
+                    ->where($select, $value)
+                    ->orderBy($dependent, 'DESC')
+                    ->select($dependent, 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
+                    ->distinct()
+                    ->get();
+        $output = '<option value="">--Selected--</option>';
+        foreach($data as $row){
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
+        }
+        echo $output;
+            
     }
     public function autofill_NR(Request $request)
     {
