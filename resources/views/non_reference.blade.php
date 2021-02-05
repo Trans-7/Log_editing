@@ -360,7 +360,7 @@
     window.onload=function(){
         setTimeout( function(){
             document.querySelectorAll('h1')[0].innerHTML='';
-        },3000);
+        },5000);
     }
     </script>
     <script type="text/javascript">
