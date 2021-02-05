@@ -142,27 +142,10 @@
                         <div class="col-sm-12">
                             <h3 style="color:#1b215a;"> History</h3>
                             <br>
-                            <!-- <div class="col-md-12">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Start Date</span>
-                                    </div>
-                                    <input type="text" name="from_date" id="from_date" value="YYYY - MM - DD" class="form-control">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" style="margin-left:10px;">End Date</span>
-                                    </div>
-                                    <input type="text" name="to_date" id="to_date" value="YYYY - MM - DD" class="form-control">
-                                </div>
-                                <div class="input-group-prepend">
-                                    <input type="text" name="program" id="program" placeholder="Nama Program" class="form-control">
-                                    <input type="text" name="request_id" id="request_id" placeholder="Request ID (EQ)" class="form-control" style="margin-left:15px;">
-                                    <input type="text" name="pb_id" id="pb_id" placeholder="Prabudget ID (PB)" class="form-control" style="margin-left:15px;">
-                                </div>
-                                <div style="padding-top:1rem; padding-bottom:1rem">
-                                    <button type="button" name="filter" id="filter" class="btn btn-blue">Search Data</button>
-                                </div>
-                            </div> -->
-                            <table class="table table-sm-9 table-bordered">
+                            
+                            <input type="search" placeholder="Search Data..." class="form-control search-input" data-table="logediting-list" style="width: 500px;margin-right: auto;float: left; margin-bottom:20px;">
+
+                            <table class="table table-sm-9 table-bordered logediting-list">
                                 <thead class="table-head text-center">
                                     <th>Code</th>
                                     <th>Program Name</th>
@@ -448,4 +431,43 @@
     clipboard.on('error', function(e) {
         console.log(e);
     });
+    </script>
+    <script>
+        (function(document) {
+            'use strict';
+
+            var TableFilter = (function(myArray) {
+                var search_input;
+
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function(table) {
+                        myArray.forEach.call(table.tBodies, function(tbody) {
+                            myArray.forEach.call(tbody.rows, function(row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
+
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('search-input');
+                        myArray.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
     </script>
