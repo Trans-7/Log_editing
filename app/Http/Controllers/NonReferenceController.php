@@ -31,6 +31,7 @@ class NonReferenceController extends Controller
         $data = DB::table('transaction_bookingediting')
                     ->leftJoin(('relation_bookingediting_editingrequest'),
                     ('transaction_bookingediting.bookingediting_id'),'=',('relation_bookingediting_editingrequest.bookingediting_id'))
+                    ->where('transaction_bookingediting.bookingediting_createddate','>=','2020-02-08')
                     ->where($select, $value)
                     ->orderBy($dependent, 'DESC')
                     ->select($dependent)
@@ -51,6 +52,7 @@ class NonReferenceController extends Controller
         $data = DB::table('transaction_bookingeditingdetail')
                     ->leftJoin(('transaction_bookingediting'),
                     ('transaction_bookingeditingdetail.bookingediting_id'),'=',('transaction_bookingediting.bookingediting_id'))
+                    ->where('transaction_bookingediting.bookingediting_createddate','>=','2020-02-08')
                     ->where($select, $value)
                     ->orderBy($dependent, 'DESC')
                     ->select($dependent, 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
@@ -73,6 +75,7 @@ class NonReferenceController extends Controller
         $data = DB::table('transaction_bookingeditingdetail')
                     ->leftJoin(('transaction_bookingediting'),
                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
+                    ->where('transaction_bookingediting.bookingediting_createddate','>=','2020-02-08')
                     ->where('show_name', $show_name)
                     ->where('bookingeditingdetail_line', $booking_line)
                     ->where('bookingediting_ref_id', $bookingediting_ref_id)
