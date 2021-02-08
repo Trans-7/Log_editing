@@ -15,7 +15,11 @@ class NonReferenceController extends Controller
     public function non_reference(){
         $non_reference_N = Transaction_logediting::orderBy('logediting_generateddate', 'DESC')->where('logediting_isreferenced',0)->where('logediting_generatedby', session()->get('nik'))->paginate(5);
         $non_reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
-        $non_reference_R2 = Transaction_bookingediting::select('show_name')->distinct()->orderBy('show_name', 'asc')->get();
+        $non_reference_R2 = Transaction_bookingediting::select('show_name')
+                            ->where('bookingediting_createddate','>=','2020-02-08')
+                            ->distinct()
+                            ->orderBy('show_name', 'asc')
+                            ->get();
         $data_N = Transaction_logediting::latest('id')->first();
         return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N', 'non_reference_R2'));
     }
