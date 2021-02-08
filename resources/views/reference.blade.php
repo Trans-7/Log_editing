@@ -41,7 +41,7 @@
                                             Program Name
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id" required>
+                                                <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Program Name--</option>
                                                     @foreach ($reference_R2 as $booking2)
                                                     <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
@@ -53,7 +53,7 @@
                                             Request ID
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="request_id" id="request_id" class="form-control dynamic" data-dependent="bookingediting_ref_id" required>
+                                                <select name="request_id" id="request_id" class="form-control dynamic" data-dependent="bookingediting_ref_id" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Request ID--</option>
                                                 </select>
                                                 <p style="color:grey;">*Pilih Request ID</p>
@@ -62,7 +62,7 @@
                                             Prabudget ID
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="bookingediting_ref_id" id="bookingediting_ref_id" class="form-control dynamics" data-dependent="bookingeditingdetail_line" required>
+                                                <select name="bookingediting_ref_id" id="bookingediting_ref_id" class="form-control dynamics" data-dependent="bookingeditingdetail_line" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Prabudget ID--</option>
                                                 </select>
                                                 <p style="color:grey;">*Pilih Prabudget ID</p>
@@ -71,7 +71,7 @@
                                             Booking Editing Line (Date & Shift)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamics" onchange="autofill()" required>
+                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamics" onchange="autofill()" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Booking Editing Line--</option>
                                                     
                                                 </select>
