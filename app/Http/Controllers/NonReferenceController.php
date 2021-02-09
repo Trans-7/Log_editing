@@ -149,13 +149,13 @@ class NonReferenceController extends Controller
                                                                 <p style="font-size:17px;">Status Login</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;">'.$row->logediting_loginnik.' '.$row->logediting_loginname.'</p>
+                                                                <p style="font-size:17px;"></p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Login By</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$row->logediting_loginnik.' '.$row->logediting_loginname.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Login Time</p>
