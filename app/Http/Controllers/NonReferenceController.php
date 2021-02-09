@@ -9,6 +9,7 @@ use App\Transaction_bookingediting;
 use App\Transaction_bookingeditingdetail;
 use App\Transaction_logeditingpriviledge;
 use App\User;
+use DataTables;
 
 class NonReferenceController extends Controller
 {
@@ -107,5 +108,91 @@ class NonReferenceController extends Controller
             //sisanya null
         ]);
         return redirect('/non_reference');
+    }
+    public function search_N(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Transaction_logediting::orderBy('logediting_generateddate', 'DESC')
+                    ->where('logediting_isreferenced',0)
+                    ->where('logediting_generatedby', session()->get('nik'))
+                    ->select('*')
+                    ->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+     
+                           $btn = '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-"'.$row->logediting_id.'>View Detail</button>
+                                        <div class="modal fade" id="show-user-"'.$row->logediting_id.' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title" id="exampleModalLabel" style="color:#1b215a;">Detail Login Status</h3>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row m-1">
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Code</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;">'.$row->logediting_code.'</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Program Name</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Status Login</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Login By</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Login Time</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Status Logout</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Logout Time</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Remark Logout</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;"></p>
+                                                            </div>
+                                                        </div
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+       
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        
+        return view('non_reference');
     }
 }

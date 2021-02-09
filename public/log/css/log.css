@@ -14,11 +14,10 @@
   color: #fff;
   background-color: #1b215a;
 }
-.table-body{
-  background-color: #fff;
-  color:black;
+.thead_d{
+  background-color: #1b215a;
+  color: #fff;
 }
-
 .btn-blue:hover {
   color: #fff;
   background-color: #283392;
