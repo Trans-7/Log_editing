@@ -127,8 +127,8 @@ class ReferenceController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
      
-                           $btn = '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-"'.$row->logediting_id.'>View Detail</button>
-                                        <div class="modal fade" id="show-user-"'.$row->logediting_id.' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           $btn = '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-'.$row->id.'">View Detail</button>
+                                        <div class="modal fade" id="show-user-'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -149,7 +149,7 @@ class ReferenceController extends Controller
                                                                 <p style="font-size:17px;">Program Name</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$row->logediting_program.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Login</p>
@@ -161,7 +161,7 @@ class ReferenceController extends Controller
                                                                 <p style="font-size:17px;">Login By</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$row->logediting_loginnik.' '.$row->logediting_loginname.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Login Time</p>
@@ -185,7 +185,7 @@ class ReferenceController extends Controller
                                                                 <p style="font-size:17px;">Remark Logout</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$row->logediting_remark.'</p>
                                                             </div>
                                                         </div
                                                     </div>
