@@ -173,7 +173,7 @@ class NonReferenceController extends Controller
                                 $remark = "- -";
                             }
 
-                           $btn = '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-'.$row->id.'">View Detail</button>
+                           $btn = '<center><p><button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-'.$row->id.'">View Detail</button></p></center>
                                         <div class="modal fade" id="show-user-'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
