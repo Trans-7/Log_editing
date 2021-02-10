@@ -246,7 +246,11 @@
                 serverSide: true,
                 ajax: "{{ route('reference.search') }}",
                 columns: [
-                    {data: 'logediting_code', name: 'logediting_code'},
+                    {data: 'logediting_code', name: 'logediting_code',
+                        render: function ( data, type, row ) {
+                            return '<center><p id="textToCopy-'+ row.id + '">'+ row.logediting_code +'</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-'+ row.id + '">Copy Code</button></center>';
+                        }
+                    },
                     {data: 'logediting_useddate', name: 'logediting_useddate'},
                     {data: 'logediting_usedshift', name: 'logediting_usedshift'},
                     {data: 'logediting_program', name: 'logediting_program'},
