@@ -120,7 +120,59 @@ class NonReferenceController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                    
+                            //kondisi untuk nama program
+                            if ($row->logediting_program != NULL){
+                                $program = $row->logediting_program;
+                            }else{
+                                $program = "- -";
+                            }  
+                            //kondisi untuk status login
+                            if ($row->logediting_logindate != NULL){
+                                $login = "Sudah Login";
+                            }else{
+                                $login = "Belum Login";
+                            } 
+                            //kondisi untuk login by
+                            if (($row->logediting_loginnik != NULL) && ($row->logediting_loginname != NULL)){
+                                $loginby = $row->logediting_loginnik.' / '.$row->logediting_loginname;
+                            }else{
+                                $loginby = "- -";
+                            } 
+                            //kondisi untuk login time
+                            if ($row->logediting_logindate != NULL){
+                                $logintime = date('d M Y', strtotime($row->logediting_logindate));
+                            }else{
+                                $logintime = "-";
+                            } 
+                            if ($row->logediting_logintime != NULL){
+                                $logintime2 = $row->logediting_logintime;
+                            }else{
+                                $logintime2 = "-";
+                            }
+                            //kondisi untuk status logout
+                            if ($row->logediting_logoutdate != NULL){
+                                $logout = "Sudah Logout";
+                            }else{
+                                $logout = "Belum Logout";
+                            }
+                            //kondisi untuk logout time
+                            if ($row->logediting_logoutdate != NULL){
+                                $logouttime = date('d M Y', strtotime($row->logediting_logoutdate));
+                            }else{
+                                $logouttime = "-";
+                            } 
+                            if ($row->logediting_logouttime != NULL){
+                                $logouttime2 = $row->logediting_logouttime;
+                            }else{
+                                $logouttime2 = "-";
+                            }
+                            //kondisi untuk remark
+                            if ($row->logediting_remark != NULL){
+                                $remark = $row->logediting_remark;
+                            }else{
+                                $remark = "- -";
+                            }
+
                            $btn = '<button type="button" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#show-user-'.$row->id.'">View Detail</button>
                                         <div class="modal fade" id="show-user-'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -143,43 +195,43 @@ class NonReferenceController extends Controller
                                                                 <p style="font-size:17px;">Program Name</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;">'.$row->logediting_program.'</p>
+                                                                <p style="font-size:17px;">'.$program.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Login</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$login.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Login By</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;">'.$row->logediting_loginnik.' '.$row->logediting_loginname.'</p>
+                                                                <p style="font-size:17px;">'.$loginby.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Login Time</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$logintime.' '.$logintime2.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Logout</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$logout.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Logout Time</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;"></p>
+                                                                <p style="font-size:17px;">'.$logouttime.' '.$logouttime2.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Remark Logout</p>
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
-                                                                <p style="font-size:17px;">'.$row->logediting_remark.'</p>
+                                                                <p style="font-size:17px;">'.$remark.'</p>
                                                             </div>
                                                         </div
                                                     </div>
