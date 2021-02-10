@@ -41,25 +41,25 @@
                                         Editing Date
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input class="form-control dynamic" id="editing_date" name="editing_date" value="YYYY - MM - DD" placeholder="Editing Date" onfocus="this.value=''" required>
+                                        <input class="form-control dynamic" id="editing_date" name="editing_date" value="YYYY - MM - DD" placeholder="Editing Date" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Shift
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control dynamic" id="editing_shift" name="editing_shift" value="" placeholder="Input Editing Shift (1, 2, or 3)" onfocus="this.value=''" required>
+                                        <input type="text" class="form-control dynamic" id="editing_shift" name="editing_shift" value="" placeholder="Input Editing Shift (1, 2, or 3)" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Reason
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control dynamic" name="editing_reason" value="" placeholder="Input Editing Reason" onfocus="this.value=''" required>
+                                        <input type="text" class="form-control dynamic" name="editing_reason" value="" placeholder="Input Editing Reason" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Program Name
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id" onfocus="this.value=''" required>
+                                        <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id" onfocus="this.value=''">
                                             <option value="" selected="false">--Select Program Name--</option>
                                             @foreach ($non_reference_R2 as $booking2)
                                             <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
