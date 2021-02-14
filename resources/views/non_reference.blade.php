@@ -271,6 +271,8 @@
         $(function () {
             
             var table = $('.data-tablee').DataTable({
+                order: [],
+                aaSorting: [],
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('non_reference.search_N') }}",
