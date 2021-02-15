@@ -28,7 +28,7 @@
     </ul>
 </nav>
 <br />
-<div class="container box">
+<div class="container">
     <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
