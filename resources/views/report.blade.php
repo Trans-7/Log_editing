@@ -23,13 +23,14 @@
     </div>
     <ul class="navbar-nav mr-auto" style="margin-left:300px;">
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/logout">Logout ( <?php echo session()->get('nik'); ?> )</a></h5>
+                    <h5><a class="nav-link" href="/logout">Logout</a></h5>
                 </li>
     </ul>
 </nav>
 <br />
 <div class="container box">
     <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
+    <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">

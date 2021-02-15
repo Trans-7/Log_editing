@@ -23,7 +23,7 @@
     </div>
     <ul class="navbar-nav mr-auto" style="margin-left:300px;">
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/logout">Logout ( <?php echo session()->get('nik'); ?> )</a></h5>
+                    <h5><a class="nav-link" href="/logout">Logout</a></h5>
                 </li>
     </ul>
 </nav>
@@ -33,6 +33,7 @@
             <div class="col-sm-12">
                 <div class="row m-5" style="padding-bottom: 2rem">
                     <div class="col-md-12">
+                        <h4 style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h4>
                         <div class="card shadow-sm mb-2">
                             <div class="card-body">   
                             <h2 class="card-title" style="color:#1b215a;">Non Reference</h2>

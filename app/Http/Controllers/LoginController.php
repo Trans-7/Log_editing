@@ -66,6 +66,7 @@ class LoginController extends Controller
             //create session
             session()->put('nik', $user->user['nik']);
             session()->put('priviledge', $userInstance->logeditingpriviledge_level);
+            session()->put('name_priviledge', $userInstance->logeditingpriviledge_name);
             return redirect()->intended();
         } else {
             session()->put('no_access', true);
