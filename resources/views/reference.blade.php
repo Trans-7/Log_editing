@@ -8,12 +8,15 @@
         </div>
         <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="margin-left:150px;">
+            <ul class="navbar-nav mr-auto" style="margin-left:15px;">
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
                 </li>
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
+                </li>
+                <li class="nav-item">
+                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
                 </li>
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>
@@ -38,6 +41,7 @@
                             <div class="card-body">   
                                 <h2 class="card-title" style="color:#1b215a;">Reference</h2>
                                 <div class = "row m-1">
+                                        
                                         <div class="col-md-2 col-form-label">
                                             Program Name
                                         </div>
@@ -78,7 +82,7 @@
                                                 </select>
                                                 <p style="color:grey;">*Pilih Booking Editing Line</p>
                                         </div>
-                                        {{ csrf_field() }}
+                                        
                                         <div class="col-md-2 col-form-label">
                                             Booking Editing ID (auto-isi)
                                         </div>
@@ -102,7 +106,47 @@
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                             <input type="text" class="form-control dynamics" id="editing_shift" name="editing_shift" value="" placeholder="Editing Shift" readonly/>
-                                        </div><br><br><br>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Editor NIK
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                                <select name="editor_nik" id="editor_nik" class="form-control dinamik" onfocus="this.value=''" required>
+                                                    <option value="" selected="false">--Select Editor NIK--</option>
+                                                    @foreach ($user_R as $u_nik)
+                                                    <option value="{{$u_nik->NIK}}">{{$u_nik->NIK}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <p style="color:grey;">*Pilih NIK Editor</p>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Editor Name (auto-isi)
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                            <input type="text" class="form-control " id="editor_name" name="editor_name" value="" placeholder="Editor Name" readonly/>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Editor Phone (auto-isi)
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                            <input type="text" class="form-control " id="editor_phone" name="editor_phone" value="" placeholder="Editor Phone" readonly/>
+                                        </div>
+                                        <div class="col-md-2 col-form-label">
+                                            Booth
+                                        </div>
+                                        <div class="col-md-10 col-form-label">
+                                                
+                                                <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
+                                                    <option value="" selected="false">--Select Booth--</option>
+                                                    @foreach ($booth_R as $b)
+                                                    <option value="{{$b->id}}">{{$b->nama_booth}}</option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                                <p style="color:grey;">*Pilih Booth</p>
+                                        </div>
+                                        <br><br><br>
+                                        {{ csrf_field() }}
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-blue btn-lg btn-block">GENERATE CODE</button>
                                         </div>
@@ -139,6 +183,9 @@
                                 <thead class="thead_d">
                                     <tr>
                                         <th>Code</th>
+                                        <th>Editor NIK</th>
+                                        <th>Editor Name</th>
+                                        <th>Booth</th>
                                         <th>Editing Date</th>
                                         <th>Editing Shift</th>
                                         <th>Program Name</th>
@@ -201,6 +248,25 @@
                     });
                 }
             });
+
+            $('.dinamik').on('change', function(){
+                if($(this).val() != ''){
+                    var editor_nik = $('#editor_nik').val();
+                    var _token = $('input[name="_token"]').val();
+                    console.log(editor_nik);
+                    $.ajax({
+                        url:"{{ route('reference.autofill_editor') }}",
+                        method:"POST",
+                        data:{_token:_token, editor_nik:editor_nik},
+                        success:function(result){
+                            result = JSON.parse(result);
+                            console.log(result);
+                            $("#editor_name").val(result[0].Nama);
+                            $("#editor_phone").val(result[0].NomorHP);
+                        }
+                    });
+                }
+            });
         });
     </script>
     <script type="text/javascript">
@@ -254,6 +320,9 @@
                             return '<center><p id="textToCopy-'+ row.id + '">'+ row.logediting_code +'</p><button class="klik btn-blue btn-sm" data-clipboard-target="#textToCopy-'+ row.id + '">Copy Code</button></center>';
                         }
                     },
+                    {data: 'logediting_editor_nik', name: 'logediting_editor_nik'},
+                    {data: 'logediting_editor_name', name: 'logediting_editor_name'},
+                    {data: 'nama_booth', name: 'nama_booth'},
                     {data: 'logediting_useddate', name: 'logediting_useddate'},
                     {data: 'logediting_usedshift', name: 'logediting_usedshift'},
                     {data: 'logediting_program', name: 'logediting_program'},
@@ -268,4 +337,3 @@
             });
         });
     </script>
-    

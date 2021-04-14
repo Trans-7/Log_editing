@@ -13,7 +13,7 @@ use DataTables;
 
 class NonReferenceController extends Controller
 {
-    public function non_reference(){
+    public function non_reference(Request $request){
         $non_reference_N = Transaction_logediting::orderBy('logediting_generateddate', 'DESC')->where('logediting_isreferenced',0)->where('logediting_generatedby', session()->get('nik'))->paginate(10);
         $non_reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $non_reference_R2 = Transaction_bookingediting::select('show_name')
@@ -22,7 +22,23 @@ class NonReferenceController extends Controller
                             ->orderBy('show_name', 'asc')
                             ->get();
         $data_N = Transaction_logediting::latest('id')->first();
-        return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N', 'non_reference_R2'));
+        $user_NR = DB::table('HRIS.HRIS.dbo.MasterEisAktif')->get();
+
+        //select list booth
+        $select_date = $request->get('editing_date');
+        $select_shift = $request->get('editing_shift');
+        
+        $booth_NR = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+        ->from(DB::raw("(SELECT a.*
+                         FROM transaction_logediting a
+                         WHERE a.logediting_useddate = '".$select_date."'
+                         AND a.logediting_usedshift = '".$select_shift."'
+                         ) as table_1"))
+        ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+        ->where('table_1.logeditingboot_id', '=', NULL)
+        ->orderBy('master_booth_logediting.id', 'ASC')
+        ->get();
+        return view('non_reference', compact('non_reference_N', 'non_reference_R', 'data_N', 'non_reference_R2', 'user_NR', 'booth_NR'));
     }
     public function fetch_NR(Request $request)
     {
@@ -85,6 +101,17 @@ class NonReferenceController extends Controller
         echo $data;
     }
 
+    public function autofill_editorNR(Request $request)
+    {
+        
+        $editor_nik = $request->get('editor_nik');
+        $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+                    ->where('NIK', $editor_nik)
+                    ->select('Nama', 'NomorHP')
+                    ->get();
+        echo $data;
+    }
+
     public function store_NR(Request $request)
     {
         // insert data ke table 
@@ -104,7 +131,12 @@ class NonReferenceController extends Controller
             'logediting_generatedtime' => date('H:i:s.').$time,
             'logediting_program' => $request->show_name,
             'logediting_requestid' => $request->request_id,
-            'logediting_prabudgetid' => $request->bookingediting_ref_id
+            'logediting_prabudgetid' => $request->bookingediting_ref_id,
+            'logediting_editor_nik' => $request->editor_nik,
+            'logediting_editor_name' => $request->editor_name,
+            'logediting_editor_phone' => $request->editor_phone,
+            'logeditingboot_id' => $request->booth
+
             //sisanya null
         ]);
         return redirect('/non_reference');
@@ -112,7 +144,9 @@ class NonReferenceController extends Controller
     public function search_N(Request $request)
     {
         if ($request->ajax()) {
-            $data = Transaction_logediting::orderBy('logediting_generateddate', 'DESC')
+            $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
+                    ('transaction_logediting.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+                    ->orderBy('logediting_generateddate', 'DESC')
                     ->where('logediting_isreferenced',0)
                     ->where('logediting_generatedby', session()->get('nik'))
                     ->select('*')
@@ -125,7 +159,31 @@ class NonReferenceController extends Controller
                                 $program = $row->logediting_program;
                             }else{
                                 $program = "- -";
+                            }
+                            //kondisi untuk editor nik
+                            if ($row->logediting_editor_nik != NULL){
+                                $editor_nik = $row->logediting_editor_nik;
+                            }else{
+                                $editor_nik = "- -";
                             }  
+                            //kondisi untuk editor name
+                            if ($row->logediting_editor_name != NULL){
+                                $editor_name = $row->logediting_editor_name;
+                            }else{
+                                $editor_name = "- -";
+                            } 
+                            //kondisi untuk editor phone
+                            if ($row->logediting_editor_phone != NULL){
+                                $editor_phone = $row->logediting_editor_phone;
+                            }else{
+                                $editor_phone = "- -";
+                            }
+                            //kondisi untuk booth
+                            if ($row->logeditingboot_id != NULL){
+                                $editor_booth = $row->nama_booth;
+                            }else{
+                                $editor_booth = "- -";
+                            }   
                             //kondisi untuk status login
                             if ($row->logediting_logindate != NULL){
                                 $login = "Sudah Login";
@@ -196,6 +254,30 @@ class NonReferenceController extends Controller
                                                             </div>
                                                             <div class="col-sm-8 col-form-label">
                                                                 <p style="font-size:17px;">'.$program.'</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Editor NIK</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;">'.$editor_nik.'</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Editor Name</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;">'.$editor_name.'</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Editor Phone</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;">'.$editor_phone.'</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-form-label">
+                                                                <p style="font-size:17px;">Booth</p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-form-label">
+                                                                <p style="font-size:17px;">'.$editor_booth.'</p>
                                                             </div>
                                                             <div class="col-sm-4 col-form-label">
                                                                 <p style="font-size:17px;">Status Login</p>
