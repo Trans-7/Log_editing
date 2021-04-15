@@ -110,6 +110,10 @@
                                         <div class="col-md-2 col-form-label">
                                             Editor NIK
                                         </div>
+                                        <!-- <div class="col-md-10 col-form-label">
+                                            <input type="text" class=" dinamik form-control" id="editor_nik" name="editor_nik" value="" placeholder="Editor NIK"/>
+                                            <div id="NIKList"></div>
+                                        </div> -->
                                         <div class="col-md-10 col-form-label">
                                                 <select name="editor_nik" id="editor_nik" class="form-control dinamik" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Editor NIK--</option>
@@ -204,6 +208,7 @@
                         </div>
                     </div>
 </body>
+    
     <script>
     window.onload=function(){
         setTimeout( function(){
@@ -267,8 +272,30 @@
                     });
                 }
             });
+            $('#editor_nik').keyup(function(){ 
+                var query = $(this).val();
+                if(query != '')
+                {
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url:"{{ route('reference.autocomplete') }}",
+                        method:"POST",
+                        data:{query:query, _token:_token},
+                        success:function(data){
+                            $('#NIKList').fadeIn();  
+                                        $('#NIKList').html(data);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click', 'a', function(){  
+                $('#editor_nik').val($(this).text());  
+                $('#NIKList').fadeOut();
+            });  
         });
     </script>
+    
     <script type="text/javascript">
     function autofill(){
         $('.dynamics').on('change', function(){

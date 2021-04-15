@@ -24,10 +24,9 @@ Route::group(['middleware' => ['auth']], function() {
 
 //HISTORYCAL
 Route::get('/historycal', ['uses'=>'HistorycalController@index', 'as'=>'historycal.index']);
-
 Route::resource('historycal', 'HistorycalController');
-
-Route::post('historycal/update', 'HistorycalController@update')->name('historycal.update');
+Route::post('/historycal/update', 'HistorycalController@update')->name('historycal.update');
+Route::post('/historycal/autofill_editor', 'HistorycalController@autofill_editor')->name('historycal.autofill_editor');
 
 //REPORT
 Route::get('/report', 'ReportController@report');
@@ -43,6 +42,7 @@ Route::post('/reference/fetchs', 'ReferenceController@fetchs')->name('reference.
 Route::post('/reference/autofill', 'ReferenceController@autofill')->name('reference.autofill');
 Route::get('/reference/search', ['uses'=>'ReferenceController@search', 'as'=>'reference.search']);
 Route::post('/reference/autofill_editor', 'ReferenceController@autofill_editor')->name('reference.autofill_editor');
+Route::post('/reference/autocomplete', 'ReferenceController@autocomplete')->name('reference.autocomplete');
 
 //NON - REFERENCE
 Route::get('/non_reference', 'NonReferenceController@non_reference');

@@ -31,4 +31,9 @@
 .btn-outline-dark:hover {
   background-color: #283392;
 }
+.box{
+  width:1000px;
+  margin: auto;
+  padding: auto;
+ }
 

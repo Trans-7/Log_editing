@@ -63,10 +63,10 @@
                 <table class="table table-striped table-bordered">
                     <thead class="table-head text-center">
                         <tr>
-                            <th>Booth</th>
-                            <th>Program</th>
-                            <th>Shift</th>
                             <th>Tanggal</th>
+                            <th>Program</th>
+                            <th>Booth</th>
+                            <th>Shift</th>
                         </tr>
                     </thead>
                     <tbody class="table-body text-center">
@@ -91,6 +91,7 @@
             todayHighlight: true,
         });
         var _token = $('input[name="_token"]').val();
+        
     
         fetch_data();
 
@@ -101,16 +102,25 @@
                 data:{from_date:from_date, to_date:to_date, _token:_token},
                 dataType:"json",
                 success:function(data){
-                    if(data != 'NULL'){
+                    if(data != 'null'){
                         var output = '';
                         for(var count=0; count<data.length;count++){
                             
                                 output += '<tr>';
-                                output += '<td>' + data[count].nama_booth + '</td>';
-                                output += '<td>' + data[count].logediting_program + '</td>';
-                                output += '<td>' + data[count].logediting_usedshift + '</td>';
                                 output += '<td>' + moment(data[count].logediting_useddate).format('YYYY-MM-DD');+ '</td>';
+                                output += '<td>' + data[count].logediting_program + '</td>';
+                                output += '<td>' + data[count].nama_booth + '</td>';
+                                output += '<td>' + data[count].logediting_usedshift + '</td>';
                                 output += '</tr>';
+                            
+                                
+
+                                // output += '<tr>';
+                                // output += '<td> - </td>';
+                                // output += '<td> - </td>';
+                                // output += '<td> - </td>';
+                                // output += '<td> - </td>';
+                                // output += '</tr>';
                             
                         }
                     }
@@ -122,6 +132,8 @@
             var output = output;
             var from_date = $('#from_date').val();
             var to_date = $('#to_date').val();
+            
+
 
             if(from_date != '' && to_date != ''){
                 fetch_data(from_date, to_date);

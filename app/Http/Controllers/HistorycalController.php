@@ -11,17 +11,17 @@ use App\Transaction_bookingeditingdetail;
 use App\Transaction_logeditingpriviledge;
 use App\User;
 use DataTables;
-use Validator;
 
 class HistorycalController extends Controller
 {
     
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = DB::table('transaction_logediting')->leftJoin(('master_booth_logediting'),
-                    ('transaction_logediting.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+            $data = DB::table('master_booth_logediting')->rightJoin(('transaction_logediting'),
+                    ('master_booth_logediting.id'), '=', ('transaction_logediting.logeditingboot_id'))
                     ->orderBy('transaction_logediting.id', 'DESC')
                     ->get();
+            
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
@@ -88,6 +88,7 @@ class HistorycalController extends Controller
                                                                 <table class="table table-striped table-bordered">
                                                                     <thead class="text-center">
                                                                         <tr>
+                                                                            <th>Code</th>
                                                                             <th>Editing Date</th>
                                                                             <th>Editing Shift</th>
                                                                             <th>Request ID</th>
@@ -101,6 +102,7 @@ class HistorycalController extends Controller
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody class="table-body text-center">
+                                                                        <td>'.$row->logediting_code.'</td>
                                                                         <td>'.$row->logediting_useddate.'</td>
                                                                         <td>'.$row->logediting_usedshift.'</td>
                                                                         <td>'.$row->logediting_requestid.'</td>
@@ -121,84 +123,60 @@ class HistorycalController extends Controller
                                             </div>
                                         </div>';
 
-                                // $btn = $btn.'&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$row->id.'" class="edit btn btn-blue btn-sm">Edit Detail</button>';
-
-                                        $btn = $btn.'<center><p><a href="javascript:void(0)"><button type="button" name="edit" class="btn btn-blue btn-sm" data-toggle="modal" data-target="#edit'.$row->id.'">Edit Detail</button></a></p></center>
-                                        <div class="modal fade" id="edit'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-lg " role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h3 class="modal-title" id="exampleModalLabel" style="color:#1b215a;">Edit History</h3>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <span id="form_result"></span>
-                                                        <form method="post" id="sample_form" class="form-horizontal">
-                                                            <div class="form-group">
-                                                                <label for="editor-nik" class="col-form-label">Editor NIK:</label>
-                                                                    <select name="editor_nik" id="editor_nik" class="form-control">
-                                                                        <option value="" selected="false">--Select Editor NIK--</option>
-                                                                        <option value="" selected="false">'.$row->logediting_editor_nik.'</option>
-                                                                    </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="editor-name" class="col-form-label">Editor Name:</label>
-                                                                <input type="text" class="form-control" id="editor-name" value="'.$row->logediting_editor_name.'">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="editor-phone" class="col-form-label">Editor Phone:</label>
-                                                                <input type="text" class="form-control" id="editor-phone" value="'.$row->logediting_editor_phone.'">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="editor-booth" class="col-form-label">Editor Booth:</label>
-                                                                <select name="booth" id="booth" class="form-control">
-                                                                    <option value="" selected="false">--Select Booth--</option>
-                                                                    <option value="" selected="false">'.$row->nama_booth.'</option>
-                                                                </select>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="form-group" align="center">
-                                                            <input type="hidden" name="action" id="action" value="Edit" />
-                                                            <input type="hidden" name="hidden_id" id="hidden_id" />
-                                                            <button type="submit" name="action_button" id="action_button" class="btn btn-blue btn-md edit">Edit</button>
-                                                            <button type="button" class="btn btn-blue btn-md" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>';
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
+
+        $data2 = DB::table('HRIS.HRIS.dbo.MasterEisAktif')->get();
+        $select_date = $request->get('editing_date');
+        $select_shift = $request->get('editing_shift');
+
+        $booth_H = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+        ->from(DB::raw("(SELECT a.*
+                         FROM transaction_logediting a
+                         WHERE a.logediting_useddate = '".$select_date."'
+                         AND a.logediting_usedshift = '".$select_shift."'
+                         ) as table_1"))
+        ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+        ->where('table_1.logeditingboot_id', '=', NULL)
+        ->orderBy('master_booth_logediting.id', 'ASC')
+        ->get();
         
-        return view('historycal');
+        return view('historycal', compact('data2', 'booth_H'));
     }
-    public function edit($id)
+
+    public function autofill_editor(Request $request)
     {
-        if(request()->ajax())
-        {
-            $data = Transaction_logediting::leftJoin(('master_booth_logediting'),('transaction_logediting.logeditingboot_id'), '=', ('master_booth_logediting.id'))
-                    ->findOrFail($id);
-            return response()->json(['result' => $data]);
+        
+        $editor_nik = $request->get('editor_nik');
+        $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+                    ->where('NIK', $editor_nik)
+                    ->select('Nama', 'NomorHP')
+                    ->get();
+        echo $data;
+    }
+
+    public function update(Request $request) {
+        $item_id = $request->post('id');
+        $item = Transaction_logediting::find($item_id);
+        if(empty($item)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Item not found!',
+            ], 404);
+        } else {
+            $item->logediting_editor_nik = $request->post('logediting_editor_nik');
+            $item->logediting_editor_name = $request->post('logediting_editor_name');
+            $item->logediting_editor_phone = $request->post('logediting_editor_phone');
+            $item->logeditingboot_id = $request->post('nama_booth');
+            $item->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Item successfully updated.',
+            ], 200);
         }
     }
-    public function update(Request $request)
-    {
-        Transaction_logediting::leftJoin(('master_booth_logediting'),('transaction_logediting.logeditingboot_id'), '=', ('master_booth_logediting.id'))
-                ->updateOrCreate(['id' => $request->hidden_id],
-                ['logediting_editor_nik' => $request->editor_nik,
-                 'logediting_editor_name' => $request->editor_name,
-                 'logediting_editor_phone' => $request->editor_phone,
-                 'nama_booth' => $request->booth
-                ]);        
-
-        return response()->json(['success'=>'Customer saved successfully!']);
-
-    }
+    
 }

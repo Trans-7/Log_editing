@@ -114,6 +114,27 @@ class ReferenceController extends Controller
                     ->get();
         echo $data;
     }
+    public function autocomplete(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+                ->where('NIK', 'LIKE', "%{$query}%")
+                ->limit(10)
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:absolute;';
+            foreach($data as $row)
+            {
+                $output .= '
+                <a style="margin-left:100px;"><li style="margin-left:45px;" value="'.$row->NIK.'">'.$row->NIK.'</li></a>
+                ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
     public function autofill_editor(Request $request)
     {
         
