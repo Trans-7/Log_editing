@@ -89,8 +89,8 @@ class HistorycalController extends Controller
                                                                     <thead class="text-center">
                                                                         <tr>
                                                                             <th>Code</th>
-                                                                            <th>Editing Date</th>
-                                                                            <th>Editing Shift</th>
+                                                                            <th>Booking Editing ID</th>
+                                                                            <th>Booking Editing Line</th>
                                                                             <th>Request ID</th>
                                                                             <th>Prabudget ID</th>
                                                                             <th>Login By</th>
@@ -103,8 +103,8 @@ class HistorycalController extends Controller
                                                                     </thead>
                                                                     <tbody class="table-body text-center">
                                                                         <td>'.$row->logediting_code.'</td>
-                                                                        <td>'.$row->logediting_useddate.'</td>
-                                                                        <td>'.$row->logediting_usedshift.'</td>
+                                                                        <td>'.$row->logediting_reference_id.'</td>
+                                                                        <td>'.$row->logediting_reference_line.'</td>
                                                                         <td>'.$row->logediting_requestid.'</td>
                                                                         <td>'.$row->logediting_prabudgetid.'</td>
                                                                         <td>'.$loginby.'</td>

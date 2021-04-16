@@ -44,9 +44,8 @@
                                         <th>Editor Name</th>
                                         <th>Editor Phone</th>
                                         <th>Booth</th>
-                                        <th>Editing Reason</th>
-                                        <th>Booking Editing ID</th>
-                                        <th>Booking Editing Line</th>
+                                        <th>Editing Date</th>
+                                        <th>Editing Shift</th>
                                         <th>Kode Eps</th>
                                         <th>Generated Datetime</th>
                                         <th width="100px">Action</th>
@@ -143,9 +142,8 @@
                     {data: 'logediting_editor_name', name: 'logediting_editor_name'},
                     {data: 'logediting_editor_phone', name: 'logediting_editor_phone'},
                     {data: 'nama_booth', name: 'nama_booth'},
-                    {data: 'logediting_reason', name: 'logediting_reason'},
-                    {data: 'logediting_reference_id', name: 'logediting_reference_id'},
-                    {data: 'logediting_reference_line', name: 'logediting_reference_line'},
+                    {data: 'logediting_useddate', name: 'logediting_useddate'},
+                    {data: 'logediting_usedshift', name: 'logediting_usedshift'},
                     {data: 'logediting_reference_code', name: 'logediting_reference_code'},
                     {data: 'logediting_generateddate', name: 'logediting_generateddate'},
                     {data: 'action', name: 'action', orderable: false, searchable: false,
