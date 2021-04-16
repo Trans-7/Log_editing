@@ -28,15 +28,30 @@ class ReferenceController extends Controller
         $user_R = DB::table('HRIS.HRIS.dbo.MasterEisAktif')->get();
 
         //select list booth
+        $select_date = $request->get('editing_date');
+        $select_shift = $request->get('editing_shift'); 
+        // dd($select_date, $select_shift);
+        // dd($request->editing_date);
+                   
+        $booth_R = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+                    ->from(DB::raw("(SELECT a.*
+                            FROM transaction_logediting a
+                            WHERE a.logediting_useddate = '".$select_date."'
+                            AND a.logediting_usedshift = '".$select_shift."'
+                            ) as table_1"))
+                ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+                ->where('table_1.logeditingboot_id', '=', NULL)
+                ->orderBy('master_booth_logediting.id', 'ASC')
+                ->get();
         
-        // $sub = Transaction_logediting::select('*')
-        //                 ->where('logediting_useddate',$select_date)
-        //                 ->where('logediting_usedshift',$select_shift)
-        //                 ->get();
+        return view('reference', compact('reference_N', 'reference_R','data_R', 'reference_R2', 'user_R', 'booth_R'));
+        
+    }
+    public function booth(){
         $select_date = $request->get('editing_date');
         $select_shift = $request->get('editing_shift');
-
-        $booth_R = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+        
+        $data = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
         ->from(DB::raw("(SELECT a.*
                          FROM transaction_logediting a
                          WHERE a.logediting_useddate = '".$select_date."'
@@ -45,10 +60,14 @@ class ReferenceController extends Controller
         ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
         ->where('table_1.logeditingboot_id', '=', NULL)
         ->orderBy('master_booth_logediting.id', 'ASC')
+        ->select('master_booth_logediting.id', 'master_booth_logediting.nama_booth')
         ->get();
-
-        return view('reference', compact('reference_N', 'reference_R','data_R', 'reference_R2', 'user_R', 'booth_R'));
-        
+        $output = '<option value="">--Selected--</option>';
+        foreach($data as $row){
+            $output .= '<option value="'.$row->id.'">'.$row->nama_booth.'</option>';
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
+        }
+        echo $output;
     }
     public function fetch(Request $request)
     {

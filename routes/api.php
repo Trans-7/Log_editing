@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/logEditingCodeAccess', 'ApiController@get_all_logediting');
+Route::get('/logEditingCodeAccess/{nik}', 'ApiController@get_all_logediting');

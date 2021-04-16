@@ -145,6 +145,7 @@
                                                     @foreach ($booth_R as $b)
                                                     <option value="{{$b->id}}">{{$b->nama_booth}}</option>
                                                     @endforeach
+                                                    
                                                 </select>
                                                 
                                                 <p style="color:grey;">*Pilih Booth</p>
@@ -272,6 +273,7 @@
                     });
                 }
             });
+            
             $('#editor_nik').keyup(function(){ 
                 var query = $(this).val();
                 if(query != '')
@@ -297,6 +299,24 @@
     </script>
     
     <script type="text/javascript">
+    
+        $('.booth').on('change', function(){
+                if($(this).val() != ''){
+                    var editing_date = $('#editing_date').val();
+                    var editing_shift = $('#editing_shift').val();
+                    var _token = $('input[name="_token"]').val();
+                    console.log(editing_date, editing_shift);
+                    $.ajax({
+                        url:"{{ route('reference.booth') }}",
+                        method:"POST",
+                        data:{editing_date:editing_date, editing_shift:editing_shift, _token:_token},
+                        success:function(result){
+                            $('#booth').html(result);
+                        }
+                    });
+                }
+        });
+   
     function autofill(){
         $('.dynamics').on('change', function(){
                 if($(this).val() != ''){
@@ -304,6 +324,8 @@
                     var show_name = $('#show_name').val();
                     var request_id = $('#request_id').val();
                     var bookingediting_ref_id = $('#bookingediting_ref_id').val();
+                    // var editing_date = $('#editing_date').val();
+                    // var editing_shift = $('#editing_shift').val();
                     var _token = $('input[name="_token"]').val();
                     console.log(show_name, booking_line, bookingediting_ref_id, request_id );
                     $.ajax({

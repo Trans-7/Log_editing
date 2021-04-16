@@ -43,6 +43,7 @@ Route::post('/reference/autofill', 'ReferenceController@autofill')->name('refere
 Route::get('/reference/search', ['uses'=>'ReferenceController@search', 'as'=>'reference.search']);
 Route::post('/reference/autofill_editor', 'ReferenceController@autofill_editor')->name('reference.autofill_editor');
 Route::post('/reference/autocomplete', 'ReferenceController@autocomplete')->name('reference.autocomplete');
+Route::post('/reference/booth', 'ReferenceController@booth')->name('reference.booth');
 
 //NON - REFERENCE
 Route::get('/non_reference', 'NonReferenceController@non_reference');
