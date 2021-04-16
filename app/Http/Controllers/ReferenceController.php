@@ -17,6 +17,7 @@ class ReferenceController extends Controller
 {
     public function reference(Request $request)
     {
+        
         $reference_N = Transaction_logediting::orderBy('logediting_generateddate', 'DESC')->where('logediting_isreferenced',1)->where('logediting_generatedby', session()->get('nik'))->paginate(10);
         $reference_R = Transaction_bookingediting::orderBy('bookingediting_id', 'DESC')->get();
         $reference_R2 = Transaction_bookingediting::select('show_name')
@@ -28,26 +29,32 @@ class ReferenceController extends Controller
         $user_R = DB::table('HRIS.HRIS.dbo.MasterEisAktif')->get();
 
         //select list booth
-        $select_date = $request->get('editing_date');
-        $select_shift = $request->get('editing_shift'); 
-        // dd($select_date, $select_shift);
-        // dd($request->editing_date);
-                   
-        $booth_R = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
-                    ->from(DB::raw("(SELECT a.*
-                            FROM transaction_logediting a
-                            WHERE a.logediting_useddate = '".$select_date."'
-                            AND a.logediting_usedshift = '".$select_shift."'
-                            ) as table_1"))
-                ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
-                ->where('table_1.logeditingboot_id', '=', NULL)
-                ->orderBy('master_booth_logediting.id', 'ASC')
-                ->get();
+        
+            $select_date = $request->get('editing_date');
+            $select_shift = $request->get('editing_shift');
+
+            // $select_date = (isset($request['logediting_useddate'])) ? $request['logediting_useddate'] :'2021-04-08 00:00:00.000';
+            // $select_shift = (isset($request['logediting_usedshift'])) ? $request['logediting_usedshift'] : '2';
+
+                    
+            $booth_R = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+                        ->from(DB::raw("(SELECT a.*
+                                FROM transaction_logediting a
+                                WHERE a.logediting_useddate = '".$select_date."'
+                                AND a.logediting_usedshift = '".$select_shift."'
+                                ) as table_1"))
+                    ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+                    ->where('table_1.logeditingboot_id', '=', NULL)
+                    // ->where('table_1.logediting_useddate', $select_date)
+                    // ->where('table_1.logediting_usedshift', $select_shift)
+                    ->orderBy('master_booth_logediting.id', 'ASC')
+                    ->get();
         
         return view('reference', compact('reference_N', 'reference_R','data_R', 'reference_R2', 'user_R', 'booth_R'));
         
     }
-    public function booth(){
+    public function booth(Request $request){
+        
         $select_date = $request->get('editing_date');
         $select_shift = $request->get('editing_shift');
         
@@ -62,7 +69,9 @@ class ReferenceController extends Controller
         ->orderBy('master_booth_logediting.id', 'ASC')
         ->select('master_booth_logediting.id', 'master_booth_logediting.nama_booth')
         ->get();
-        $output = '<option value="">--Selected--</option>';
+
+        // echo $data;
+        $output = '<option value="">--Select Booth--</option>';
         foreach($data as $row){
             $output .= '<option value="'.$row->id.'">'.$row->nama_booth.'</option>';
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
@@ -122,6 +131,7 @@ class ReferenceController extends Controller
         $booking_line = $request->get('booking_line');
         $request_id = $request->get('request_id');
         $bookingediting_ref_id = $request->get('bookingediting_ref_id');
+                    
         $data = DB::table('transaction_bookingeditingdetail')
                     ->leftJoin(('transaction_bookingediting'),
                     ('transaction_bookingeditingdetail.bookingediting_id'), '=', ('transaction_bookingediting.bookingediting_id'))
@@ -147,23 +157,6 @@ class ReferenceController extends Controller
         }
 
         return response()->json($data);
-        // if($request->get('query'))
-        // {
-        //     $query = $request->get('query');
-        //     $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
-        //         ->where('NIK', 'LIKE', "%{$query}%")
-        //         ->limit(10)
-        //         ->get();
-        //     $output = '<ul class="dropdown-menu" style="display:block; position:absolute;';
-        //     foreach($data as $row)
-        //     {
-        //         $output .= '
-        //         <a style="margin-left:100px;"><li style="margin-left:45px;" value="'.$row->NIK.'">'.$row->NIK.'</li></a>
-        //         ';
-        //     }
-        //     $output .= '</ul>';
-        //     echo $output;
-        // }
     }
 
     public function autofill_editor(Request $request)

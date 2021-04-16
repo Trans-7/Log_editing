@@ -100,6 +100,31 @@ class NonReferenceController extends Controller
                     ->get();
         echo $data;
     }
+    public function booth(Request $request){
+        
+        $select_date = $request->get('editing_date');
+        $select_shift = $request->get('editing_shift');
+        
+        $data = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+        ->from(DB::raw("(SELECT a.*
+                         FROM transaction_logediting a
+                         WHERE a.logediting_useddate = '".$select_date."'
+                         AND a.logediting_usedshift = '".$select_shift."'
+                         ) as table_1"))
+        ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+        ->where('table_1.logeditingboot_id', '=', NULL)
+        ->orderBy('master_booth_logediting.id', 'ASC')
+        ->select('master_booth_logediting.id', 'master_booth_logediting.nama_booth')
+        ->get();
+
+        // echo $data;
+        $output = '<option value="">--Select Booth--</option>';
+        foreach($data as $row){
+            $output .= '<option value="'.$row->id.'">'.$row->nama_booth.'</option>';
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
+        }
+        echo $output;
+    }
     public function autocomplete(Request $request)
     {
         $data = [];

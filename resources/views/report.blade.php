@@ -31,7 +31,7 @@
     </ul>
 </nav>
 <br />
-<div class="container">
+<div class="container-fluid">
     <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
@@ -63,10 +63,13 @@
                 <table class="table table-striped table-bordered">
                     <thead class="table-head text-center">
                         <tr>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>Telp</th>
                             <th>Tanggal</th>
                             <th>Program</th>
                             <th>Booth</th>
-                            <th>Shift</th>
+                            <th>Shift</th> 
                         </tr>
                     </thead>
                     <tbody class="table-body text-center">
@@ -84,11 +87,13 @@
             format: 'yyyy-mm-dd',
             autoclose: true,
             todayHighlight: true,
+            locale: 'en'
         });
         $("#to_date").datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
             todayHighlight: true,
+            locale: 'en'
         });
         var _token = $('input[name="_token"]').val();
         
@@ -107,20 +112,18 @@
                         for(var count=0; count<data.length;count++){
                             
                                 output += '<tr>';
+                                // output += '<th>Nama</th>';
+                                // output += '<th>NIK</th>';
+                                // output += '<th>Telp</th>';
+                                // output += '<th>' + moment(data[count].logediting_useddate).format('YYYY-MM-DD');+ '</th>';
+                                output += '<td>' + data[count].logediting_editor_name + '</td>';
+                                output += '<td>' + data[count].logediting_editor_nik + '</td>';
+                                output += '<td>' + data[count].logediting_editor_phone + '</td>';
                                 output += '<td>' + moment(data[count].logediting_useddate).format('YYYY-MM-DD');+ '</td>';
                                 output += '<td>' + data[count].logediting_program + '</td>';
                                 output += '<td>' + data[count].nama_booth + '</td>';
                                 output += '<td>' + data[count].logediting_usedshift + '</td>';
                                 output += '</tr>';
-                            
-                                
-
-                                // output += '<tr>';
-                                // output += '<td> - </td>';
-                                // output += '<td> - </td>';
-                                // output += '<td> - </td>';
-                                // output += '<td> - </td>';
-                                // output += '</tr>';
                             
                         }
                     }

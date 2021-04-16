@@ -76,7 +76,7 @@
                                             Booking Editing Line (Date & Shift)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control dynamics" onchange="autofill()" onfocus="this.value=''" required>
+                                                <select name="bookingeditingdetail_line" id="bookingeditingdetail_line" class="form-control autofill"  onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Booking Editing Line--</option>
                                                     
                                                 </select>
@@ -87,25 +87,25 @@
                                             Booking Editing ID (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                            <input type="text" class="form-control dynamics" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
+                                            <input type="text" class="form-control autofill" id="bookingediting_id" name="bookingediting_id" value="" placeholder="Booking Editing ID" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Kode Eps (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                            <input type="text" class="form-control dynamics" id="kode_eps" name="kode_eps" value="" placeholder="Episode Code" readonly/>
+                                            <input type="text" class="form-control autofill" id="kode_eps" name="kode_eps" value="" placeholder="Episode Code" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Editing Date (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                            <input type="text" class="form-control dynamics" id="editing_date" name="editing_date" value="" placeholder="Editing Date" readonly/>
+                                            <input type="text" class="form-control autofill" id="editing_date" name="editing_date" value="" placeholder="Editing Date" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Editing Shift (auto-isi)
                                         </div>
                                         <div class="col-md-10 col-form-label">
-                                            <input type="text" class="form-control dynamics" id="editing_shift" name="editing_shift" value="" placeholder="Editing Shift" readonly/>
+                                            <input type="text" class="form-control autofill" id="editing_shift" name="editing_shift" value="" placeholder="Editing Shift" readonly/>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Editor NIK
@@ -135,12 +135,11 @@
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                                 
-                                                <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
+                                                <select name="booth" id="booth" class="form-control autofill" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Booth--</option>
-                                                    @foreach ($booth_R as $b)
+                                                    <!-- @foreach ($booth_R as $b)
                                                     <option value="{{$b->id}}">{{$b->nama_booth}}</option>
-                                                    @endforeach
-                                                    
+                                                    @endforeach -->
                                                 </select>
                                                 
                                                 <p style="color:grey;">*Pilih Booth</p>
@@ -288,58 +287,19 @@
                 }
             });
             
-            // $('#editor_nik').keyup(function(){ 
-            //     var query = $(this).val();
-            //     if(query != '')
-            //     {
-            //         var _token = $('input[name="_token"]').val();
-            //         $.ajax({
-            //             url:"{{ route('reference.autocomplete') }}",
-            //             method:"POST",
-            //             data:{query:query, _token:_token},
-            //             success:function(data){
-            //                 $('#NIKList').fadeIn();  
-            //                             $('#NIKList').html(data);
-            //             }
-            //         });
-            //     }
-            // });
-
-            // $(document).on('click', 'a', function(){  
-            //     $('#editor_nik').val($(this).text());  
-            //     $('#NIKList').fadeOut();
-            // });  
         });
     </script>
     
     <script type="text/javascript">
     
-        $('.booth').on('change', function(){
-                if($(this).val() != ''){
-                    var editing_date = $('#editing_date').val();
-                    var editing_shift = $('#editing_shift').val();
-                    var _token = $('input[name="_token"]').val();
-                    console.log(editing_date, editing_shift);
-                    $.ajax({
-                        url:"{{ route('reference.booth') }}",
-                        method:"POST",
-                        data:{editing_date:editing_date, editing_shift:editing_shift, _token:_token},
-                        success:function(result){
-                            $('#booth').html(result);
-                        }
-                    });
-                }
-        });
-   
-    function autofill(){
-        $('.dynamics').on('change', function(){
+        $('.autofill').on('change', function(){
                 if($(this).val() != ''){
                     var booking_line = $('#bookingeditingdetail_line').val();
                     var show_name = $('#show_name').val();
                     var request_id = $('#request_id').val();
                     var bookingediting_ref_id = $('#bookingediting_ref_id').val();
-                    // var editing_date = $('#editing_date').val();
-                    // var editing_shift = $('#editing_shift').val();
+                    var editing_date = $('#editing_date').val();
+                    var editing_shift = $('#editing_shift').val();
                     var _token = $('input[name="_token"]').val();
                     console.log(show_name, booking_line, bookingediting_ref_id, request_id );
                     $.ajax({
@@ -353,13 +313,48 @@
                             $("#kode_eps").val(result.slice(-2)[0].eps_code);
                             $("#editing_date").val(result.slice(-2)[0].bookingeditingdetail_date);
                             $("#editing_shift").val(result.slice(-2)[0].bookingeditingdetail_shift);
+                            // $("#booth").append('<option value="'.result->id.'">'.result->nama_booth.'</option>');
+                            if($('#booth').val() == ''){
+                                var editing_date = $('#editing_date').val();
+                                var editing_shift = $('#editing_shift').val();
+                                var _token = $('input[name="_token"]').val();
+                                console.log(editing_date, editing_shift);
+                                $.ajax({
+                                    url:"{{ route('reference.booth') }}",
+                                    method:"POST",
+                                    data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+                                    success:function(result){
+                                        // result = JSON.parse(result);
+                                        console.log(result);
+                                        $("#booth").html(result);
+                                    }
+                                });
+                            }
                         }
                     });
                 }
         });
-    }
+        // $('.autofill').on('change', function(){
+        //         if($(this).val() != ''){
+        //             var editing_date = $('#editing_date').val();
+        //             var editing_shift = $('#editing_shift').val();
+        //             var _token = $('input[name="_token"]').val();
+        //             console.log(editing_date, editing_shift);
+        //             $.ajax({
+        //                 url:"{{ route('reference.booth') }}",
+        //                 method:"POST",
+        //                 data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+        //                 success:function(result){
+        //                     // result = JSON.parse(result);
+        //                     console.log(result);
+        //                     $("#booth").html(result);
+        //                 }
+        //             });
+        //         }
+        // }); 
+    
     </script>
-    <script type="text/javascript">  
+    <script type="text/javascript"> 
     var clipboard = new Clipboard('.klik');
     clipboard.on('success', function(e) {
         console.log(e);

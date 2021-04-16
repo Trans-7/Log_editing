@@ -52,6 +52,7 @@ Route::post('/non_reference/fetch_NR', 'NonReferenceController@fetch_NR')->name(
 Route::post('/non_reference/fetchs_NR', 'NonReferenceController@fetchs_NR')->name('non_reference.fetchs_NR');
 Route::post('/non_reference/autofill_NR', 'NonReferenceController@autofill_NR')->name('non_reference.autofill_NR');
 Route::get('/non_reference/autocomplete', 'NonReferenceController@autocomplete')->name('non_reference.autocomplete');
+Route::post('/non_reference/booth', 'NonReferenceController@booth')->name('non_reference.booth');
 
 Route::get('/non_reference/search_N', ['uses'=>'NonReferenceController@search_N', 'as'=>'non_reference.search_N']);
 Route::post('/non_reference/autofill_editorNR', 'NonReferenceController@autofill_editorNR')->name('non_reference.autofill_editorNR');
