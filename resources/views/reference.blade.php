@@ -115,12 +115,7 @@
                                             <div id="NIKList"></div>
                                         </div> -->
                                         <div class="col-md-10 col-form-label">
-                                                <select name="editor_nik" id="editor_nik" class="form-control dinamik" onfocus="this.value=''" required>
-                                                    <option value="" selected="false">--Select Editor NIK--</option>
-                                                    @foreach ($user_R as $u_nik)
-                                                    <option value="{{$u_nik->NIK}}">{{$u_nik->NIK}} - {{$u_nik->Nama}}</option>
-                                                    @endforeach
-                                                </select>
+                                                <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
                                                 <p style="color:grey;">*Pilih NIK Editor</p>
                                         </div>
                                         <div class="col-md-2 col-form-label">
@@ -273,28 +268,47 @@
                     });
                 }
             });
-            
-            $('#editor_nik').keyup(function(){ 
-                var query = $(this).val();
-                if(query != '')
-                {
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url:"{{ route('reference.autocomplete') }}",
-                        method:"POST",
-                        data:{query:query, _token:_token},
-                        success:function(data){
-                            $('#NIKList').fadeIn();  
-                                        $('#NIKList').html(data);
-                        }
-                    });
+            $('#editor_nik').select2({
+                placeholder: '--Select Editor NIK--',
+                ajax: {
+                    url: "{{ route('reference.autocomplete') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.NIK + ' - ' + item.Nama,
+                                    id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
                 }
             });
+            
+            // $('#editor_nik').keyup(function(){ 
+            //     var query = $(this).val();
+            //     if(query != '')
+            //     {
+            //         var _token = $('input[name="_token"]').val();
+            //         $.ajax({
+            //             url:"{{ route('reference.autocomplete') }}",
+            //             method:"POST",
+            //             data:{query:query, _token:_token},
+            //             success:function(data){
+            //                 $('#NIKList').fadeIn();  
+            //                             $('#NIKList').html(data);
+            //             }
+            //         });
+            //     }
+            // });
 
-            $(document).on('click', 'a', function(){  
-                $('#editor_nik').val($(this).text());  
-                $('#NIKList').fadeOut();
-            });  
+            // $(document).on('click', 'a', function(){  
+            //     $('#editor_nik').val($(this).text());  
+            //     $('#NIKList').fadeOut();
+            // });  
         });
     </script>
     

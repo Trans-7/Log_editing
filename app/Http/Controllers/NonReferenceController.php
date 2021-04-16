@@ -100,6 +100,21 @@ class NonReferenceController extends Controller
                     ->get();
         echo $data;
     }
+    public function autocomplete(Request $request)
+    {
+        $data = [];
+
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+            		->select('NIK', 'Nama')
+            		->where('NIK','LIKE',"%$search%")
+            		->get();
+        }
+
+        return response()->json($data);
+    }
 
     public function autofill_editorNR(Request $request)
     {

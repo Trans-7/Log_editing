@@ -117,12 +117,7 @@
                                         Editor NIK
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="editor_nik" id="editor_nik" class="form-control dinamik" onfocus="this.value=''" required>
-                                            <option value="" selected="false">--Select Editor NIK--</option>
-                                            @foreach ($user_NR as $unr_nik)
-                                                <option value="{{$unr_nik->NIK}}">{{$unr_nik->NIK}} - {{$unr_nik->Nama}}</option>
-                                            @endforeach
-                                        </select>
+                                        <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
                                         <p style="color:grey;">*Pilih NIK Editor</p>
                                     </div>
                                     <div class="col-md-2 col-form-label">
@@ -260,6 +255,25 @@
                             $('#'+dependent).html(result);
                         }
                     });
+                }
+            });
+            $('#editor_nik').select2({
+                placeholder: '--Select Editor NIK--',
+                ajax: {
+                    url: "{{ route('non_reference.autocomplete') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.NIK + ' - ' + item.Nama,
+                                    id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
                 }
             });
             $('.dinamik').on('change', function(){

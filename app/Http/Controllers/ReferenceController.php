@@ -135,23 +135,35 @@ class ReferenceController extends Controller
     }
     public function autocomplete(Request $request)
     {
-        if($request->get('query'))
-        {
-            $query = $request->get('query');
+        $data = [];
+
+
+        if($request->has('q')){
+            $search = $request->q;
             $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
-                ->where('NIK', 'LIKE', "%{$query}%")
-                ->limit(10)
-                ->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:absolute;';
-            foreach($data as $row)
-            {
-                $output .= '
-                <a style="margin-left:100px;"><li style="margin-left:45px;" value="'.$row->NIK.'">'.$row->NIK.'</li></a>
-                ';
-            }
-            $output .= '</ul>';
-            echo $output;
+            		->select('NIK', 'Nama')
+            		->where('NIK','LIKE',"%$search%")
+            		->get();
         }
+
+        return response()->json($data);
+        // if($request->get('query'))
+        // {
+        //     $query = $request->get('query');
+        //     $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+        //         ->where('NIK', 'LIKE', "%{$query}%")
+        //         ->limit(10)
+        //         ->get();
+        //     $output = '<ul class="dropdown-menu" style="display:block; position:absolute;';
+        //     foreach($data as $row)
+        //     {
+        //         $output .= '
+        //         <a style="margin-left:100px;"><li style="margin-left:45px;" value="'.$row->NIK.'">'.$row->NIK.'</li></a>
+        //         ';
+        //     }
+        //     $output .= '</ul>';
+        //     echo $output;
+        // }
     }
 
     public function autofill_editor(Request $request)
