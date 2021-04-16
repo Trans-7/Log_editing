@@ -299,19 +299,19 @@
                         success:function(result){
                             result = JSON.parse(result);
                             console.log(result);
-                            if($("#bookingediting_id").val() != $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id)){
-                                $("#bookingediting_id").val(result.slice(-1)[0].bookingediting_id);
+                            if($("#bookingediting_id").val() != $("#bookingediting_id").val(result.slice(-2)[0].bookingediting_id)){
+                                $("#bookingediting_id").val(result.slice(-2)[0].bookingediting_id);
                             }
-                            if($("#kode_eps").val() != $("#kode_eps").val(result.slice(-1)[0].eps_code)){
-                                $("#kode_eps").val(result.slice(-1)[0].eps_code);
+                            if($("#kode_eps").val() != $("#kode_eps").val(result.slice(-2)[0].eps_code)){
+                                $("#kode_eps").val(result.slice(-2)[0].eps_code);
                             }
                             if($("#editing_shift").val() == 0){
-                                $("#editing_shift").val(result.slice(-1)[0].bookingeditingdetail_shift);
+                                $("#editing_shift").val(result.slice(-2)[0].bookingeditingdetail_shift);
                             }else{
                                 $("#editing_shift").val()
                             }
                             if($("#editing_date").val() == 0){
-                                $("#editing_date").val(result.slice(-1)[0].bookingeditingdetail_date);
+                                $("#editing_date").val(result.slice(-2)[0].bookingeditingdetail_date);
                             }else{
                                 $("#editing_date").val()
                             }
