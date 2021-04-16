@@ -118,7 +118,7 @@
                                                 <select name="editor_nik" id="editor_nik" class="form-control dinamik" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Editor NIK--</option>
                                                     @foreach ($user_R as $u_nik)
-                                                    <option value="{{$u_nik->NIK}}">{{$u_nik->NIK}}</option>
+                                                    <option value="{{$u_nik->NIK}}">{{$u_nik->NIK}} - {{$u_nik->Nama}}</option>
                                                     @endforeach
                                                 </select>
                                                 <p style="color:grey;">*Pilih NIK Editor</p>
