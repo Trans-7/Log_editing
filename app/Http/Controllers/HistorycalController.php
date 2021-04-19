@@ -146,6 +146,21 @@ class HistorycalController extends Controller
         
         return view('historycal', compact('data2', 'booth_H'));
     }
+    public function autocomplete(Request $request)
+    {
+        $data = [];
+
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
+            		->select('NIK', 'Nama')
+            		->where('NIK','LIKE',"%$search%")
+            		->get();
+        }
+
+        return response()->json($data);
+    }
 
     public function autofill_editor(Request $request)
     {
@@ -170,6 +185,8 @@ class HistorycalController extends Controller
             $item->logediting_editor_nik = $request->post('logediting_editor_nik');
             $item->logediting_editor_name = $request->post('logediting_editor_name');
             $item->logediting_editor_phone = $request->post('logediting_editor_phone');
+            $item->logediting_useddate = $request->post('logediting_useddate');
+            $item->logediting_usedshift = $request->post('logediting_usedshift');
             $item->logeditingboot_id = $request->post('nama_booth');
             $item->save();
             return response()->json([
@@ -177,6 +194,32 @@ class HistorycalController extends Controller
                 'message' => 'Item successfully updated.',
             ], 200);
         }
+    }
+
+    public function booth(Request $request){
+        
+        $select_date = $request->get('editing_date');
+        $select_shift = $request->get('editing_shift');
+        
+        $data = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
+        ->from(DB::raw("(SELECT a.*
+                         FROM transaction_logediting a
+                         WHERE a.logediting_useddate = '".$select_date."'
+                         AND a.logediting_usedshift = '".$select_shift."'
+                         ) as table_1"))
+        ->rightJoin('master_booth_logediting', ('table_1.logeditingboot_id'), '=', ('master_booth_logediting.id'))
+        ->where('table_1.logeditingboot_id', '=', NULL)
+        ->orderBy('master_booth_logediting.id', 'ASC')
+        ->select('master_booth_logediting.id', 'master_booth_logediting.nama_booth')
+        ->get();
+
+        // echo $data;
+        $output = '<option value="">--Select Booth--</option>';
+        foreach($data as $row){
+            $output .= '<option value="'.$row->id.'">'.$row->nama_booth.'</option>';
+            // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
+        }
+        echo $output;
     }
     
 }

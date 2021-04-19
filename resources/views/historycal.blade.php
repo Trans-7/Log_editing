@@ -70,12 +70,8 @@
                                         <div class="form-group">
                                             <input type="hidden" id="item_id" value="0" />
 
-                                            <label for="editor_nik">Editor NIK :</label>
-                                            <select name="editor_nik" id="editor_nik" type="text" value="" class="form-control dinamik" placeholder="Editor NIK">
-                                                @foreach ($data2 as $h)
-                                                    <option value="{{$h->NIK}}">{{$h->NIK}}</option>
-                                                @endforeach    
-                                            </select>
+                                            <label for="editor_nik">Editor NIK :</label><br>
+                                            <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select><br>
 
                                             <label for="editor_name">Editor Name :</label>
                                             <input name="editor_name" id="editor_name" type="text" value="" class="form-control dinamik" placeholder="Editor Name" readonly>
@@ -83,11 +79,19 @@
                                             <label for="editor_phone">Editor Phone :</label>
                                             <input name="editor_phone" id="editor_phone" type="text" value="" class="form-control dinamik" placeholder="Editor Phone" readonly>
 
+                                            <label for="editing_date">Editing Date :</label>
+                                            <input  name="editing_date" id="editing_date" type="text" value="" class="form-control " placeholder="Editing Date" readonly>
+
+                                            <label for="editing_shift">Editing Shift :</label>
+                                            <input  name="editing_shift" id="editing_shift" type="text" value="" class="form-control " placeholder="Editing Shift" readonly>
+
                                             <label for="nama_booth">Booth :</label>
-                                            <select name="nama_booth" id="nama_booth" type="text" value="" class="form-control" placeholder="Booth">
-                                                @foreach ($booth_H as $b)
-                                                    <option value="{{$b->id}}">{{$b->nama_booth}}</option>
-                                                @endforeach   
+                                            <select name="nama_booth" id="nama_booth" class="form-control" required>
+                                                    <option value="" selected="false">--Select Booth--</option>
+                                                    @foreach($booth_H as $h)
+                                                        <option value="{{$h->id}}">{{$h->nama_booth}}</option>
+                                                    @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -121,8 +125,10 @@
             $('#editor_nik').val(row_data.logediting_editor_nik);
             $('#editor_name').val(row_data.logediting_editor_name);
             $('#editor_phone').val(row_data.logediting_editor_phone);
+            $('#editing_date').val(row_data.logediting_useddate);
+            $('#editing_shift').val(row_data.logediting_usedshift);
             $('#nama_booth').val(row_data.logeditingboot_id);
-
+            
         }
         function data_table2(){
             YajraDataTable = $('.data-table2').DataTable({
@@ -171,7 +177,10 @@
                         logediting_editor_nik: $('#editor_nik').val(),
                         logediting_editor_name: $('#editor_name').val(),
                         logediting_editor_phone: $('#editor_phone').val(),
+                        logediting_useddate: $('#editing_date').val(),
+                        logediting_usedshift: $('#editing_shift').val(),
                         nama_booth: $('#nama_booth').val(),
+                        
                         _token: "{{ csrf_token() }}"
                     },
                     success: function (response) {
@@ -187,7 +196,9 @@
                 $('#editor_nik').val("");
                 $('#editor_name').val("");
                 $('#editor_phone').val("");
-                $('#logeditingboot_id').val("");
+                $('#editing_date').val("");
+                $('#editing_shift').val("");
+                $('#nama_booth').val("");
             });
             $('.dinamik').on('change', function(){
                 if($(this).val() != ''){
@@ -204,6 +215,43 @@
                             console.log(result);
                             $("#editor_name").val(result[0].Nama);
                             $("#editor_phone").val(result[0].NomorHP);
+                            
+                        }
+                    });
+                }
+            });
+            $('#editor_nik').select2({
+                placeholder: '-------------------------Select Editor NIK-------------------------',
+                ajax: {
+                    url: "{{ route('reference.autocomplete') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.NIK + ' - ' + item.Nama,
+                                    id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+            $('.booth').on('change', function(){
+                if($('#nama_booth').val() == ''){
+                    var editing_date = $('#editing_date').val();
+                    var editing_shift = $('#editing_shift').val();
+                    var _token = $('input[name="_token"]').val();
+                    console.log(editing_date, editing_shift);
+                    $.ajax({
+                        url:"{{ route('historycal.booth') }}",
+                        method:"POST",
+                        data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+                        success:function(result){
+
+                            $("#nama_booth").html(result);
                         }
                     });
                 }

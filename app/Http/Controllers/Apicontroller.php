@@ -14,22 +14,25 @@ class Apicontroller extends Controller
                 ->orderBy('transaction_logediting.id', 'ASC')
                 ->get();
         foreach ($test as $t){
-            $nik = $t->logediting_editor_nik;
+            $nikk = $t->logediting_editor_nik;
             $w = $t->logediting_code;
             $x = $t->logediting_usedshift;
             $y = $t->logediting_useddate;
             $z = $t->nama_booth;
         }
         
-
-        // return response()->json('Code:'.$w.' '.', Shift:'.$x.' '.', tanggal_editing:'.$y.' '.', Booth:'.$z.' ', 200);
-        return response([
-            'Code' => $w,
-            'Shift' => $x,
-            'Tanggal_editing' => date('d M Y', strtotime($y)),
-            'Booth' => $z,
-
-        ], 200);
-        return $nik;
+        if ($nikk == $nik ){
+            return response([
+                'NIK' => $nikk,
+                'Code' => $w,
+                'Shift' => $x,
+                'Tanggal_editing' => date('d M Y', strtotime($y)),
+                'Booth' => $z,
+    
+            ], 200);
+        }else{
+            return response()->json(['message' => 'Not Found!'], 404);
+        }
+        
     }
 }

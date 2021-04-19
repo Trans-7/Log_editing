@@ -27,6 +27,8 @@ Route::get('/historycal', ['uses'=>'HistorycalController@index', 'as'=>'historyc
 Route::resource('historycal', 'HistorycalController');
 Route::post('/historycal/update', 'HistorycalController@update')->name('historycal.update');
 Route::post('/historycal/autofill_editor', 'HistorycalController@autofill_editor')->name('historycal.autofill_editor');
+Route::get('/historycal/autocomplete', 'HistorycalController@autocomplete')->name('historycal.autocomplete');
+Route::post('/historycal/booth', 'HistorycalController@booth')->name('historycal.booth');
 
 //REPORT
 Route::get('/report', 'ReportController@report');

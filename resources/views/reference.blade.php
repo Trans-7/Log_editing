@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                                 
-                                                <select name="booth" id="booth" class="form-control autofill" onfocus="this.value=''" required>
+                                                <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
                                                     <option value="" selected="false">--Select Booth--</option>
                                                     <!-- @foreach ($booth_R as $b)
                                                     <option value="{{$b->id}}">{{$b->nama_booth}}</option>
@@ -301,31 +301,31 @@
                     var editing_date = $('#editing_date').val();
                     var editing_shift = $('#editing_shift').val();
                     var _token = $('input[name="_token"]').val();
-                    console.log(show_name, booking_line, bookingediting_ref_id, request_id );
+                    //console.log(show_name, booking_line, bookingediting_ref_id, request_id );
                     $.ajax({
                         url:"{{ route('reference.autofill') }}",
                         method:"POST",
                         data:{_token:_token, show_name:show_name, booking_line:booking_line, request_id:request_id,bookingediting_ref_id:bookingediting_ref_id},
                         success:function(result){
                             result = JSON.parse(result);
-                            console.log(result);
+                            //console.log(result);
                             $("#bookingediting_id").val(result.slice(-2)[0].bookingediting_id);
                             $("#kode_eps").val(result.slice(-2)[0].eps_code);
                             $("#editing_date").val(result.slice(-2)[0].bookingeditingdetail_date);
                             $("#editing_shift").val(result.slice(-2)[0].bookingeditingdetail_shift);
-                            // $("#booth").append('<option value="'.result->id.'">'.result->nama_booth.'</option>');
+                            $('#booth').val('');
                             if($('#booth').val() == ''){
                                 var editing_date = $('#editing_date').val();
                                 var editing_shift = $('#editing_shift').val();
                                 var _token = $('input[name="_token"]').val();
-                                console.log(editing_date, editing_shift);
+                                //console.log(editing_date, editing_shift);
                                 $.ajax({
                                     url:"{{ route('reference.booth') }}",
                                     method:"POST",
                                     data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
                                     success:function(result){
                                         // result = JSON.parse(result);
-                                        console.log(result);
+                                        //console.log(result);
                                         $("#booth").html(result);
                                     }
                                 });

@@ -136,7 +136,7 @@
                                         Booth
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="booth" id="booth" class="form-control autofill" onfocus="this.value=''" required>
+                                        <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
                                             <option value="" selected="false">--Select Booth--</option>
                                             <!-- @foreach ($booth_NR as $bn)
                                                 <option value="{{$bn->id}}">{{$bn->nama_booth}}</option>
@@ -331,6 +331,7 @@
                             }else{
                                 $("#editing_date").val()
                             }
+                            $('#booth').val('');
                             if($('#booth').val() == ''){
                                 var editing_date = $('#editing_date').val();
                                 var editing_shift = $('#editing_shift').val();
