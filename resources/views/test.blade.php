@@ -18,8 +18,16 @@
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
                 </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>
+                <li class="nav-item dropdown">
+                    <h5>
+                        <a class="nav-link dropdown-toggle" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:50px;">
+                        Report
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/report">Report Editor</a>
+                            <a class="dropdown-item" href="/test">Report Booth</a>
+                        </div>
+                    </h5>
                 </li>
             </ul>
         </div>
@@ -32,7 +40,7 @@
 </nav>
 <br />
 <div class="container-fluid">
-    <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
+    <h2 align="center" style="color:#1b215a;">Report Log Editing (BOOTH) </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
         <div class="panel-heading">

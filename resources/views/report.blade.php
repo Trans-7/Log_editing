@@ -18,8 +18,21 @@
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
                 </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>
+                <!-- <li class="nav-item">
+                    <h5>
+                        <a class="nav-link" href="/report" style="margin-left:50px;">Report</a>
+                    </h5>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <h5>
+                        <a class="nav-link dropdown-toggle" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:50px;">
+                        Report
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/report">Report Editor</a>
+                            <a class="dropdown-item" href="/test">Report Booth</a>
+                        </div>
+                    </h5>
                 </li>
             </ul>
         </div>
@@ -32,7 +45,7 @@
 </nav>
 <br />
 <div class="container-fluid">
-    <h2 align="center" style="color:#1b215a;">Report Log Editing</h2><br />
+    <h2 align="center" style="color:#1b215a;">Report Log Editing (Editor) </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -60,19 +73,64 @@
         <br>
         <div class="panel-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead class="table-head text-center">
+                <br>
+                
+                <br>
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;">
+                    
+                    <thead  class="table-head text-center">
                         <tr>
-                            <th>Nama</th>
-                            <th>NIK</th>
-                            <th>Telp</th>
-                            <th>Tanggal</th>
-                            <th>Program</th>
-                            <th>Booth</th>
-                            <th>Shift</th> 
+                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING TRANS 7 2021</th>
+                            <!-- <th></th>
+                            <th></th> -->
+                            <?php 
+                            
+                                $date = date("l",strtotime('monday this week'));
+                                $date1 = date("l",strtotime('tuesday this week'));
+                                $date2 = date("l",strtotime('wednesday this week'));
+                                $date3 = date("l",strtotime('thursday this week'));
+                                $date4 = date("l",strtotime('friday this week'));
+                                $date5 = date("l",strtotime('saturday this week'));
+                                $date6 = date("l",strtotime('sunday this week'));
+                                
+                                // echo "<tr>";
+                                echo "<th>".$date."</th>";
+                                echo "<th>".$date1. "</th>";
+                                echo "<th>".$date2. "</th>";
+                                echo "<th>".$date3. "</th>";
+                                echo "<th>".$date4. "</th>";
+                                echo "<th>".$date5. "</th>";
+                                echo "<th>".$date6. "</th>";
+                                // echo "</tr>";
+                            ?> 
+                        </tr>
+                        <tr>
+                            <td>Nama</td>
+                            <td>NIK</td>
+                            <td>Telp</td>
+                            <?php 
+
+                                //tanggal
+                                $datee = date("d-m-Y",strtotime('monday this week'));
+                                $datee1 = date("d-m-Y",strtotime('tuesday this week'));
+                                $datee2 = date("d-m-Y",strtotime('wednesday this week'));
+                                $datee3 = date("d-m-Y",strtotime('thursday this week'));
+                                $datee4 = date("d-m-Y",strtotime('friday this week'));
+                                $datee5 = date("d-m-Y",strtotime('saturday this week'));
+                                $datee6 = date("d-m-Y",strtotime('sunday this week'));
+                                
+                                echo "<td>".$datee. "</td>";
+                                echo "<td>".$datee1. "</td>";
+                                echo "<td>".$datee2. "</td>";
+                                echo "<td>".$datee3. "</td>";
+                                echo "<td>".$datee4. "</td>";
+                                echo "<td>".$datee5. "</td>";
+                                echo "<td>".$datee6. "</td>";
+                                // echo "<tr>";
+                            ?> 
                         </tr>
                     </thead>
-                    <tbody class="table-body text-center">
+                    <tbody class="tableee table-body text-center">
                     </tbody>
                 </table>
                 {{ csrf_field() }}
@@ -112,22 +170,19 @@
                         for(var count=0; count<data.length;count++){
                             
                                 output += '<tr>';
-                                // output += '<th>Nama</th>';
-                                // output += '<th>NIK</th>';
-                                // output += '<th>Telp</th>';
-                                // output += '<th>' + moment(data[count].logediting_useddate).format('YYYY-MM-DD');+ '</th>';
                                 output += '<td>' + data[count].logediting_editor_name + '</td>';
                                 output += '<td>' + data[count].logediting_editor_nik + '</td>';
                                 output += '<td>' + data[count].logediting_editor_phone + '</td>';
-                                output += '<td>' + moment(data[count].logediting_useddate).format('YYYY-MM-DD');+ '</td>';
-                                output += '<td>' + data[count].logediting_program + '</td>';
-                                output += '<td>' + data[count].nama_booth + '</td>';
-                                output += '<td>' + data[count].logediting_usedshift + '</td>';
+                                output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
                                 output += '</tr>';
+                                
+
+
                             
                         }
                     }
-                    $('tbody').html(output);
+                    $('tbody.tableee').html(output);
+
                 }
             });
         }

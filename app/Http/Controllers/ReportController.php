@@ -18,7 +18,11 @@ class ReportController extends Controller
         
         $report = Transaction_logediting::leftJoin(('master_booth_logediting'),
                 ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                ->orderBy('transaction_logediting.id', 'DESC')
+                // ->select('logediting_generateddate')
+                // ->where('logediting_generateddate', '>=', '2021-04-06')
+                ->distinct()
+                ->orderBy('logediting_useddate', 'asc')
+                // ->orderBy('transaction_logediting.id', 'DESC')
                 ->get();
         $priviledge_R = User::select('logeditingpriviledge_nik','logeditingpriviledge_level')->where('logeditingpriviledge_level',1)->first();
         return view('report', compact('report','priviledge_R'));
@@ -32,12 +36,18 @@ class ReportController extends Controller
 
             if($start != '' || $end != ''){
                     $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
-                    ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                    ->where('logediting_useddate', '>=', $start->toDateTimeString())
-                    ->where('logediting_useddate', '<=', $end->toDateTimeString())
-                    ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                    ->select('*')
-                    ->get();
+                            ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                            ->where('logediting_useddate', '>=', $start->toDateTimeString())
+                            ->where('logediting_useddate', '<=', $end->toDateTimeString())
+                            ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
+                            ->select('*')
+                            ->get();
+            }else{
+                $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
+                            ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                            ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
+                            ->select('*')
+                            ->get();
             }
             echo json_encode($data);
         }

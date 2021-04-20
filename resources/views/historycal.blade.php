@@ -18,8 +18,16 @@
                 <li class="nav-item">
                     <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
                 </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/report" style="margin-left:50px;">Report</a></h5>
+                <li class="nav-item dropdown">
+                    <h5>
+                        <a class="nav-link dropdown-toggle" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:50px;">
+                        Report
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/report">Report Editor</a>
+                            <a class="dropdown-item" href="/test">Report Booth</a>
+                        </div>
+                    </h5>
                 </li>
             </ul>
         </div>
@@ -86,7 +94,7 @@
                                             <input  name="editing_shift" id="editing_shift" type="text" value="" class="form-control " placeholder="Editing Shift" readonly>
 
                                             <label for="nama_booth">Booth :</label>
-                                            <select name="nama_booth" id="nama_booth" class="form-control" required>
+                                            <select name="nama_booth" id="nama_booth" class="form-control booth" required>
                                                     <option value="" selected="false">--Select Booth--</option>
                                                     @foreach($booth_H as $h)
                                                         <option value="{{$h->id}}">{{$h->nama_booth}}</option>
@@ -239,23 +247,26 @@
                     cache: true
                 }
             });
-            $('.booth').on('change', function(){
-                if($('#nama_booth').val() == ''){
-                    var editing_date = $('#editing_date').val();
-                    var editing_shift = $('#editing_shift').val();
-                    var _token = $('input[name="_token"]').val();
-                    console.log(editing_date, editing_shift);
-                    $.ajax({
-                        url:"{{ route('historycal.booth') }}",
-                        method:"POST",
-                        data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
-                        success:function(result){
-
-                            $("#nama_booth").html(result);
-                        }
-                    });
-                }
-            });
+            
         });
         
+    </script>
+    <script>
+    $('.booth').on('change', function(){
+        if($('#nama_booth').val() != ''){
+            var editing_date = $('#editing_date').val();
+            var editing_shift = $('#editing_shift').val();
+            var _token = $('input[name="_token"]').val();
+            console.log(editing_date, editing_shift);
+            $.ajax({
+                url:"{{ route('historycal.booth') }}",
+                method:"POST",
+                data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+                success:function(result){
+
+                    $("#nama_booth").html(result);
+                }
+            });
+        }
+    });
     </script>
