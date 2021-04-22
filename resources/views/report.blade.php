@@ -80,7 +80,7 @@
                     
                     <thead  class="table-head text-center">
                         <tr>
-                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING TRANS 7 2021</th>
+                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
                             <!-- <th></th>
                             <th></th> -->
                             <?php 
@@ -173,7 +173,37 @@
                                 output += '<td>' + data[count].logediting_editor_name + '</td>';
                                 output += '<td>' + data[count].logediting_editor_nik + '</td>';
                                 output += '<td>' + data[count].logediting_editor_phone + '</td>';
-                                output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
+                                
+                                // output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
+                                if('<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('tuesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('wednesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('thursday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('friday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('saturday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else if('<?= $datee = date("d-m-Y",strtotime('sunday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td>OFF</td>';
+                                }else{
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                }
                                 output += '</tr>';
                                 
 
@@ -191,8 +221,6 @@
             var from_date = $('#from_date').val();
             var to_date = $('#to_date').val();
             
-
-
             if(from_date != '' && to_date != ''){
                 fetch_data(from_date, to_date);
             }
