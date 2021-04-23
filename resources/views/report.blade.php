@@ -176,7 +176,7 @@
                                 
                                 // output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
                                 if('<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    output += '<td>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</td>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
