@@ -150,7 +150,6 @@ class HistorycalController extends Controller
     {
         $data = [];
 
-
         if($request->has('q')){
             $search = $request->q;
             $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')

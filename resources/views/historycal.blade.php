@@ -25,7 +25,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/report">Report Editor</a>
-                            <a class="dropdown-item" href="/test">Report Booth</a>
+                            <!-- <a class="dropdown-item" href="/test">Report Booth</a> -->
                         </div>
                     </h5>
                 </li>
@@ -136,6 +136,7 @@
             $('#editing_date').val(row_data.logediting_useddate);
             $('#editing_shift').val(row_data.logediting_usedshift);
             $('#nama_booth').val(row_data.logeditingboot_id);
+            
             
         }
         function data_table2(){

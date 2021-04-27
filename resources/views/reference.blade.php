@@ -25,7 +25,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/report">Report Editor</a>
-                            <a class="dropdown-item" href="/test">Report Booth</a>
+                            <!-- <a class="dropdown-item" href="/test">Report Booth</a> -->
                         </div>
                     </h5>
                 </li>

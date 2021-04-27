@@ -30,7 +30,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/report">Report Editor</a>
-                            <a class="dropdown-item" href="/test">Report Booth</a>
+                            <!-- <a class="dropdown-item" href="/test">Report Booth</a> -->
                         </div>
                     </h5>
                 </li>
@@ -184,56 +184,78 @@
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('tuesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('wednesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('thursday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('friday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('saturday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else if('<?= $datee = date("d-m-Y",strtotime('sunday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    // output += '<td style="background-color:black;color:white;">OFF</td>';
                                 }else{
                                     // output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                    // output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                    output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
                                     output += '<td style="background-color:black;color:white;">OFF</td>';
