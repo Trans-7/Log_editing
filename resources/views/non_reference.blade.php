@@ -54,7 +54,7 @@
                                         Editing Date
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input class="form-control autofill" id="editing_date" name="editing_date" value="YYYY - MM - DD" placeholder="Editing Date" required>
+                                        <input type="text" class="form-control " id="editing_date" name="editing_date"  placeholder="Editing Date" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Shift
@@ -146,9 +146,9 @@
                                     <div class="col-md-10 col-form-label">
                                         <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
                                             <option value="" selected="false">--Select Booth--</option>
-                                            <!-- @foreach ($booth_NR as $bn)
+                                            @foreach ($booth_NR as $bn)
                                                 <option value="{{$bn->id}}">{{$bn->nama_booth}}</option>
-                                            @endforeach -->
+                                            @endforeach
                                         </select>
                                         <p style="color:grey;">*Pilih Booth</p>
                                     </div>
@@ -219,6 +219,7 @@
                 format: 'yyyy-mm-dd',
                 autoclose: true,
                 todayHighlight: true,
+                locale: 'en'
             });
         });
     </script>
@@ -346,7 +347,7 @@
                                 var _token = $('input[name="_token"]').val();
                                 console.log(editing_date, editing_shift);
                                 $.ajax({
-                                    url:"{{ route('reference.booth') }}",
+                                    url:"{{ route('non_reference.booth') }}",
                                     method:"POST",
                                     data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
                                     success:function(result){

@@ -159,7 +159,7 @@ class NonReferenceController extends Controller
         $time = str_pad(substr(microtime(true), 12,3), 3, STR_PAD_RIGHT);
         DB::table('transaction_logediting')->insert([
             'logediting_code' =>date('H').substr(date('Y'), -2).date('i').date('m').date('s').date('d').$time,
-            'logediting_useddate' => $request->editing_date." ".date('H:i:s.').$time,
+            'logediting_useddate' => $request->editing_date,
             'logediting_usedshift' => $request->editing_shift,
             'logediting_reference_id' => $request->bookingediting_id,
             'logediting_reference_line' => $request->bookingeditingdetail_line,

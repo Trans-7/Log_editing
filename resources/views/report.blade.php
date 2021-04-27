@@ -64,7 +64,7 @@
                         <input type="text" name="to_date" id="to_date" value="THIS WEEK DATE" class="form-control">
                     </div>
                     <div style="padding-top:1rem">
-                        <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">EXECUTE</button></center></span>
+                        <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
                     </div>
                     
                 </div>
@@ -141,6 +141,8 @@
 </body>
 <script>
     $(document).ready(function(){
+        
+        
         $("#from_date").datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
@@ -156,7 +158,7 @@
         var _token = $('input[name="_token"]').val();
         
     
-        fetch_data();
+        fetch_data(from_date = '<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>', to_date='<?= $datee = date("d-m-Y",strtotime('sunday this week')); ?>');
 
         function fetch_data(from_date = '', to_date=''){
             $.ajax({
