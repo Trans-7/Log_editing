@@ -94,11 +94,11 @@
                                             <input  name="editing_shift" id="editing_shift" type="text" value="" class="form-control " placeholder="Editing Shift" readonly>
 
                                             <label for="nama_booth">Booth :</label>
-                                            <select name="nama_booth" id="nama_booth" class="form-control booth" required>
+                                            <select name="nama_booth" id="nama_booth" class="form-control " required>
                                                     <option value="" selected="false">--Select Booth--</option>
-                                                    @foreach($booth_H as $h)
-                                                        <option value="{{$h->id}}">{{$h->nama_booth}}</option>
-                                                    @endforeach
+                                                    <!-- @foreach($booth_H as $h)
+                                                        <option selected="false" value="">{{$h->nama_booth}}</option>
+                                                    @endforeach -->
 
                                             </select>
                                         </div>
@@ -135,8 +135,7 @@
             $('#editor_phone').val(row_data.logediting_editor_phone);
             $('#editing_date').val(row_data.logediting_useddate);
             $('#editing_shift').val(row_data.logediting_usedshift);
-            $('#nama_booth').val(row_data.logeditingboot_id);
-            
+            $('#nama_booth').val(row_data.logeditingboot_id); 
             
         }
         function data_table2(){
@@ -189,7 +188,6 @@
                         logediting_useddate: $('#editing_date').val(),
                         logediting_usedshift: $('#editing_shift').val(),
                         nama_booth: $('#nama_booth').val(),
-                        
                         _token: "{{ csrf_token() }}"
                     },
                     success: function (response) {
@@ -253,21 +251,28 @@
         
     </script>
     <script>
-    $('.booth').on('change', function(){
-        if($('#nama_booth').val() != ''){
-            var editing_date = $('#editing_date').val();
-            var editing_shift = $('#editing_shift').val();
-            var _token = $('input[name="_token"]').val();
-            console.log(editing_date, editing_shift);
-            $.ajax({
-                url:"{{ route('historycal.booth') }}",
-                method:"POST",
-                data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
-                success:function(result){
-
-                    $("#nama_booth").html(result);
+    
+            $('#nama_booth').on('change', function(){
+                // $('#nama_booth').val("");
+                if($('#nama_booth').val() == ''){
+                    var editing_date = $('#editing_date').val();
+                    var editing_shift = $('#editing_shift').val();
+                    var _token = $('input[name="_token"]').val();
+                    console.log(editing_date, editing_shift);
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url:"{{ route('reference.booth') }}",
+                        method:"POST",
+                        data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+                        success:function(result){
+                            console.log(result);
+                            $("#nama_booth").html(result);
+                        }
+                    });
                 }
             });
-        }
-    });
+        
+    
     </script>

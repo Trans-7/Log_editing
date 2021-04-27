@@ -213,9 +213,9 @@ class HistorycalController extends Controller
         ->get();
 
         // echo $data;
-        $output = '<option value="">--Select Booth--</option>';
+        $output = '<option name="nama_booth" id="nama_booth" value="" selected="false">--Select Booth--</option>';
         foreach($data as $row){
-            $output .= '<option value="'.$row->id.'">'.$row->nama_booth.'</option>';
+            $output .= '<option name="nama_booth" id="nama_booth" value="'.$row->id.'">'.$row->nama_booth.'</option>';
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
         }
         echo $output;
