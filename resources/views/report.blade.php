@@ -57,11 +57,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Start Date</span>
                         </div>
-                        <input type="text" name="from_date" id="from_date" value="YYYY - MM - DD" class="form-control">
+                        <input type="text" name="from_date" id="from_date" value="THIS WEEK DATE" class="form-control">
                         <div class="input-group-prepend">
                             <span class="input-group-text" style="margin-left:10px;">End Date</span>
                         </div>
-                        <input type="text" name="to_date" id="to_date" value="YYYY - MM - DD" class="form-control">
+                        <input type="text" name="to_date" id="to_date" value="THIS WEEK DATE" class="form-control">
                     </div>
                     <div style="padding-top:1rem">
                         <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">EXECUTE</button></center></span>
