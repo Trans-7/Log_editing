@@ -44,7 +44,7 @@
                         <div class="col-sm-12">
                             <h2 style="color:#1b215a;padding-bottom:0rem"> Historycal Editor</h2>
                             <br>
-                            <table class="table table-bordered data-table2">
+                            <table class="table table-bordered data-table2" class="display nowrap" style="width:100%">
                                 <thead class="thead_d">
                                     <tr>
                                         <th>Code</th>
@@ -159,6 +159,7 @@
         function data_table2(){
             YajraDataTable = $('.data-table2').DataTable({
                 order: [],
+                scrollX: true,
                 aaSorting: [],
                 processing: true,
                 serverSide: true,

@@ -187,7 +187,7 @@
                         <div class="col-sm-12">
                             <h2 style="color:#1b215a;"> History</h2>
                             <br>
-                            <table class="table table-bordered data-tablee">
+                            <table class="table table-bordered data-tablee" class="display nowrap" style="width:100%">
                                 <thead class="thead_d">
                                     <tr>
                                         <th>Code</th>
@@ -377,6 +377,7 @@
             
             var table = $('.data-tablee').DataTable({
                 order: [],
+                scrollX: true,
                 aaSorting: [],
                 processing: true,
                 serverSide: true,
