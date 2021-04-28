@@ -2,50 +2,47 @@
 <title>Log Editing - Report</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
-    <div class="container">
+    <div class="container" style="justify-content: flex-start;">
         <div class="ks-logo-shadow navbar-brand">
             <img src="/img/logo_trans7.png">
         </div>
-        <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="margin-left:15px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
-                </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
-                </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">History Data</a></h5>
-                </li>
-                <!-- <li class="nav-item">
-                    <h5>
-                        <a class="nav-link" href="/report" style="margin-left:50px;">Report</a>
-                    </h5>
-                </li> -->
-                <li class="nav-item dropdown">
-                    <h5>
-                        <a class="nav-link dropdown-toggle" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:50px;">
-                        Report
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/report">Report Editor</a>
-                            <!-- <a class="dropdown-item" href="/test">Report Booth</a> -->
-                        </div>
-                    </h5>
-                </li>
-            </ul>
-        </div>
+        <h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4>
+        <!-- <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div> -->
     </div>
-    <ul class="navbar-nav mr-auto" style="margin-left:300px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/logout">Logout</a></h5>
-                </li>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/" style="margin-left:20px;">Reference</a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/non_reference" style="margin-left:20px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/historycal" style="margin-left:20px;">History Data</a></h5>
+        </li>
+        <!-- <li class="nav-item">
+            <h5>
+                <a class="nav-link" href="/report" style="margin-left:50px;">Report</a>
+            </h5>
+        </li> -->
+        <li class="nav-item dropdown">
+            <h5>
+                <a class="nav-link dropdown-toggle text-white" style="margin-left:20px;" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:20px;">
+                Report
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/report">Report Jadwal Editor</a>
+                    <!-- <a class="dropdown-item" href="/test">Report Booth</a> -->
+                </div>
+            </h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" style="margin-left:20px;" href="/logout">Logout</a></h5>
+        </li>
     </ul>
 </nav>
 <br />
 <div class="container-fluid" style="margin-bottom:50px;">
-    <h2 align="center" style="color:#1b215a;">Report Log Editing (Editor) </h2><br />
+    <h2 align="center" style="color:#1b215a;">Report Jadwal Editor </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
         <div class="panel-heading">
