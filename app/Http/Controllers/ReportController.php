@@ -37,7 +37,7 @@ class ReportController extends Controller
             if($start != '' || $end != ''){
                     $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                             ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                            ->where('logediting_useddate', '>=', '2021-04-26')
+                            // ->where('logediting_useddate', '>=', '2021-04-26')
                             ->where('logediting_useddate', '>=', $start->toDateTimeString())
                             ->where('logediting_useddate', '<=', $end->toDateTimeString())
                             ->orderBy('transaction_logediting.logediting_editor_name', 'DESC')

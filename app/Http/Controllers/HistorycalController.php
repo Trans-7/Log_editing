@@ -199,6 +199,8 @@ class HistorycalController extends Controller
         
         $select_date = $request->get('editing_date');
         $select_shift = $request->get('editing_shift');
+        $booth_id = $request->get('booth_id');
+        $booth_name = $request->get('booth_name');
         
         $data = DB::table(DB::raw('master_booth_logediting.*', 'table_1.*'))
         ->from(DB::raw("(SELECT a.*
@@ -213,7 +215,7 @@ class HistorycalController extends Controller
         ->get();
 
         // echo $data;
-        $output = '<option name="nama_booth" id="nama_booth" value="" selected="false">--Select Booth--</option>';
+        $output = '<option name="nama_booth" id="nama_booth" value="'.$booth_id.'" selected="true">'.$booth_name.'</option>';
         foreach($data as $row){
             $output .= '<option name="nama_booth" id="nama_booth" value="'.$row->id.'">'.$row->nama_booth.'</option>';
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 

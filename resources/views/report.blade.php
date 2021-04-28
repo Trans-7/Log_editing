@@ -180,7 +180,7 @@
 
                                 if('<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
                                     if(data[count].logediting_program == 'null'){
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -189,7 +189,7 @@
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else if (data[count].logediting_usedshift=='null'){
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -198,7 +198,7 @@
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else if (data[count].nama_booth=='null'){
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -207,7 +207,7 @@
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else{
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -221,7 +221,7 @@
                                     if(data[count].logediting_program == 'null'){
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -231,7 +231,7 @@
                                     }else if (data[count].logediting_usedshift=='null'){
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -241,7 +241,7 @@
                                     }else if (data[count].nama_booth=='null'){
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -251,7 +251,7 @@
                                     }else{
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -266,7 +266,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -277,7 +277,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -288,7 +288,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -299,7 +299,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -315,7 +315,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
@@ -327,7 +327,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
@@ -339,7 +339,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
@@ -351,7 +351,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
@@ -368,7 +368,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -381,7 +381,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -394,7 +394,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -407,7 +407,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -420,7 +420,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else if (data[count].logediting_usedshift != 'null'){
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -428,7 +428,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else if (data[count].nama_booth != 'null'){
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -436,7 +436,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }else{
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -445,7 +445,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         // output += '<th>' + 'non-reference' + ' ' +'non-reference' + ' ' + 'non-reference' + '</th>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                     }
                                     //MINGGU
@@ -458,7 +458,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                     }else if (data[count].logediting_usedshift=='null'){
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -467,7 +467,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
                                     }else if (data[count].nama_booth=='null'){
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -476,7 +476,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + 'non-reference' + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
                                     }else{
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
@@ -485,7 +485,7 @@
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
                                         
                                         output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' ' + data[count].nama_booth + '</th>';
+                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
                                     }
                                     
                                 }else{
