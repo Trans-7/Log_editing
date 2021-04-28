@@ -76,7 +76,7 @@
                 <br>
                 
                 <br>
-                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:10px;">
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:50px;">
                     
                     <thead  class="table-head text-center">
                         <tr>
