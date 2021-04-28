@@ -2,14 +2,12 @@
 <title>Log Editing - Report</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
-    <div class="container" style="justify-content: flex-start;">
-        <div class="ks-logo-shadow navbar-brand">
-            <img src="/img/logo_trans7.png">
-        </div>
-        <h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4>
-        <!-- <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div> -->
+    <div class="ks-logo-shadow navbar-brand">
+        <img src="/img/logo_trans7.png">
     </div>
-    <ul class="navbar-nav mr-auto">
+    <h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4>
+
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <h5><a class="nav-link text-white" href="/" style="margin-left:20px;">Reference</a></h5>
         </li>
