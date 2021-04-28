@@ -57,11 +57,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Start Date</span>
                         </div>
-                        <input type="text" name="from_date" id="from_date" value="THIS WEEK DATE" class="form-control">
+                        <input type="date" name="from_date" id="from_date" value="THIS WEEK DATE" class="form-control">
                         <div class="input-group-prepend">
                             <span class="input-group-text" style="margin-left:10px;">End Date</span>
                         </div>
-                        <input type="text" name="to_date" id="to_date" value="THIS WEEK DATE" class="form-control">
+                        <input type="date" name="to_date" id="to_date" value="THIS WEEK DATE" class="form-control">
                     </div>
                     <div style="padding-top:1rem">
                         <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
@@ -143,18 +143,21 @@
     $(document).ready(function(){
         
         
-        $("#from_date").datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true,
-            locale: 'en'
-        });
-        $("#to_date").datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true,
-            locale: 'en'
-        });
+        // $("#from_date").datepicker({
+        //     format: 'yyyy-mm-dd',
+        //     autoclose: true,
+        //     todayHighlight: true,
+        //     locale: 'en'
+        // });
+        // $("#to_date").datepicker({
+        //     format: 'yyyy-mm-dd',
+        //     autoclose: true,
+        //     todayHighlight: true,
+        //     locale: 'en'
+        // });
+        document.getElementById('from_date').value = moment().format('YYYY-MM-DD');
+        document.getElementById('to_date').value = moment('<?= date("Y-m-d",strtotime('sunday this week')); ?>').format('YYYY-MM-DD');
+
         var _token = $('input[name="_token"]').val();
         
     
