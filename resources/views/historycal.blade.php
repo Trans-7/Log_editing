@@ -95,9 +95,9 @@
 
                                             <label for="nama_booth">Booth :</label>
                                             <select name="nama_booth" id="nama_booth" class="form-control " required>
-                                                    <option value="" selected="false">--Select Booth--</option>
+                                                    <option value="" selected="false">--Selectdf Booth--</option>
                                                     <!-- @foreach($booth_H as $h)
-                                                        <option selected="false" value="">{{$h->nama_booth}}</option>
+                                                        <option selected="false" value="{{$h->id}}">{{$h->nama_booth}}</option>
                                                     @endforeach -->
 
                                             </select>
@@ -135,7 +135,24 @@
             $('#editor_phone').val(row_data.logediting_editor_phone);
             $('#editing_date').val(row_data.logediting_useddate);
             $('#editing_shift').val(row_data.logediting_usedshift);
-            $('#nama_booth').val(row_data.logeditingboot_id); 
+            $('#nama_booth').val(row_data.logeditingboot_id);
+
+            var editing_date = $('#editing_date').val();
+            var editing_shift = $('#editing_shift').val();
+            var _token = $('input[name="_token"]').val();
+            console.log(editing_date, editing_shift);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:"{{ route('historycal.booth') }}",
+                method:"POST",
+                data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift, booth_id: row_data.logeditingboot_id, booth_name : row_data.nama_booth},
+                success:function(result){
+                    // console.log(result);
+                    $("#nama_booth").html(result);
+                }
+            });
             
         }
         function data_table2(){
@@ -252,27 +269,28 @@
     </script>
     <script>
     
-            $('#nama_booth').on('change', function(){
-                // $('#nama_booth').val("");
-                if($('#nama_booth').val() == ''){
-                    var editing_date = $('#editing_date').val();
-                    var editing_shift = $('#editing_shift').val();
-                    var _token = $('input[name="_token"]').val();
-                    console.log(editing_date, editing_shift);
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url:"{{ route('reference.booth') }}",
-                        method:"POST",
-                        data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
-                        success:function(result){
-                            console.log(result);
-                            $("#nama_booth").html(result);
-                        }
-                    });
-                }
-            });
+            // $('#nama_booth').on('click', function(){
+            //     console.log('onchange');
+            //     // $('#nama_booth').val("");
+            //     if($('#nama_booth').val() == ''){
+            //         var editing_date = $('#editing_date').val();
+            //         var editing_shift = $('#editing_shift').val();
+            //         var _token = $('input[name="_token"]').val();
+            //         console.log(editing_date, editing_shift);
+            //         $.ajax({
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             },
+            //             url:"{{ route('historycal.booth') }}",
+            //             method:"POST",
+            //             data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+            //             success:function(result){
+            //                 console.log(result);
+            //                 $("#nama_booth").html(result);
+            //             }
+            //         });
+            //     }
+            // });
         
     
     </script>
