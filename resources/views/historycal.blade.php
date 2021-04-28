@@ -16,7 +16,7 @@
                     <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
                 </li>
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
+                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">History Data</a></h5>
                 </li>
                 <li class="nav-item dropdown">
                     <h5>

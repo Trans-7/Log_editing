@@ -16,7 +16,7 @@
                     <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
                 </li>
                 <li class="nav-item">
-                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
+                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">History Data</a></h5>
                 </li>
                 <!-- <li class="nav-item">
                     <h5>
@@ -44,7 +44,7 @@
     </ul>
 </nav>
 <br />
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom:50px;">
     <h2 align="center" style="color:#1b215a;">Report Log Editing (Editor) </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
@@ -57,11 +57,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Start Date</span>
                         </div>
-                        <input type="date" name="from_date" id="from_date" value="THIS WEEK DATE" class="form-control">
+                        <input type="date" name="from_date" id="from_date" class="form-control">
                         <div class="input-group-prepend">
                             <span class="input-group-text" style="margin-left:10px;">End Date</span>
                         </div>
-                        <input type="date" name="to_date" id="to_date" value="THIS WEEK DATE" class="form-control">
+                        <input type="date" name="to_date" id="to_date" class="form-control">
                     </div>
                     <div style="padding-top:1rem">
                         <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
@@ -76,7 +76,7 @@
                 <br>
                 
                 <br>
-                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;">
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:10px;">
                     
                     <thead  class="table-head text-center">
                         <tr>
