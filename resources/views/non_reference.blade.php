@@ -54,13 +54,13 @@
                                         Editing Date
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control " id="editing_date" name="editing_date"  placeholder="Editing Date" required>
+                                        <input type="text" class="form-control " id="editing_date" name="editing_date" value="YYYY-MM-DD" placeholder="Editing Date" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Shift
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <input type="text" class="form-control autofill" id="editing_shift" name="editing_shift" value="" placeholder="Input Editing Shift (1, 2, or 3)" required>
+                                        <input type="text" class="form-control " id="editing_shift" name="editing_shift" value="" placeholder="Input Editing Shift (1, 2, or 3)" required>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editing Reason
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-md-10 col-form-label">
                                         <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
-                                        <p style="color:grey;">*Pilih NIK Editor</p>
+                                        <p style="color:grey;">*Ketik NIK atau Nama Editor</p>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                         Editor Name (auto-isi)
@@ -144,7 +144,7 @@
                                         Booth
                                     </div>
                                     <div class="col-md-10 col-form-label">
-                                        <select name="booth" id="booth" class="form-control" onfocus="this.value=''" required>
+                                        <select name="booth" id="booth" class="form-control "  onfocus="this.value=''" required>
                                             <option value="" selected="false">--Select Booth--</option>
                                             @foreach ($booth_NR as $bn)
                                                 <option value="{{$bn->id}}">{{$bn->nama_booth}}</option>
@@ -214,7 +214,8 @@
                     </div>
 </body>
     <script type="text/javascript">
-        $(function(){
+       
+       $(function(){
             $("#editing_date").datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,
@@ -222,6 +223,8 @@
                 locale: 'en'
             });
         });
+        
+        // document.getElementById('editing_date').value = moment();
     </script>
     <script>
     window.onload=function(){
@@ -267,7 +270,7 @@
                 }
             });
             $('#editor_nik').select2({
-                placeholder: '--Select Editor NIK--',
+                placeholder: '--Select Editor NIK or Name--',
                 ajax: {
                     url: "{{ route('non_reference.autocomplete') }}",
                     dataType: 'json',
@@ -313,8 +316,8 @@
                     var show_name = $('#show_name').val();
                     var request_id = $('#request_id').val();
                     var bookingediting_ref_id = $('#bookingediting_ref_id').val();
-                    var editing_date = $('#editing_date').val();
-                    var editing_shift = $('#editing_shift').val();
+                    // var editing_date = $('#editing_date').val();
+                    // var editing_shift = $('#editing_shift').val();
                     var _token = $('input[name="_token"]').val();
                     console.log(show_name, booking_line);
                     $.ajax({
@@ -406,3 +409,33 @@
             });
         });
     </script>
+    <script>
+        $('#editing_date').on('change', function(){
+            $('#editing_shift').on('change', function(){
+            // console.log('onchange');
+            // var editing_date = $('#editing_date').val();
+            // var editing_shift = $('#editing_shift').val();
+            // $('#nama_booth').val("");
+                if($('#booth').val() == ''){
+                    var editing_date = $('#editing_date').val();
+                    var editing_shift = $('#editing_shift').val();
+                    var _token = $('input[name="_token"]').val();
+                    console.log(editing_date, editing_shift);
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url:"{{ route('non_reference.booth') }}",
+                        method:"POST",
+                        data:{_token:_token, editing_date:editing_date, editing_shift:editing_shift},
+                        success:function(result){
+                            console.log(result);
+                            $("#booth").html(result);
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+    

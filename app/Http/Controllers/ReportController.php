@@ -40,7 +40,7 @@ class ReportController extends Controller
                             // ->where('logediting_useddate', '>=', '2021-04-26')
                             ->where('logediting_useddate', '>=', $start->toDateTimeString())
                             ->where('logediting_useddate', '<=', $end->toDateTimeString())
-                            ->orderBy('transaction_logediting.logediting_editor_name', 'DESC')
+                            ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
                             ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
                             ->select('*')
                             ->get();

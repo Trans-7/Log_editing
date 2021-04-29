@@ -124,7 +124,7 @@
                                         </div> -->
                                         <div class="col-md-10 col-form-label">
                                                 <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
-                                                <p style="color:grey;">*Pilih NIK Editor</p>
+                                                <p style="color:grey;">*Ketik NIK atau Nama Editor</p>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Editor Name (auto-isi)
@@ -276,7 +276,7 @@
                 }
             });
             $('#editor_nik').select2({
-                placeholder: '--Select Editor NIK--',
+                placeholder: '--Select Editor NIK or Name--',
                 ajax: {
                     url: "{{ route('reference.autocomplete') }}",
                     dataType: 'json',

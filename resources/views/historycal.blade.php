@@ -80,7 +80,8 @@
                                             <input type="hidden" id="item_id" value="0" />
 
                                             <label for="editor_nik">Editor NIK :</label><br>
-                                            <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select><br>
+                                            <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
+                                            <p style="color:grey;">*Ketik NIK atau Nama Editor</p>
 
                                             <label for="editor_name">Editor Name :</label>
                                             <input name="editor_name" id="editor_name" type="text" value="" class="form-control dinamik" placeholder="Editor Name" readonly>
@@ -247,7 +248,7 @@
                 }
             });
             $('#editor_nik').select2({
-                placeholder: '-------------------------Select Editor NIK-------------------------',
+                placeholder: '--------------------Select Editor NIK or Name--------------------',
                 ajax: {
                     url: "{{ route('reference.autocomplete') }}",
                     dataType: 'json',

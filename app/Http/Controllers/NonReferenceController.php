@@ -134,7 +134,8 @@ class NonReferenceController extends Controller
             $search = $request->q;
             $data = DB::table('HRIS.HRIS.dbo.MasterEisAktif')
             		->select('NIK', 'Nama')
-            		->where('NIK','LIKE',"%$search%")
+            		->where('Nama','LIKE',"%$search%")
+                    ->orwhere('NIK', 'LIKE',"%$search%")
             		->get();
         }
 
