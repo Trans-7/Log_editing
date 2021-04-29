@@ -19,21 +19,23 @@ class Apicontroller extends Controller
                 ->get();
         
         if(count($test)){
-            $return_api = array();
+            
             foreach ($test as $t){
-                $return_api[] = array(
-                    'NIK' => $t->logediting_editor_nik,
-                    'Code' => $t->logediting_code,
-                    'Shift' =>  $t->logediting_usedshift,
-                    'Tanggal_editing' => date('d M Y', strtotime($t->logediting_useddate)),
-                    'Booth' => $t->nama_booth
-                );
+                
+                $return_api[] = [
+                                    "Code" => $t->logediting_code,
+                                    "Shift" =>  'Shift'.' '.$t->logediting_usedshift,
+                                    "Tanggal_editing" => date('d M Y', strtotime($t->logediting_useddate)),
+                                    "Booth" => 'Booth'.' '.$t->nama_booth
+                                ];
             }
-
-            return response()->json($return_api, 200);
-        }else{
-            return response()->json(['message' => 'Not Found!'], 404);
+            
+            return response()->json(['data' => $return_api, "success" => true], 200);
+            
         }
-        
+        else{
+            
+            return response()->json(['data' => [], "success" => true], 200);
+        }
     }
 }
