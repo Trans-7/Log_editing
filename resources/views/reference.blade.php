@@ -1,5 +1,5 @@
 <link rel="icon" href="/img/logo.png">
-<title>Log Editing - Reference</title>
+<title>TRANS 7 - Log Editing - Reference</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
     <div class="ks-logo-shadow navbar-brand">
@@ -118,10 +118,6 @@
                                         <div class="col-md-2 col-form-label">
                                             Editor NIK
                                         </div>
-                                        <!-- <div class="col-md-10 col-form-label">
-                                            <input type="text" class=" dinamik form-control" id="editor_nik" name="editor_nik" value="" placeholder="Editor NIK"/>
-                                            <div id="NIKList"></div>
-                                        </div> -->
                                         <div class="col-md-10 col-form-label">
                                                 <select name="editor_nik" id="editor_nik" class="form-control dinamik" required></select>
                                                 <p style="color:grey;">*Ketik NIK atau Nama Editor</p>

@@ -32,27 +32,22 @@ class ReportController extends Controller
         if($request->ajax()){
             $start = $request->start;
             $end = $request->end;
-            // $end = Carbon::parse($request->to_date)->endOfDay();
             
-
             if($start != '' && $end != ''){
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                         ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
                         ->where('logediting_useddate', '>=', array($start))
                         ->where('logediting_useddate', '<=', array($end))
-                        // ->distinct()
-                        ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
-                        ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
+                        ->orderBy('transaction_logediting.logediting_editor_name')
                         ->select('*')
                         ->get();
             }
             else{
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
-                            ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                            // ->distinct()
-                            ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                            ->select('*')
-                            ->get();
+                        ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                        ->orderBy('transaction_logediting.logediting_editor_name')
+                        ->select('*')
+                        ->get();
             }
             
             echo json_encode($data);

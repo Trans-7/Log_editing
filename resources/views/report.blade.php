@@ -1,5 +1,5 @@
 <link rel="icon" href="/img/logo.png">
-<title>Log Editing - Report</title>
+<title>TRANS 7 - Log Editing - Report</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
     <div class="ks-logo-shadow navbar-brand">
@@ -220,6 +220,9 @@
                             output += '<td>' + data[count].logediting_editor_name + '</td>';
                             output += '<td>' + data[count].logediting_editor_nik + '</td>';
                             output += '<td>' + data[count].logediting_editor_phone + '</td>';
+                            // output += '<td></td>';
+                            // output += '<td></td>';
+                            // output += '<td></td>';
                             if(moment(start1).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
                                 if(data[count].logediting_program == null){
                                     output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';

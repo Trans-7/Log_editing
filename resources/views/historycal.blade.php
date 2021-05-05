@@ -1,5 +1,5 @@
 <link rel="icon" href="/img/logo.png">
-<title>Log Editing - Historycal</title>
+<title>TRANS 7 - Log Editing - Historycal</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
     <div class="ks-logo-shadow navbar-brand">
@@ -97,7 +97,7 @@
 
                                             <label for="nama_booth">Booth :</label>
                                             <select name="nama_booth" id="nama_booth" class="form-control " required>
-                                                    <option value="" selected="false">--Selectdf Booth--</option>
+                                                    <option value="" selected="false">--Select Booth--</option>
                                                     <!-- @foreach($booth_H as $h)
                                                         <option selected="false" value="{{$h->id}}">{{$h->nama_booth}}</option>
                                                     @endforeach -->
