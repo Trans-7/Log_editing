@@ -111,14 +111,14 @@ class ReferenceController extends Controller
                     ('transaction_bookingeditingdetail.bookingediting_id'),'=',('transaction_bookingediting.bookingediting_id'))
                     ->where('transaction_bookingediting.bookingediting_createddate','>=','2020-02-08')
                     ->where($select, $value)
-                    ->orderBy($dependent, 'DESC')
+                    ->orderBy('transaction_bookingeditingdetail.bookingeditingdetail_date', 'DESC')
                     ->select($dependent, 'transaction_bookingeditingdetail.bookingeditingdetail_date', 'transaction_bookingeditingdetail.bookingeditingdetail_shift')
                     ->distinct()
                     ->get();
         $output = '<option value="">--Selected--</option>';
         foreach($data as $row){
             // $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
-            $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent." "."( "." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift." )".'</option>'; 
+            $output .= '<option value="'.$row->$dependent.'">'." Date: ".date('d M Y', strtotime($row->bookingeditingdetail_date))." , "." Shift: ".$row->bookingeditingdetail_shift.'</option>'; 
         }
         echo $output;
             

@@ -40,18 +40,18 @@ class ReportController extends Controller
                         ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
                         ->where('logediting_useddate', '>=', array($start))
                         ->where('logediting_useddate', '<=', array($end))
-                        ->distinct()
+                        // ->distinct()
                         ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
                         ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                        // ->select('*')
+                        ->select('*')
                         ->get();
             }
             else{
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                             ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                            ->distinct()
+                            // ->distinct()
                             ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                            // ->select('*')
+                            ->select('*')
                             ->get();
             }
             
