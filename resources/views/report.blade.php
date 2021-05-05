@@ -45,24 +45,22 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
-                <!-- <div class="col-md-5" style="color:#1b215a;padding-bottom:1rem"> Report - Total Records - <b><span style="color:#1b215a;" id="total_records"></span> -->
                 </b></div>
-                <div class="col-md-12">
+                <center>
+                <div class="col-md-6">
                     <div class="input-group lg-3">
+                        
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Start Date</span>
+                            <span class="input-group-text">Select Week</span>
                         </div>
-                        <input type="date" name="from_date" id="from_date" class="form-control">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="margin-left:10px;">End Date</span>
+                        <input type="text" id = "daterange" name="daterange" value="" class="form-control"/>
+                        <div class="input-group-prepend"> 
+                            <span class="col-sm"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
                         </div>
-                        <input type="date" name="to_date" id="to_date" class="form-control">
                     </div>
-                    <div style="padding-top:1rem">
-                        <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
-                    </div>
-                    
+                   
                 </div>
+                </center>
             </div>
         </div>
         <br>
@@ -73,59 +71,62 @@
                 <br>
                 <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:50px;">
                     
-                    <thead  class="table-head text-center">
-                        <tr>
+                    <thead  class=" thead2 table-head text-center">
+                        <!-- <tr>
                             <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
-                            <!-- <th></th>
-                            <th></th> -->
                             <?php 
                             
-                                $date = date("l",strtotime('monday this week'));
-                                $date1 = date("l",strtotime('tuesday this week'));
-                                $date2 = date("l",strtotime('wednesday this week'));
-                                $date3 = date("l",strtotime('thursday this week'));
-                                $date4 = date("l",strtotime('friday this week'));
-                                $date5 = date("l",strtotime('saturday this week'));
-                                $date6 = date("l",strtotime('sunday this week'));
+                                // $date = date("l",strtotime('monday this week'));
+                                // $date1 = date("l",strtotime('tuesday this week'));
+                                // $date2 = date("l",strtotime('wednesday this week'));
+                                // $date3 = date("l",strtotime('thursday this week'));
+                                // $date4 = date("l",strtotime('friday this week'));
+                                // $date5 = date("l",strtotime('saturday this week'));
+                                // $date6 = date("l",strtotime('sunday this week'));
                                 
-                                // echo "<tr>";
-                                echo "<th>".$date."</th>";
-                                echo "<th>".$date1. "</th>";
-                                echo "<th>".$date2. "</th>";
-                                echo "<th>".$date3. "</th>";
-                                echo "<th>".$date4. "</th>";
-                                echo "<th>".$date5. "</th>";
-                                echo "<th>".$date6. "</th>";
+                                // // echo "<tr>";
+                                // echo "<th>".$date."</th>";
+                                // echo "<th>".$date1. "</th>";
+                                // echo "<th>".$date2. "</th>";
+                                // echo "<th>".$date3. "</th>";
+                                // echo "<th>".$date4. "</th>";
+                                // echo "<th>".$date5. "</th>";
+                                // echo "<th>".$date6. "</th>";
                                 // echo "</tr>";
                             ?> 
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <!-- <tr>
                             <td>Nama</td>
                             <td>NIK</td>
                             <td>Telp</td>
+                            <td colspan="7" style="background-color: black;color:white;">TANGGAL-BULAN-TAHUN</td>
                             <?php 
 
-                                //tanggal
-                                $datee = date("d-m-Y",strtotime('monday this week'));
-                                $datee1 = date("d-m-Y",strtotime('tuesday this week'));
-                                $datee2 = date("d-m-Y",strtotime('wednesday this week'));
-                                $datee3 = date("d-m-Y",strtotime('thursday this week'));
-                                $datee4 = date("d-m-Y",strtotime('friday this week'));
-                                $datee5 = date("d-m-Y",strtotime('saturday this week'));
-                                $datee6 = date("d-m-Y",strtotime('sunday this week'));
+                                // tanggal
+                                // $datee = date("d-m-Y",strtotime('monday this week'));
+                                // $datee1 = date("d-m-Y",strtotime('tuesday this week'));
+                                // $datee2 = date("d-m-Y",strtotime('wednesday this week'));
+                                // $datee3 = date("d-m-Y",strtotime('thursday this week'));
+                                // $datee4 = date("d-m-Y",strtotime('friday this week'));
+                                // $datee5 = date("d-m-Y",strtotime('saturday this week'));
+                                // $datee6 = date("d-m-Y",strtotime('sunday this week'));
                                 
-                                echo "<td>".$datee. "</td>";
-                                echo "<td>".$datee1. "</td>";
-                                echo "<td>".$datee2. "</td>";
-                                echo "<td>".$datee3. "</td>";
-                                echo "<td>".$datee4. "</td>";
-                                echo "<td>".$datee5. "</td>";
-                                echo "<td>".$datee6. "</td>";
+                                // echo "<td>".$datee. "</td>";
+                                // echo "<td>".$datee1. "</td>";
+                                // echo "<td>".$datee2. "</td>";
+                                // echo "<td>".$datee3. "</td>";
+                                // echo "<td>".$datee4. "</td>";
+                                // echo "<td>".$datee5. "</td>";
+                                // echo "<td>".$datee6. "</td>";
                                 // echo "<tr>";
                             ?> 
-                        </tr>
+                        </tr> -->
                     </thead>
-                    <tbody class="tableee table-body text-center">
+                    <!-- <thead  class="thead2 table-head text-center">
+                        
+                    </thead> -->
+                    <tbody class="tbody2 table-body text-center">
+                        
                     </tbody>
                 </table>
                 {{ csrf_field() }}
@@ -136,388 +137,358 @@
 </body>
 <script>
     $(document).ready(function(){
-        
-        
-        // $("#from_date").datepicker({
-        //     format: 'yyyy-mm-dd',
-        //     autoclose: true,
-        //     todayHighlight: true,
-        //     locale: 'en'
-        // });
-        // $("#to_date").datepicker({
-        //     format: 'yyyy-mm-dd',
-        //     autoclose: true,
-        //     todayHighlight: true,
-        //     locale: 'en'
-        // });
-        document.getElementById('from_date').value = moment().format('YYYY-MM-DD');
-        document.getElementById('to_date').value = moment('<?= date("Y-m-d",strtotime('sunday this week')); ?>').format('YYYY-MM-DD');
+        $('input[name="daterange"]').daterangepicker({
+            //default dari hari ini ke seminggu kedepan
+            startDate: '<?= date('Y-m-d', strtotime( "0 day" ) );?>', 
+            endDate: '<?= date('Y-m-d', strtotime( "+6 day" ) );?>',
+            showDropdowns: true,
+            locale: {
+                format: 'YYYY-MM-DD',
+                cancelLabel: 'Clear'
+            },
+            autoclose: true
+        });
+
+        $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+        });
+
+        $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
 
         var _token = $('input[name="_token"]').val();
-        
-    
-        fetch_data(from_date = '<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>', to_date='<?= $datee = date("d-m-Y",strtotime('sunday this week')); ?>');
+        var daterange = $('#daterange').val();
+        var dates = daterange.split(" - ");
+        var start = dates[0];
+        var end = dates[1];
 
-        function fetch_data(from_date = '', to_date=''){
+    
+        fetch_data(start, end);
+
+        function fetch_data(start = '', end = ''){
             $.ajax({
                 url:"{{ route('report.fetch_data')}}",
                 method: "GET",
-                data:{from_date:from_date, to_date:to_date, _token:_token},
+                data:{start:start, end:end, _token:_token},
                 dataType:"json",
                 success:function(data){
+                    var output2 = '';
+                    var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+                    var start1 = new Date(start);
+                    var start2 = new Date(start);
+                    var start3 = new Date(start);
+                    var start4 = new Date(start);
+                    var start5 = new Date(start);
+                    var start6 = new Date(start);
+                    var start7 = new Date(start);
+                    start1.setDate(start1.getDate());
+                    start2.setDate(start2.getDate() + 1);
+                    start3.setDate(start3.getDate() + 2);
+                    start4.setDate(start4.getDate() + 3);
+                    start5.setDate(start5.getDate() + 4);
+                    start6.setDate(start6.getDate() + 5);
+                    start7.setDate(start7.getDate() + 6);
+                    output2 += '<tr>';
+                    output2 += '<th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>';
+                    output2 += '<th>'+ days[start1.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start2.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start3.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start4.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start5.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start6.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start7.getDay()] +'</th>';
+                    output2 += '</tr>';
+                    output2 += '<tr>';
+                    output2 += '<td>Nama</td>';
+                    output2 += '<td>NIK</td>';
+                    output2 += '<td>No. Telp</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start1).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start2).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start3).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start4).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start5).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start6).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start7).format('YYYY-MM-DD') +'</td>';
+                    output2 += '</tr>';
+        
                     if(data != 'null'){
                         console.log(data);
                         var output = '';
                         for(var count=0; count<data.length;count++){
-                                
-                                output += '<tr>';
-                                output += '<td>' + data[count].logediting_editor_name + '</td>';
-                                output += '<td>' + data[count].logediting_editor_nik + '</td>';
-                                output += '<td>' + data[count].logediting_editor_phone + '</td>';
-
-                                //SENIN
-
-                                if('<?= $datee = date("d-m-Y",strtotime('monday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //SELASA
-                                }else if('<?= $datee = date("d-m-Y",strtotime('tuesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //RABU
-                                }else if('<?= $datee = date("d-m-Y",strtotime('wednesday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //KAMIS
-                                }else if('<?= $datee = date("d-m-Y",strtotime('thursday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //JUMAT
-                                }else if('<?= $datee = date("d-m-Y",strtotime('friday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //SABTU
-                                }else if('<?= $datee = date("d-m-Y",strtotime('saturday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'NULL'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].logediting_usedshift == 'null'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else if (data[count].nama_booth == 'null'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }else{
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        // output += '<th>' + 'non-reference' + ' ' +'non-reference' + ' ' + 'non-reference' + '</th>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    }
-                                    //MINGGU
-                                }else if('<?= $datee = date("d-m-Y",strtotime('sunday this week')); ?>' == moment(data[count].logediting_useddate).format('DD-MM-YYYY')){
-                                    if(data[count].logediting_program == 'null'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    }else if (data[count].logediting_usedshift=='null'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    }else if (data[count].nama_booth=='null'){
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    }else{
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        
-                                        output += '<td style="background-color:black;color:white;">OFF</td>';
-                                        output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    }
-                                    
+                            output += '<tr>'
+                            output += '<td>' + data[count].logediting_editor_name + '</td>';
+                            output += '<td>' + data[count].logediting_editor_nik + '</td>';
+                            output += '<td>' + data[count].logediting_editor_phone + '</td>';
+                            if(moment(start1).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
                                 }else{
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
-                                    output += '<td style="background-color:black;color:white;">OFF</td>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
                                 }
-                                output += '</tr>';
-                                
-
-
-                            
+                            }else if(moment(start2).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }
+                            }else if(moment(start3).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }
+                            }else if(moment(start4).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }
+                            }else if(moment(start5).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                }
+                            }else if(moment(start6).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                    output += '<th>OFF</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                    output += '<th>OFF</th>';
+                                }
+                            }else if(moment(start7).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                }else if(data[count].logediting_usedshift == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
+                                }else if(data[count].nama_booth == null){
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
+                                }else{
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>OFF</th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
+                                }
+                            }else{
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                                output += '<th>OFF</th>';
+                            }
+                            output += '</tr>'
                         }
+                        $('tbody.tbody2').html(output);
                     }
-                    $('tbody.tableee').html(output);
+                    $('thead.thead2').html(output2);
 
                 }
             });
         }
         $('#filter').click(function(){
             var output = output;
-            var from_date = $('#from_date').val();
-            var to_date = $('#to_date').val();
+            var daterange = $('#daterange').val();
+            var dates = daterange.split(" - ");
+            var start = dates[0];
+            var end = dates[1];
+            // var to_date = $('#to_date').val();
             
-            if(from_date != '' && to_date != ''){
-                fetch_data(from_date, to_date);
+            if(start != '' && end != ''){
+                fetch_data(start, end);
             }
             else{
-                fetch_data(from_date, to_date);
+                fetch_data(start, end);
             }
         });
     });

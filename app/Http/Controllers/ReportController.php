@@ -30,25 +30,28 @@ class ReportController extends Controller
 
     public function fetch_data(Request $request){
         if($request->ajax()){
-            $start = Carbon::parse($request->from_date)->startOfDay();
-            $end = Carbon::parse($request->to_date)->endOfDay();
+            $start = $request->start;
+            $end = $request->end;
+            // $end = Carbon::parse($request->to_date)->endOfDay();
             
 
-            if($start != '' || $end != ''){
-                    $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
-                            ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                            // ->where('logediting_useddate', '>=', '2021-04-26')
-                            ->where('logediting_useddate', '>=', $start->toDateTimeString())
-                            ->where('logediting_useddate', '<=', $end->toDateTimeString())
-                            ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
-                            ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                            ->select('*')
-                            ->get();
-            }else{
+            if($start != '' && $end != ''){
+                $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
+                        ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                        ->where('logediting_useddate', '>=', array($start))
+                        ->where('logediting_useddate', '<=', array($end))
+                        ->distinct()
+                        ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
+                        ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
+                        // ->select('*')
+                        ->get();
+            }
+            else{
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                             ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                            ->distinct()
                             ->orderBy('transaction_logediting.logediting_useddate', 'DESC')
-                            ->select('*')
+                            // ->select('*')
                             ->get();
             }
             
