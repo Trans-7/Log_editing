@@ -32,13 +32,16 @@ class ReportController extends Controller
         if($request->ajax()){
             $start = $request->start;
             $end = $request->end;
-            
+
             if($start != '' && $end != ''){
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                         ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
                         ->where('logediting_useddate', '>=', array($start))
                         ->where('logediting_useddate', '<=', array($end))
+                        
                         ->orderBy('transaction_logediting.logediting_editor_name')
+                        // ->select('logediting_editor_name')
+                        // ->groupBy('logediting_editor_name')
                         ->select('*')
                         ->get();
             }
