@@ -190,7 +190,7 @@
                     start6.setDate(start6.getDate() + 5);
                     start7.setDate(start7.getDate() + 6);
                     output2 += '<tr>';
-                    output2 += '<th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>';
+                    output2 += '<th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
                     output2 += '<th>'+ days[start1.getDay()] +'</th>';
                     output2 += '<th>'+ days[start2.getDay()] +'</th>';
                     output2 += '<th>'+ days[start3.getDay()] +'</th>';
