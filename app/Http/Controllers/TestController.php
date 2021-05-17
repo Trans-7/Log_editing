@@ -35,6 +35,7 @@ class TestController extends Controller
                         ->where('logediting_useddate', '>=', array($start))
                         ->where('logediting_useddate', '<=', array($end))
                         ->orderBy('transaction_logediting.logeditingboot_id')
+                        ->orderBy('transaction_logediting.logediting_usedshift')
                         // ->select('logediting_editor_name')
                         // ->groupBy('logediting_editor_name')
                         ->select('*')
@@ -44,6 +45,7 @@ class TestController extends Controller
                 $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
                         ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
                         ->orderBy('transaction_logediting.logeditingboot_id')
+                        ->orderBy('transaction_logediting.logediting_usedshift')
                         ->select('*')
                         ->get();
             }
