@@ -2,178 +2,456 @@
 <title>Log Editing - Report</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
-    <div class="container">
-        <div class="ks-logo-shadow navbar-brand">
-            <img src="/img/logo_trans7.png">
-        </div>
-        <div class="navbar-brand md-auto"><h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4></div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" style="margin-left:15px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/" style="margin-left:50px;">Reference</a></h5>
-                </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/non_reference" style="margin-left:50px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
-                </li>
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/historycal" style="margin-left:50px;">Historycal</a></h5>
-                </li>
-                <li class="nav-item dropdown">
-                    <h5>
-                        <a class="nav-link dropdown-toggle" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:50px;">
-                        Report
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/report">Report Editor</a>
-                            <a class="dropdown-item" href="/test">Report Booth</a>
-                        </div>
-                    </h5>
-                </li>
-            </ul>
-        </div>
+    <div class="ks-logo-shadow navbar-brand">
+        <img src="/img/logo_trans7.png">
     </div>
-    <ul class="navbar-nav mr-auto" style="margin-left:300px;">
-                <li class="nav-item">
-                    <h5><a class="nav-link" href="/logout">Logout</a></h5>
-                </li>
+    <h4><a class="nav-link" href="/" style="color:white;">Log Editing </a></h4>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/" style="margin-left:20px;">Reference</a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/non_reference" style="margin-left:20px;"><?php if ((session()->get('priviledge')) == 1 ){echo "Non Reference";}?></a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="/historycal" style="margin-left:20px;">History Data</a></h5>
+        </li>
+        <!-- <li class="nav-item">
+            <h5>
+                <a class="nav-link" href="/report" style="margin-left:50px;">Report</a>
+            </h5>
+        </li> -->
+        <li class="nav-item dropdown">
+            <h5>
+                <a class="nav-link dropdown-toggle text-white" style="margin-left:20px;" href="/report" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:20px;">
+                Report
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/report">Report Jadwal Editor</a>
+                    <a class="dropdown-item" href="/test">Report Jadwal Booth</a>
+                </div>
+            </h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" style="margin-left:20px;" href="/logout">Logout</a></h5>
+        </li>
     </ul>
 </nav>
 <br />
 <div class="container-fluid">
-    <h2 align="center" style="color:#1b215a;">Report Log Editing (BOOTH) </h2><br />
+    <h2 align="center" style="color:#1b215a;">Report Jadwal Booth </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel-heading">
             <div class="row">
-                <!-- <div class="col-md-5" style="color:#1b215a;padding-bottom:1rem"> Report - Total Records - <b><span style="color:#1b215a;" id="total_records"></span> -->
                 </b></div>
-                <div class="col-md-12">
+                <center>
+                <div class="col-md-6">
                     <div class="input-group lg-3">
+                        
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Start Date</span>
+                            <span class="input-group-text">Select Week</span>
                         </div>
-                        <input type="text" name="from_date" id="from_date" value="YYYY - MM - DD" class="form-control">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="margin-left:10px;">End Date</span>
+                        <input type="text" id = "daterange" name="daterange" value="" class="form-control"/>
+                        <div class="input-group-prepend"> 
+                            <span class="col-sm"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
                         </div>
-                        <input type="text" name="to_date" id="to_date" value="YYYY - MM - DD" class="form-control">
                     </div>
-                    <div style="padding-top:1rem">
-                        <span class="col-mb-3"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">EXECUTE</button></center></span>
-                    </div>
-                    
+                   
                 </div>
+                </center>
             </div>
         </div>
         <br>
-        <table width="95%" border="1" cellspacing="1" cellpadding="3" align="right" style="background-color: #1b215a;color:white;">
-            <tr>
-                <!-- dummy -->
-                <th>SENIN</th>
-                <th>SELASA</th>
-                <th>RABU</th>
-                <th>KAMIS</th>
-                <th>JUMAT</th>
-                <th>SABTU</th>
-                <th>MINGGU</th>
-            </tr>
-        </table>
-        <br>
-        <table width="95%" border="1" cellspacing="1" cellpadding="3" align="right" style="background-color: white;color:black;">
-            <tr>
-                <!-- dummy -->
-                <th>14 Mar '21</th>
-                <th>15 Mar '21</th>
-                <th>16 Mar '21</th>
-                <th>17 Mar '21</th>
-                <th>18 Mar '21</th>
-                <th>19 Mar '21</th>
-                <th>20 Mar '21</th>
-            </tr>
-        </table>
-        <br><br>
-        <table width="5%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: #1b215a;color:white;">
-            <tr>
-                <th>LINEAR</th>
-            </tr>
-        </table>
-        @foreach($test2 as $t)
-            <br>
-            <br>
-            <table width="5%" align="left" style="background-color:white;color:black;">
-                <tr>
-                    <th>
-                        
-                            <a>
-                                <?php
-                                if ($t->type_booth != 'Premiere'){
-                                    echo "N";
-                                }else{
-                                    echo $t->type_booth;
-                                }
-                                ?>
-                            </a>
-                        
-                    </th>
-                </tr>
-            </table>
-            <br>
-            <table width="100%" height="5%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:#1b215a;">
-                <tr>
-                    <td rowspan="4"><center><a>{{$t->nama_booth}}</a></center></td>
-                </tr>
-                <tr>
-                    <!-- dummy -->
-                    <td><center><a>1</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a>ADA SHOW</a></center></td>
-                    <td><center><a></a></center></td>
-                    
-                </tr>
-                <tr>
-                    <td><center><a>2</a></center></td>
-                    <td><center><a>LAMBETUJUH</a></center></td>
-                    <td><center><a>LAMBETUJUH</a></center></td>
-                    <td><center><a></a></center></td>
-                    <td><center><a>LAMBETUJUH</a></center></td>
-                    <td><center><a>LAMBETUJUH</a></center></td>
-                    <td><center><a></a></center></td>
-                    <td><center><a>LAMBETUJUH</a></center></td>
-                </tr>
-                <tr>
-                    <td><center><a>3</a></center></td>
-                    <td><center><a>MAKAN RECEH</a></center></td>
-                    <td><center><a></a></center></td>
-                    <td><center><a>MAKAN RECEH</a></center></td>
-                    <td><center><a></a></center></td>
-                    <td><center><a>MAKAN RECEH</a></center></td>
-                    <td><center><a></a></center></td>
-                    <td><center><a>MAKAN RECEH</a></center></td>
-                </tr>
-            </table>
-            <br>
-            <br>
-        @endforeach
-        
-
-        <!-- <div class="panel-body">
+        <div class="panel-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead class="table-head text-center">
+                <br>
+                
+                <br>
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:50px;">
                     
+                    <thead  class=" thead2 table-head text-center">
+                        <!-- <tr>
+                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
+                            <?php 
+                            
+                                // $date = date("l",strtotime('monday this week'));
+                                // $date1 = date("l",strtotime('tuesday this week'));
+                                // $date2 = date("l",strtotime('wednesday this week'));
+                                // $date3 = date("l",strtotime('thursday this week'));
+                                // $date4 = date("l",strtotime('friday this week'));
+                                // $date5 = date("l",strtotime('saturday this week'));
+                                // $date6 = date("l",strtotime('sunday this week'));
+                                
+                                // // echo "<tr>";
+                                // echo "<th>".$date."</th>";
+                                // echo "<th>".$date1. "</th>";
+                                // echo "<th>".$date2. "</th>";
+                                // echo "<th>".$date3. "</th>";
+                                // echo "<th>".$date4. "</th>";
+                                // echo "<th>".$date5. "</th>";
+                                // echo "<th>".$date6. "</th>";
+                                // echo "</tr>";
+                            ?> 
+                        </tr> -->
+                        <!-- <tr>
+                            <td>Nama</td>
+                            <td>NIK</td>
+                            <td>Telp</td>
+                            <td colspan="7" style="background-color: black;color:white;">TANGGAL-BULAN-TAHUN</td>
+                            <?php 
+
+                                // tanggal
+                                // $datee = date("d-m-Y",strtotime('monday this week'));
+                                // $datee1 = date("d-m-Y",strtotime('tuesday this week'));
+                                // $datee2 = date("d-m-Y",strtotime('wednesday this week'));
+                                // $datee3 = date("d-m-Y",strtotime('thursday this week'));
+                                // $datee4 = date("d-m-Y",strtotime('friday this week'));
+                                // $datee5 = date("d-m-Y",strtotime('saturday this week'));
+                                // $datee6 = date("d-m-Y",strtotime('sunday this week'));
+                                
+                                // echo "<td>".$datee. "</td>";
+                                // echo "<td>".$datee1. "</td>";
+                                // echo "<td>".$datee2. "</td>";
+                                // echo "<td>".$datee3. "</td>";
+                                // echo "<td>".$datee4. "</td>";
+                                // echo "<td>".$datee5. "</td>";
+                                // echo "<td>".$datee6. "</td>";
+                                // echo "<tr>";
+                            ?> 
+                        </tr> -->
                     </thead>
-                    <tbody class="table-body text-center">
+                    <!-- <thead  class="thead2 table-head text-center">
+                        
+                    </thead> -->
+                    <tbody class="tbody2 table-body text-center">
+                        
                     </tbody>
                 </table>
                 {{ csrf_field() }}
             </div>
-        </div> -->
+        </div>
     </div>
 </div>
 </body>
 
+<script>
+$(document).ready(function(){
+        $('input[name="daterange"]').daterangepicker({
+            //default dari hari ini ke seminggu kedepan
+            startDate: '<?= date('Y-m-d', strtotime( "0 day" ) );?>', 
+            endDate: '<?= date('Y-m-d', strtotime( "+6 day" ) );?>',
+            showDropdowns: true,
+            locale: {
+                format: 'YYYY-MM-DD',
+                cancelLabel: 'Clear'
+            },
+            autoclose: true
+        });
+
+        $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+        });
+
+        $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+        var _token = $('input[name="_token"]').val();
+        var daterange = $('#daterange').val();
+        var dates = daterange.split(" - ");
+        var start = dates[0];
+        var end = dates[1];
+
+    
+        fetch_data(start, end);
+
+        function fetch_data(start = '', end = ''){
+            $.ajax({
+                url:"{{ route('report.fetch_data')}}",
+                method: "GET",
+                data:{start:start, end:end, _token:_token},
+                dataType:"json",
+                success:function(data){
+                    var output2 = '';
+                    var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+                    var start1 = new Date(start);
+                    var start2 = new Date(start);
+                    var start3 = new Date(start);
+                    var start4 = new Date(start);
+                    var start5 = new Date(start);
+                    var start6 = new Date(start);
+                    var start7 = new Date(start);
+                    start1.setDate(start1.getDate());
+                    start2.setDate(start2.getDate() + 1);
+                    start3.setDate(start3.getDate() + 2);
+                    start4.setDate(start4.getDate() + 3);
+                    start5.setDate(start5.getDate() + 4);
+                    start6.setDate(start6.getDate() + 5);
+                    start7.setDate(start7.getDate() + 6);
+                    output2 += '<tr>';
+                    output2 += '<th colspan="2" style="background-color: black;color:white;">Jadwal Booth Trans 7</th>';
+                    output2 += '<th>'+ days[start1.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start2.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start3.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start4.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start5.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start6.getDay()] +'</th>';
+                    output2 += '<th>'+ days[start7.getDay()] +'</th>';
+                    output2 += '</tr>';
+                    output2 += '<tr>';
+                    output2 += '<td>Nama Booth</td>';
+                    output2 += '<td>Shift</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start1).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start2).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start3).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start4).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start5).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start6).format('YYYY-MM-DD') +'</td>';
+                    output2 += '<td style="background-color: black;color:white;">' + moment(start7).format('YYYY-MM-DD') +'</td>';
+                    output2 += '</tr>';
+        
+                    if(data != 'null'){
+                        console.log(data);
+                        var output = '';
+                        for(var count=0; count<data.length;count++){
+                            output += '<tr>'
+                            if(data[count].nama_booth == null && data[count].logediting_usedshift == null){
+                                output += '<td> - </td>';
+                                output += '<td> - </td>';
+                            }else if(data[count].nama_booth == null){
+                                output += '<td> - </td>';
+                                output += '<td>' + data[count].logediting_usedshift + '</td>';
+                            }else if(data[count].logediting_usedshift == null){
+                                output += '<td>' + data[count].nama_booth + '</td>';
+                                output += '<td> - </td>';
+                            }else{
+                                output += '<td>' + data[count].nama_booth + '</td>';
+                                output += '<td>' + data[count].logediting_usedshift + '</td>';
+                            }
+                            
+                            //jadwal
+                            if(moment(start1).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    // output += '<th>OFF</th>';
+                                    // output += '<th>OFF</th>';
+                                    // output += '<th>OFF</th>';
+                                    // output += '<th>OFF</th>';
+                                    // output += '<th>OFF</th>';
+                                    // output += '<th>OFF</th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                }else{
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                    output += '<th> </th>';
+                                }
+                            }else if(moment(start2).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }
+                            }else if(moment(start3).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }
+                            }else if(moment(start4).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }
+                            }else if(moment(start5).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                }
+                            }else if(moment(start6).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                    output += '<th></th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                    output += '<th></th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                    output += '<th></th>';
+                                }
+                            }else if(moment(start7).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
+                                if(data[count].logediting_program == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
+                                }else if(data[count].type_booth == null){
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
+                                }else{
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th></th>';
+                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
+                                }
+                            }else{
+                                output += '<th></th>';
+                                output += '<th></th>';
+                                output += '<th></th>';
+                                output += '<th></th>';
+                                output += '<th></th>';
+                                output += '<th></th>';
+                                output += '<th></th>';
+                            }
+                            output += '</tr>'
+                        }
+                        $('tbody.tbody2').html(output);
+                    }
+                    $('thead.thead2').html(output2);
+
+                }
+            });
+        }
+        $('#filter').click(function(){
+            var output = output;
+            var daterange = $('#daterange').val();
+            var dates = daterange.split(" - ");
+            var start = dates[0];
+            var end = dates[1];
+            // var to_date = $('#to_date').val();
+            
+            if(start != '' && end != ''){
+                fetch_data(start, end);
+            }
+            else{
+                fetch_data(start, end);
+            }
+        });
+    });
 </script>
