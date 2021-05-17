@@ -141,6 +141,22 @@ class NonReferenceController extends Controller
 
         return response()->json($data);
     }
+    public function autocomplete_program(Request $request)
+    {
+        $data = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $data = Transaction_bookingediting::select('show_name')
+                    ->where('bookingediting_createddate','>=','2020-02-08')
+                    ->where('show_name','LIKE',"%$search%")
+                    ->distinct()
+                    // ->orderBy('show_name', 'asc')
+                    ->get();
+            		
+        }
+
+        return response()->json($data);
+    }
 
     public function autofill_editorNR(Request $request)
     {

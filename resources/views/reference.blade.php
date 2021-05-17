@@ -55,12 +55,12 @@
                                         </div>
                                         <div class="col-md-10 col-form-label">
                                                 <select name="show_name" id="show_name" class="form-control dynamic" data-dependent="request_id" onfocus="this.value=''" required>
-                                                    <option value="" selected="false">--Select Program Name--</option>
-                                                    @foreach ($reference_R2 as $booking2)
+                                                    <!-- <option value="" selected="false">--Select Program Name--</option> -->
+                                                    <!-- @foreach ($reference_R2 as $booking2)
                                                     <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
-                                                    @endforeach
+                                                    @endforeach -->
                                                 </select>
-                                                <p style="color:grey;">*Pilih Nama Program</p>
+                                                <p style="color:grey;">*Ketik Nama Program</p>
                                         </div>
                                         <div class="col-md-2 col-form-label">
                                             Request ID
@@ -283,6 +283,25 @@
                                 return {
                                     text: item.NIK + ' - ' + item.Nama,
                                     id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+            $('#show_name').select2({
+                placeholder: '--Select Program--',
+                ajax: {
+                    url: "{{ route('reference.autocomplete_program') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.show_name,
+                                    id: item.show_name
                                 }
                             })
                         };

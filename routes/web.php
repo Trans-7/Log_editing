@@ -48,6 +48,7 @@ Route::get('/reference/search', ['uses'=>'ReferenceController@search', 'as'=>'re
 Route::post('/reference/autofill_editor', 'ReferenceController@autofill_editor')->name('reference.autofill_editor');
 Route::get('/reference/autocomplete', 'ReferenceController@autocomplete')->name('reference.autocomplete');
 Route::post('/reference/booth', 'ReferenceController@booth')->name('reference.booth');
+Route::get('/reference/autocomplete_program', 'ReferenceController@autocomplete_program')->name('reference.autocomplete_program');
 
 //NON - REFERENCE
 Route::get('/non_reference', 'NonReferenceController@non_reference');
@@ -57,6 +58,7 @@ Route::post('/non_reference/fetchs_NR', 'NonReferenceController@fetchs_NR')->nam
 Route::post('/non_reference/autofill_NR', 'NonReferenceController@autofill_NR')->name('non_reference.autofill_NR');
 Route::get('/non_reference/autocomplete', 'NonReferenceController@autocomplete')->name('non_reference.autocomplete');
 Route::post('/non_reference/booth', 'NonReferenceController@booth')->name('non_reference.booth');
+Route::get('/non_reference/autocomplete_program', 'NonReferenceController@autocomplete_program')->name('non_reference.autocomplete_program');
 
 Route::get('/non_reference/search_N', ['uses'=>'NonReferenceController@search_N', 'as'=>'non_reference.search_N']);
 Route::post('/non_reference/autofill_editorNR', 'NonReferenceController@autofill_editorNR')->name('non_reference.autofill_editorNR');
