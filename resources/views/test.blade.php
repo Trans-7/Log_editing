@@ -191,7 +191,7 @@ $(document).ready(function(){
                     start6.setDate(start6.getDate() + 5);
                     start7.setDate(start7.getDate() + 6);
                     output2 += '<tr>';
-                    output2 += '<th colspan="2" style="background-color: black;color:white;">Jadwal Booth Trans 7</th>';
+                    output2 += '<th colspan="2" style="background-color: black;color:white;">JADWAL BOOTH TRANS 7</th>';
                     output2 += '<th>'+ days[start1.getDay()] +'</th>';
                     output2 += '<th>'+ days[start2.getDay()] +'</th>';
                     output2 += '<th>'+ days[start3.getDay()] +'</th>';
