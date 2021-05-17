@@ -78,7 +78,7 @@
                                             <option value="{{$booking2->show_name}}">{{$booking2->show_name}}</option>
                                             @endforeach -->
                                         </select>
-                                        <p style="color:grey;">*Pilih Nama Program (JIKA ADA - TIDAK WAJIB ISI)</p>
+                                        <p style="color:grey;">*Ketik Nama Program (JIKA ADA - TIDAK WAJIB ISI)</p>
                                     </div>
                                     <div class="col-md-2 col-form-label">
                                             Request ID
