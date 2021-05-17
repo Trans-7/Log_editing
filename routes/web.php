@@ -35,8 +35,8 @@ Route::get('/report', 'ReportController@report');
 Route::get('/report/fetch_data', 'ReportController@fetch_data')->name('report.fetch_data');
 
 
-Route::get('/test', 'TestController@test');
-Route::get('/test/fetch_data_test', 'TestController@fetch_data_test')->name('test.fetch_data_test');
+Route::get('/booth', 'TestController@test');
+Route::get('/booth/fetch_data_test', 'TestController@fetch_data_test')->name('test.fetch_data_test');
 
 
 //REFERENCE
