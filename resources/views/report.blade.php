@@ -69,9 +69,13 @@
                 <br>
                 
                 <br>
-                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:50px;">
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: black;color:white;margin-bottom:50px;">
+                    <thead  class="thead2 table-head text-center">
+                    </thead>
+                    <tbody class="tbody2 table-body text-center">
+                    </tbody>
                     
-                    <thead  class=" thead2 table-head text-center">
+                    <!-- <thead  class=" thead2 table-head text-center"> -->
                         <!-- <tr>
                             <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
                             <?php 
@@ -121,13 +125,13 @@
                                 // echo "<tr>";
                             ?> 
                         </tr> -->
-                    </thead>
+                    <!-- </thead> -->
                     <!-- <thead  class="thead2 table-head text-center">
                         
                     </thead> -->
-                    <tbody class="tbody2 table-body text-center">
+                    <!-- <tbody class="tbody2 table-body text-center">
                         
-                    </tbody>
+                    </tbody> -->
                 </table>
                 {{ csrf_field() }}
             </div>
@@ -173,7 +177,7 @@
                 data:{start:start, end:end, _token:_token},
                 dataType:"json",
                 success:function(data){
-                    var output2 = '';
+
                     var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
                     var start1 = new Date(start);
                     var start2 = new Date(start);
@@ -189,536 +193,102 @@
                     start5.setDate(start5.getDate() + 4);
                     start6.setDate(start6.getDate() + 5);
                     start7.setDate(start7.getDate() + 6);
-                    output2 += '<tr>';
-                    output2 += '<th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
+
+
+                    pertama = moment(start1).format('YYYY-MM-DD');
+                    kedua = moment(start2).format('YYYY-MM-DD');
+                    ketiga = moment(start3).format('YYYY-MM-DD');
+                    keempat = moment(start4).format('YYYY-MM-DD');
+                    kelima = moment(start5).format('YYYY-MM-DD');
+                    keenam = moment(start6).format('YYYY-MM-DD');
+                    ketujuh = moment(start7).format('YYYY-MM-DD');
+
+
+                    output = [pertama, kedua, ketiga, keempat, kelima, keenam, ketujuh]; //array tanggal
+                    console.log(output);
+
+                    output2 = ''
+                    // output2 += '<table border="1"><tr>';
+                    output2 += '<tr><th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
                     output2 += '<th>'+ days[start1.getDay()] +'</th>';
                     output2 += '<th>'+ days[start2.getDay()] +'</th>';
                     output2 += '<th>'+ days[start3.getDay()] +'</th>';
                     output2 += '<th>'+ days[start4.getDay()] +'</th>';
                     output2 += '<th>'+ days[start5.getDay()] +'</th>';
                     output2 += '<th>'+ days[start6.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start7.getDay()] +'</th>';
-                    output2 += '</tr>';
-                    output2 += '<tr>';
-                    output2 += '<td>Nama</td>';
-                    output2 += '<td>NIK</td>';
-                    output2 += '<td>No. Telp</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start1).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start2).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start3).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start4).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start5).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start6).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start7).format('YYYY-MM-DD') +'</td>';
-                    output2 += '</tr>';
-        
-                    if(data != 'null'){
-                        console.log(data);
-                        var output = '';
-                        for(var count=0; count<data.length;count++){
-                            output += '<tr>'
-                            //nama, nik, telp
-                            if(data[count].logediting_editor_name == null && data[count].logediting_editor_nik == null && data[count].logediting_editor_phone == null){
-                                output += '<td> - </td>';
-                                output += '<td> - </td>';
-                                output += '<td> - </td>';
-                            }else if(data[count].logediting_editor_name == null){
-                                output += '<td> - </td>';
-                                output += '<td>' + data[count].logediting_editor_nik + '</td>';
-                                output += '<td>' + data[count].logediting_editor_phone + '</td>';
-                            }else if(data[count].logediting_editor_nik == null){
-                                output += '<td>' + data[count].logediting_editor_name + '</td>';
-                                output += '<td> - </td>';
-                                output += '<td>' + data[count].logediting_editor_phone + '</td>';
-                            }else if(data[count].logediting_editor_phone == null){
-                                output += '<td>' + data[count].logediting_editor_name + '</td>';
-                                output += '<td>' + data[count].logediting_editor_nik + '</td>';
-                                output += '<td> - </td>';
-                            }else{
-                                output += '<td>' + data[count].logediting_editor_name + '</td>';
-                                output += '<td>' + data[count].logediting_editor_nik + '</td>';
-                                output += '<td>' + data[count].logediting_editor_phone + '</td>';
-                            }
-                            
-                            //jadwal
-                            if(moment(start1).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start2).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start3).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start4).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start5).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start6).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                    output += '<th>OFF</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                    output += '<th>OFF</th>';
-                                }
-                            }else if(moment(start7).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null && data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                }else if(data[count].logediting_program == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                }else if(data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                }else if(data[count].logediting_program == null && data[count].logediting_usedshift == null && data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' + 'non-reference' + ' #' + 'non-reference' + '</th>';
-                                }else if(data[count].logediting_program == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + 'non-reference' + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                }else if(data[count].logediting_usedshift == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + 'non-reference' + ' #' + data[count].nama_booth + '</th>';
-                                }else if(data[count].logeditingboot_id == null){
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + data[count].logediting_usedshift + ' #' + 'non-reference' + '</th>';
-                                }else{
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>OFF</th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' +data[count].logediting_usedshift + ' #' + data[count].nama_booth + '</th>';
-                                }
-                            }else{
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                                output += '<th>OFF</th>';
-                            }
-                            output += '</tr>'
-                        }
-                        $('tbody.tbody2').html(output);
-                    }
+                    output2 += '<th>'+ days[start7.getDay()] +'</th></tr>';
+                    output2 += '<tr><td>Nama</td><td>NIK</td><td>No. HP</td>';
+                    output.forEach(function(x) {
+                        console.log(x);
+                    });
+                    output2 += '<td>';
+                    output2 += output[0];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[1];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[2];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[3];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[4];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[5];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[6];
+                    output2 += '</td>';
+                    output2 += '</tr>' ;
                     $('thead.thead2').html(output2);
 
+                    content = ''; 
+                    flag_name = '';
+                    content_td = '';
+
+                    data.forEach(function(obj) {
+                        if(obj != null && flag_name != obj.Nama){
+                            content += '<td>';
+                            content += obj.Nama;
+                            content += '</td>';
+                            content += '<td>';
+                            content += obj.NIK;
+                            content += '</td>';
+                            content += '<td>';
+                            content += obj.Telp;
+                            content += '</td>';
+                            
+                            output.forEach(function(otp) {
+                                content += '<td>'; flag_off=0;
+                                data.forEach(function(obj2) {
+                                    if(otp == obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
+                                        content += obj2.Program + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                        flag_off = flag_off + 1;
+                                    }else if(otp != obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
+                                        content += '';
+                                    }
+                                });
+                                if(flag_off==0){
+                                    content += 'OFF';    
+                                }
+                                content += '</td>';
+                            });
+
+                            content_td += '<tr>'+content+'</tr>';
+                            content = '';
+                        }else{
+                            content = '';
+                        }
+
+                        flag_name = obj.Nama;
+                    });
+
+                    $('tbody.tbody2').html(content_td);
                 }
+                
             });
         }
         $('#filter').click(function(){

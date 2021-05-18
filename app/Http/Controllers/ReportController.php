@@ -34,26 +34,44 @@ class ReportController extends Controller
             $end = $request->end;
 
             if($start != '' && $end != ''){
-                $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
+                $report = Transaction_logediting::leftJoin(('master_booth_logediting'),
                         ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
                         ->where('logediting_useddate', '>=', array($start))
                         ->where('logediting_useddate', '<=', array($end))
-                        
-                        ->orderBy('transaction_logediting.logediting_editor_name')
-                        // ->select('logediting_editor_name')
-                        // ->groupBy('logediting_editor_name')
-                        ->select('*')
+                        ->orderBy('transaction_logediting.logediting_editor_name', 'ASC')
+                        ->orderBy('transaction_logediting.logediting_useddate', 'ASC')
+                        ->orderBy('transaction_logediting.logediting_usedshift', 'ASC')
                         ->get();
+
+                $data_json = array();
+                foreach ($report as $t){
+                    $data_json[]=  array(
+                                    "Nama" => $t->logediting_editor_name,
+                                    "NIK" => $t->logediting_editor_nik,
+                                    "Telp" => $t->logediting_editor_phone,
+                                    "Nama" => $t->logediting_editor_name,
+                                    "Tanggal" => date('Y-m-d', strtotime($t->logediting_useddate)),
+                                    "Program" => $t->logediting_program,
+                                    "Shift" =>  $t->logediting_usedshift,
+                                    "Booth" => $t->nama_booth
+                    );
+                }
             }
-            else{
-                $data = Transaction_logediting::leftJoin(('master_booth_logediting'),
-                        ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
-                        ->orderBy('transaction_logediting.logediting_editor_name')
-                        ->select('*')
-                        ->get();
-            }
-            
-            echo json_encode($data);
+            // echo $data_json;
+            // echo json_encode($data_json, true);
+            // echo json_decode($json_file, true);
+            $data = json_encode($data_json, true);
+            // $data = json_decode($json, true);
+            // dd($data);
+            // print_r($data);
+            echo $data;
+            // echo json_decode(json_encode($data_json, true)),true;
+            // echo $data;
+            // $json_file = json_encode($data_json, true);
+            // //print_r($json_file);exit();
+            // $data = json_decode($json_file, true);
+
+            // echo $data;
         }
     }
 }
