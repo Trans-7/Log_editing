@@ -251,21 +251,41 @@
 
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
-                            content += '<td>';
-                            content += obj.Nama;
-                            content += '</td>';
-                            content += '<td>';
-                            content += obj.NIK;
-                            content += '</td>';
-                            content += '<td>';
-                            content += obj.Telp;
-                            content += '</td>';
+                            if(obj.Nama != null){
+                                content += '<td>'+obj.Nama+'</td>';
+                            }else{
+                                content += '<td> - </td>';
+                            }
+                            if(obj.NIK != null){
+                                content += '<td>'+obj.NIK+'</td>';
+                            }else{
+                                content += '<td> - </td>';
+                            }
+                            if(obj.Telp != null){
+                                content += '<td>'+obj.Telp+'</td>';
+                            }else{
+                                content += '<td> - </td>';
+                            }
                             
                             output.forEach(function(otp) {
                                 content += '<td>'; flag_off=0;
                                 data.forEach(function(obj2) {
                                     if(otp == obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
-                                        content += obj2.Program + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                        if(obj2.Program == null && obj2.Shift == null){
+                                            content += 'non-reference' + ' ' + 'non-reference' + ' #' + obj2.Booth + '</br>';
+                                        }else if(obj2.Program == null && obj2.Booth == null){
+                                            content += 'non-reference' + ' ' + obj2.Shift + ' #' + 'non-reference' + '</br>';
+                                        }else if(obj2.Shift == null && obj2.Booth == null){
+                                            content += obj2.Program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</br>';
+                                        }else if(obj2.Program == null){
+                                            content += 'non-reference' + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                        }else if(obj2.Shift == null){
+                                            content += obj2.Program + ' ' + 'non-reference' + ' #' + obj2.Booth + '</br>';
+                                        }else if(obj2.Booth == null){
+                                            content += obj2.Program + ' ' + obj2.Shift + ' #' + 'non-reference' + '</br>';
+                                        }else{
+                                            content += obj2.Program + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                        }
                                         flag_off = flag_off + 1;
                                     }else if(otp != obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
                                         content += '';
