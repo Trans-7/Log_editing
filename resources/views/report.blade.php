@@ -66,9 +66,7 @@
         <br>
         <div class="panel-body">
             <div class="table-responsive">
-                <br>
-                
-                <br>
+                <p>*default = data per-7 hari</p>
                 <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" >
                     <thead  class="thead2 table-head text-center">
                     </thead>
@@ -190,7 +188,6 @@
                     content = ''; 
                     flag_name = '';
                     content_td = '';
-
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
                             if(obj.Nama != null){

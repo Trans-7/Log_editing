@@ -39,7 +39,7 @@
     </ul>
 </nav>
 <br />
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom:50px;">
     <h2 align="center" style="color:#1b215a;">Report Jadwal Booth </h2><br />
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
@@ -66,9 +66,7 @@
         <br>
         <div class="panel-body">
             <div class="table-responsive">
-                <br>
-                
-                <br>
+                <p>*default = data per-7 hari</p>
                 <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left">
                     <thead  class="thead2 table-head text-center">
                     </thead>
@@ -188,50 +186,63 @@ $(document).ready(function(){
                     output2 += '</tr>' ;
                     $('thead.thead2').html(output2);
 
+                    booth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q1", "Q2", "R", "S", "T", "U", "V", "W",
+                            "X", "1", "2", "3", "4", "LT1", "10A", "10B", "10C", "10D", "LIVE1", "LIVE2", "DLK"]; //array Booth
+                    shift = [1, 2, 3];
+
                     content = ''; 
                     flag_name = '';
+                    flag_s = '';
                     content_td = '';
-
-                    data.forEach(function(obj) {
-                        if(obj != null && flag_name != obj.Booth){
-                            if(obj.Booth != null){
-                                content += '<td colspan="2">'+obj.Booth+'</td>';
-                            }else{
-                                content += '<td colspan="2"> - </td>';
-                            }
-                            if(obj.Shift != null){
-                                content += '<td >'+obj.Shift+'</td>';
-                            }else{
-                                content += '<td > - </td>';
-                            }
-                            
-                            output.forEach(function(otp) {
-                                content += '<td>'; flag_off=0;
-                                data.forEach(function(obj2) {
-                                    if(otp == obj2.Tanggal && obj2.Booth == obj.Booth){
-                                        if(obj2.Program == null){
-                                            content += 'non-reference </br>';
-                                        }else{
-                                            content += obj.Program + '</br>';
-                                        }
-                                        flag_off = flag_off + 1;
-                                    }else if(otp != obj2.Tanggal && obj2.Booth == obj.Booth ){
-                                        content += '';
-                                    }
-                                });
-                                if(flag_off==0){
-                                    content += '<h6>OFF</h6>';    
+                    
+                    // data.forEach(function(obj) {
+                    booth.forEach(function(obj) {
+                        shift.forEach(function(s){
+                            if(obj != null && s != null && flag_name != obj && flag_s != s){
+                                if(obj != null && obj==obj && s==1){
+                                    flag = 0;
+                                    content += '<td rowspan ="3" colspan="2" >'+ obj +'</td>';
+                                    flag = flag + 1;
                                 }
-                                content += '</td>';
-                            });
+                                // else{
+                                //     content += '<td colspan="2"> - </td>';
+                                // }
+                                if(s != null ){
+                                    content += '<td>'+ s +'</td>';
+                                }else{
+                                    content += '<td > - </td>';
+                                }
+                                
+                                output.forEach(function(otp) {
+                                    content += '<td>'; flag_off=0;
+                                    data.forEach(function(obj2) {
+                                        if(otp == obj2.Tanggal && obj2.Booth == obj && obj2.Shift == s ){
+                                            if(obj2.Program == null){
+                                                content += 'non-reference </br>';
+                                            }else{
+                                                content += obj2.Program + ' (' + obj2.Type_booth + ')</br>';
+                                            }
+                                            flag_off = flag_off + 1;
+                                        }else if(otp != obj2.Tanggal && obj2.Booth == obj && obj2.Shift == s){
+                                            content += '';
+                                        }
+                                    });
+                                    if(flag_off==0){
+                                        content += '<h6>OFF</h6>';    
+                                    }
+                                    content += '</td>';
+                                });
 
-                            content_td += '<tr>'+content+'</tr>';
-                            content = '';
-                        }else{
-                            content = '';
-                        }
+                                content_td += '<tr>'+content+'</tr>';
+                                content = '';
+                            }else{
+                                content = '';
+                            }
 
-                        flag_name = obj.Booth;
+                            flag_name = obj.Booth;
+                            flag_s = obj.Shift;
+                        });
+                        
                     });
 
                     $('tbody.tbody2').html(content_td);

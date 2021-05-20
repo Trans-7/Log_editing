@@ -49,7 +49,8 @@ class TestController extends Controller
                                     "Tanggal" => date('Y-m-d', strtotime($t->logediting_useddate)),
                                     "Program" => $t->logediting_program,
                                     "Shift" =>  $t->logediting_usedshift,
-                                    "Booth" => $t->nama_booth
+                                    "Booth" => $t->nama_booth,
+                                    "Type_booth" => $t->type_booth
                     );
                 }
             }
