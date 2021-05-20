@@ -201,14 +201,14 @@ $(document).ready(function(){
                             if(obj != null && s != null && flag_name != obj && flag_s != s){
                                 if(obj != null && obj==obj && s==1){
                                     flag = 0;
-                                    content += '<td rowspan ="3" colspan="2" >'+ obj +'</td>';
+                                    content += '<td rowspan ="3" colspan="2" style="background-color:#B0E0E6; color:black; ">'+ obj +'</td>';
                                     flag = flag + 1;
                                 }
                                 // else{
                                 //     content += '<td colspan="2"> - </td>';
                                 // }
                                 if(s != null ){
-                                    content += '<td>'+ s +'</td>';
+                                    content += '<td style="background-color:#AFEEEE; color:black; ">'+ s +'</td>';
                                 }else{
                                     content += '<td > - </td>';
                                 }

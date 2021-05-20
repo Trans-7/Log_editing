@@ -191,19 +191,19 @@
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
                             if(obj.Nama != null){
-                                content += '<td>'+obj.Nama+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.Nama+'</td>';
                             }else{
-                                content += '<td> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
                             }
                             if(obj.NIK != null){
-                                content += '<td>'+obj.NIK+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.NIK+'</td>';
                             }else{
-                                content += '<td> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
                             }
                             if(obj.Telp != null){
-                                content += '<td>'+obj.Telp+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.Telp+'</td>';
                             }else{
-                                content += '<td> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
                             }
                             
                             output.forEach(function(otp) {
