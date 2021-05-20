@@ -28,8 +28,8 @@
                 Report
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/report">Report Jadwal Editor</a>
-                    <a class="dropdown-item" href="/booth">Report Jadwal Booth</a>
+                    <a class="dropdown-item" href="/report">Jadwal Editor</a>
+                    <a class="dropdown-item" href="/booth">Jadwal Booth</a>
                 </div>
             </h5>
         </li>
@@ -51,7 +51,7 @@
                     <div class="input-group lg-3">
                         
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Select Week</span>
+                            <span class="input-group-text">Select 7-Days</span>
                         </div>
                         <input type="text" id = "daterange" name="daterange" value="" class="form-control"/>
                         <div class="input-group-prepend"> 
@@ -69,69 +69,11 @@
                 <br>
                 
                 <br>
-                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: black;color:white;margin-bottom:50px;">
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" >
                     <thead  class="thead2 table-head text-center">
                     </thead>
-                    <tbody class="tbody2 table-body text-center">
+                    <tbody class="tbody2 table-body text-center" >
                     </tbody>
-                    
-                    <!-- <thead  class=" thead2 table-head text-center"> -->
-                        <!-- <tr>
-                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
-                            <?php 
-                            
-                                // $date = date("l",strtotime('monday this week'));
-                                // $date1 = date("l",strtotime('tuesday this week'));
-                                // $date2 = date("l",strtotime('wednesday this week'));
-                                // $date3 = date("l",strtotime('thursday this week'));
-                                // $date4 = date("l",strtotime('friday this week'));
-                                // $date5 = date("l",strtotime('saturday this week'));
-                                // $date6 = date("l",strtotime('sunday this week'));
-                                
-                                // // echo "<tr>";
-                                // echo "<th>".$date."</th>";
-                                // echo "<th>".$date1. "</th>";
-                                // echo "<th>".$date2. "</th>";
-                                // echo "<th>".$date3. "</th>";
-                                // echo "<th>".$date4. "</th>";
-                                // echo "<th>".$date5. "</th>";
-                                // echo "<th>".$date6. "</th>";
-                                // echo "</tr>";
-                            ?> 
-                        </tr> -->
-                        <!-- <tr>
-                            <td>Nama</td>
-                            <td>NIK</td>
-                            <td>Telp</td>
-                            <td colspan="7" style="background-color: black;color:white;">TANGGAL-BULAN-TAHUN</td>
-                            <?php 
-
-                                // tanggal
-                                // $datee = date("d-m-Y",strtotime('monday this week'));
-                                // $datee1 = date("d-m-Y",strtotime('tuesday this week'));
-                                // $datee2 = date("d-m-Y",strtotime('wednesday this week'));
-                                // $datee3 = date("d-m-Y",strtotime('thursday this week'));
-                                // $datee4 = date("d-m-Y",strtotime('friday this week'));
-                                // $datee5 = date("d-m-Y",strtotime('saturday this week'));
-                                // $datee6 = date("d-m-Y",strtotime('sunday this week'));
-                                
-                                // echo "<td>".$datee. "</td>";
-                                // echo "<td>".$datee1. "</td>";
-                                // echo "<td>".$datee2. "</td>";
-                                // echo "<td>".$datee3. "</td>";
-                                // echo "<td>".$datee4. "</td>";
-                                // echo "<td>".$datee5. "</td>";
-                                // echo "<td>".$datee6. "</td>";
-                                // echo "<tr>";
-                            ?> 
-                        </tr> -->
-                    <!-- </thead> -->
-                    <!-- <thead  class="thead2 table-head text-center">
-                        
-                    </thead> -->
-                    <!-- <tbody class="tbody2 table-body text-center">
-                        
-                    </tbody> -->
                 </table>
                 {{ csrf_field() }}
             </div>
@@ -292,7 +234,7 @@
                                     }
                                 });
                                 if(flag_off==0){
-                                    content += 'OFF';    
+                                    content += '<h6>OFF</h6>';    
                                 }
                                 content += '</td>';
                             });

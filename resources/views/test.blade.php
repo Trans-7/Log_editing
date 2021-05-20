@@ -28,8 +28,8 @@
                 Report
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/report">Report Jadwal Editor</a>
-                    <a class="dropdown-item" href="/booth">Report Jadwal Booth</a>
+                    <a class="dropdown-item" href="/report">Jadwal Editor</a>
+                    <a class="dropdown-item" href="/booth">Jadwal Booth</a>
                 </div>
             </h5>
         </li>
@@ -51,7 +51,7 @@
                     <div class="input-group lg-3">
                         
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Select Week</span>
+                            <span class="input-group-text">Select 7-Days</span>
                         </div>
                         <input type="text" id = "daterange" name="daterange" value="" class="form-control"/>
                         <div class="input-group-prepend"> 
@@ -69,64 +69,10 @@
                 <br>
                 
                 <br>
-                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" style="background-color: white;color:black;margin-bottom:50px;">
-                    
-                    <thead  class=" thead2 table-head text-center">
-                        <!-- <tr>
-                            <th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7 2021</th>
-                            <?php 
-                            
-                                // $date = date("l",strtotime('monday this week'));
-                                // $date1 = date("l",strtotime('tuesday this week'));
-                                // $date2 = date("l",strtotime('wednesday this week'));
-                                // $date3 = date("l",strtotime('thursday this week'));
-                                // $date4 = date("l",strtotime('friday this week'));
-                                // $date5 = date("l",strtotime('saturday this week'));
-                                // $date6 = date("l",strtotime('sunday this week'));
-                                
-                                // // echo "<tr>";
-                                // echo "<th>".$date."</th>";
-                                // echo "<th>".$date1. "</th>";
-                                // echo "<th>".$date2. "</th>";
-                                // echo "<th>".$date3. "</th>";
-                                // echo "<th>".$date4. "</th>";
-                                // echo "<th>".$date5. "</th>";
-                                // echo "<th>".$date6. "</th>";
-                                // echo "</tr>";
-                            ?> 
-                        </tr> -->
-                        <!-- <tr>
-                            <td>Nama</td>
-                            <td>NIK</td>
-                            <td>Telp</td>
-                            <td colspan="7" style="background-color: black;color:white;">TANGGAL-BULAN-TAHUN</td>
-                            <?php 
-
-                                // tanggal
-                                // $datee = date("d-m-Y",strtotime('monday this week'));
-                                // $datee1 = date("d-m-Y",strtotime('tuesday this week'));
-                                // $datee2 = date("d-m-Y",strtotime('wednesday this week'));
-                                // $datee3 = date("d-m-Y",strtotime('thursday this week'));
-                                // $datee4 = date("d-m-Y",strtotime('friday this week'));
-                                // $datee5 = date("d-m-Y",strtotime('saturday this week'));
-                                // $datee6 = date("d-m-Y",strtotime('sunday this week'));
-                                
-                                // echo "<td>".$datee. "</td>";
-                                // echo "<td>".$datee1. "</td>";
-                                // echo "<td>".$datee2. "</td>";
-                                // echo "<td>".$datee3. "</td>";
-                                // echo "<td>".$datee4. "</td>";
-                                // echo "<td>".$datee5. "</td>";
-                                // echo "<td>".$datee6. "</td>";
-                                // echo "<tr>";
-                            ?> 
-                        </tr> -->
+                <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left">
+                    <thead  class="thead2 table-head text-center">
                     </thead>
-                    <!-- <thead  class="thead2 table-head text-center">
-                        
-                    </thead> -->
                     <tbody class="tbody2 table-body text-center">
-                        
                     </tbody>
                 </table>
                 {{ csrf_field() }}
@@ -174,7 +120,7 @@ $(document).ready(function(){
                 data:{start:start, end:end, _token:_token},
                 dataType:"json",
                 success:function(data){
-                    var output2 = '';
+
                     var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
                     var start1 = new Date(start);
                     var start2 = new Date(start);
@@ -190,251 +136,105 @@ $(document).ready(function(){
                     start5.setDate(start5.getDate() + 4);
                     start6.setDate(start6.getDate() + 5);
                     start7.setDate(start7.getDate() + 6);
-                    output2 += '<tr>';
-                    output2 += '<th colspan="2" style="background-color: black;color:white;">JADWAL BOOTH TRANS 7</th>';
+
+
+                    pertama = moment(start1).format('YYYY-MM-DD');
+                    kedua = moment(start2).format('YYYY-MM-DD');
+                    ketiga = moment(start3).format('YYYY-MM-DD');
+                    keempat = moment(start4).format('YYYY-MM-DD');
+                    kelima = moment(start5).format('YYYY-MM-DD');
+                    keenam = moment(start6).format('YYYY-MM-DD');
+                    ketujuh = moment(start7).format('YYYY-MM-DD');
+
+
+                    output = [pertama, kedua, ketiga, keempat, kelima, keenam, ketujuh]; //array tanggal
+                    console.log(output);
+
+                    output2 = ''
+                    // output2 += '<table border="1"><tr>';
+                    output2 += '<tr><th colspan="3" style="background-color: black;color:white;">JADWAL EDITING BOOTH TRANS 7</th>';
                     output2 += '<th>'+ days[start1.getDay()] +'</th>';
                     output2 += '<th>'+ days[start2.getDay()] +'</th>';
                     output2 += '<th>'+ days[start3.getDay()] +'</th>';
                     output2 += '<th>'+ days[start4.getDay()] +'</th>';
                     output2 += '<th>'+ days[start5.getDay()] +'</th>';
                     output2 += '<th>'+ days[start6.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start7.getDay()] +'</th>';
-                    output2 += '</tr>';
-                    output2 += '<tr>';
-                    output2 += '<td>Nama Booth</td>';
-                    output2 += '<td>Shift</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start1).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start2).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start3).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start4).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start5).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start6).format('YYYY-MM-DD') +'</td>';
-                    output2 += '<td style="background-color: black;color:white;">' + moment(start7).format('YYYY-MM-DD') +'</td>';
-                    output2 += '</tr>';
-        
-                    if(data != 'null'){
-                        console.log(data);
-                        var output = '';
-                        for(var count=0; count<data.length;count++){
-                            output += '<tr>'
-                            if(data[count].nama_booth == null && data[count].logediting_usedshift == null){
-                                output += '<td> - </td>';
-                                output += '<td> - </td>';
-                            }else if(data[count].nama_booth == null){
-                                output += '<td> - </td>';
-                                output += '<td>' + data[count].logediting_usedshift + '</td>';
-                            }else if(data[count].logediting_usedshift == null){
-                                output += '<td>' + data[count].nama_booth + '</td>';
-                                output += '<td> - </td>';
-                            }else{
-                                output += '<td>' + data[count].nama_booth + '</td>';
-                                output += '<td>' + data[count].logediting_usedshift + '</td>';
-                            }
-                            
-                            //jadwal
-                            if(moment(start1).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    // output += '<th>OFF</th>';
-                                    // output += '<th>OFF</th>';
-                                    // output += '<th>OFF</th>';
-                                    // output += '<th>OFF</th>';
-                                    // output += '<th>OFF</th>';
-                                    // output += '<th>OFF</th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                }else{
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                    output += '<th> </th>';
-                                }
-                            }else if(moment(start2).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }
-                            }else if(moment(start3).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }
-                            }else if(moment(start4).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }
-                            }else if(moment(start5).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                }
-                            }else if(moment(start6).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                    output += '<th></th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                    output += '<th></th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                    output += '<th></th>';
-                                }
-                            }else if(moment(start7).format('YYYY-MM-DD') == moment(data[count].logediting_useddate).format('YYYY-MM-DD')){
-                                if(data[count].logediting_program == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + 'non-reference' + ' ' + ' (' + data[count].type_booth + ')'+'</th>';
-                                }else if(data[count].type_booth == null){
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (non-reference)'+'</th>';
-                                }else{
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th></th>';
-                                    output += '<th>' + data[count].logediting_program + ' ' + ' (' + data[count].type_booth + ')'+ '</th>';
-                                }
-                            }else{
-                                output += '<th></th>';
-                                output += '<th></th>';
-                                output += '<th></th>';
-                                output += '<th></th>';
-                                output += '<th></th>';
-                                output += '<th></th>';
-                                output += '<th></th>';
-                            }
-                            output += '</tr>'
-                        }
-                        $('tbody.tbody2').html(output);
-                    }
+                    output2 += '<th>'+ days[start7.getDay()] +'</th></tr>';
+                    output2 += '<tr><td colspan="2">Nama Booth</td><td>Shift</td>';
+                    output.forEach(function(x) {
+                        console.log(x);
+                    });
+                    output2 += '<td>';
+                    output2 += output[0];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[1];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[2];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[3];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[4];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[5];
+                    output2 += '</td>';
+                    output2 += '<td>';
+                    output2 += output[6];
+                    output2 += '</td>';
+                    output2 += '</tr>' ;
                     $('thead.thead2').html(output2);
 
+                    content = ''; 
+                    flag_name = '';
+                    content_td = '';
+
+                    data.forEach(function(obj) {
+                        if(obj != null && flag_name != obj.Booth){
+                            if(obj.Booth != null){
+                                content += '<td colspan="2">'+obj.Booth+'</td>';
+                            }else{
+                                content += '<td colspan="2"> - </td>';
+                            }
+                            if(obj.Shift != null){
+                                content += '<td >'+obj.Shift+'</td>';
+                            }else{
+                                content += '<td > - </td>';
+                            }
+                            
+                            output.forEach(function(otp) {
+                                content += '<td>'; flag_off=0;
+                                data.forEach(function(obj2) {
+                                    if(otp == obj2.Tanggal && obj2.Booth == obj.Booth){
+                                        if(obj2.Program == null){
+                                            content += 'non-reference </br>';
+                                        }else{
+                                            content += obj.Program + '</br>';
+                                        }
+                                        flag_off = flag_off + 1;
+                                    }else if(otp != obj2.Tanggal && obj2.Booth == obj.Booth ){
+                                        content += '';
+                                    }
+                                });
+                                if(flag_off==0){
+                                    content += '<h6>OFF</h6>';    
+                                }
+                                content += '</td>';
+                            });
+
+                            content_td += '<tr>'+content+'</tr>';
+                            content = '';
+                        }else{
+                            content = '';
+                        }
+
+                        flag_name = obj.Booth;
+                    });
+
+                    $('tbody.tbody2').html(content_td);
                 }
             });
         }
