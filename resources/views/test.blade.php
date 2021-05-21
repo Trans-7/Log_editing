@@ -1,5 +1,5 @@
 <link rel="icon" href="/img/logo.png">
-<title>Log Editing - Report</title>
+<title>TRANS 7 - Log Editing - Report (Booth)</title>
 @include ('head+nav')
 <nav class="navbar navbar-expand-lg nav navbar-dark static-top">
     <div class="ks-logo-shadow navbar-brand">
