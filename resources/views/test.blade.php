@@ -150,14 +150,14 @@ $(document).ready(function(){
 
                     output2 = ''
                     // output2 += '<table border="1"><tr>';
-                    output2 += '<tr><th colspan="3" style="background-color: black;color:white;">JADWAL EDITING BOOTH TRANS 7</th>';
-                    output2 += '<th>'+ days[start1.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start2.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start3.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start4.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start5.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start6.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start7.getDay()] +'</th></tr>';
+                    output2 += '<tr><th colspan="3" style="background-color: black;color:white; width:30%;">JADWAL EDITING BOOTH TRANS 7</th>';
+                    output2 += '<th style="width:10%;">'+ days[start1.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start2.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start3.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start4.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start5.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start6.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start7.getDay()] +'</th></tr>';
                     output2 += '<tr><td colspan="2">Nama Booth</td><td>Shift</td>';
                     output.forEach(function(x) {
                         console.log(x);
@@ -201,14 +201,14 @@ $(document).ready(function(){
                             if(obj != null && s != null && flag_name != obj && flag_s != s){
                                 if(obj != null && obj==obj && s==1){
                                     flag = 0;
-                                    content += '<td rowspan ="3" colspan="2" style="background-color:#B0E0E6; color:black; ">'+ obj +'</td>';
+                                    content += '<td rowspan ="3" colspan="2" style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+ obj +'</td>';
                                     flag = flag + 1;
                                 }
                                 // else{
                                 //     content += '<td colspan="2"> - </td>';
                                 // }
                                 if(s != null ){
-                                    content += '<td style="background-color:#AFEEEE; color:black; ">'+ s +'</td>';
+                                    content += '<td style="background-color:#AFEEEE; color:black; font-weight: bold; ">'+ s +'</td>';
                                 }else{
                                     content += '<td > - </td>';
                                 }

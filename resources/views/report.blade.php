@@ -149,14 +149,14 @@
 
                     output2 = ''
                     // output2 += '<table border="1"><tr>';
-                    output2 += '<tr><th colspan="3" style="background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
-                    output2 += '<th>'+ days[start1.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start2.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start3.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start4.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start5.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start6.getDay()] +'</th>';
-                    output2 += '<th>'+ days[start7.getDay()] +'</th></tr>';
+                    output2 += '<tr><th colspan="3" style="width:30%;background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
+                    output2 += '<th style="width:10%;">'+ days[start1.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start2.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start3.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start4.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start5.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start6.getDay()] +'</th>';
+                    output2 += '<th style="width:10%;">'+ days[start7.getDay()] +'</th></tr>';
                     output2 += '<tr><td>Nama</td><td>NIK</td><td>No. HP</td>';
                     output.forEach(function(x) {
                         console.log(x);
@@ -191,19 +191,19 @@
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
                             if(obj.Nama != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.Nama+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.Nama+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
                             }
                             if(obj.NIK != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.NIK+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.NIK+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
                             }
                             if(obj.Telp != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; ">'+obj.Telp+'</td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.Telp+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; "> - </td>';
+                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
                             }
                             
                             output.forEach(function(otp) {
@@ -241,10 +241,8 @@
                         }else{
                             content = '';
                         }
-
                         flag_name = obj.Nama;
                     });
-
                     $('tbody.tbody2').html(content_td);
                 }
                 
