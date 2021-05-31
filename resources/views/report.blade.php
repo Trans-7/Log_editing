@@ -187,7 +187,7 @@
 
                     content = ''; 
                     flag_name = '';
-                    content_td = '<td colspan="10" style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+'EMPTY DATA'+'</td>';
+                    content_td = '';
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
                             if(obj.Nama != null){
