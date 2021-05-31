@@ -68,7 +68,7 @@
             <div class="table-responsive">
                 <p>*default = data per-7 hari</p>
                 <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left" >
-                    <thead  class="thead2 table-head text-center">
+                    <thead  class="thead2 table-head text-center" style="background-color:black; color:white;">
                     </thead>
                     <tbody class="tbody2 table-body text-center" >
                     </tbody>
@@ -149,14 +149,64 @@
 
                     output2 = ''
                     // output2 += '<table border="1"><tr>';
-                    output2 += '<tr><th colspan="3" style="width:30%;background-color: black;color:white;">JADWAL EDITING EDITOR TRANS 7</th>';
-                    output2 += '<th style="width:10%;">'+ days[start1.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start2.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start3.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start4.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start5.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start6.getDay()] +'</th>';
-                    output2 += '<th style="width:10%;">'+ days[start7.getDay()] +'</th></tr>';
+                    output2 += '<tr><th colspan="3" style="width:30%;background-color: white;color:black;">JADWAL EDITING EDITOR TRANS 7</th>';
+                    if (days[start1.getDay()] == "Minggu"){
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else if (days[start2.getDay()] == "Minggu") {
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else if (days[start3.getDay()] == "Minggu"){
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else if (days[start4.getDay()] == "Minggu"){
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else if (days[start5.getDay()] == "Minggu"){
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else if (days[start6.getDay()] == "Minggu"){
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start7.getDay()] +'</th></tr>';
+                    }else{
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start1.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start2.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start3.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start4.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start5.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: grey;color:black;">'+ days[start6.getDay()] +'</th>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                    }
                     output2 += '<tr><td>Nama</td><td>NIK</td><td>No. HP</td>';
                     output.forEach(function(x) {
                         console.log(x);
@@ -191,39 +241,40 @@
                     data.forEach(function(obj) {
                         if(obj != null && flag_name != obj.Nama){
                             if(obj.Nama != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.Nama+'</td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold; ">'+obj.Nama+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold;"> - </td>';
                             }
                             if(obj.NIK != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.NIK+'</td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold; ">'+obj.NIK+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold;"> - </td>';
                             }
                             if(obj.Telp != null){
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold; ">'+obj.Telp+'</td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold; ">'+obj.Telp+'</td>';
                             }else{
-                                content += '<td style="background-color:#B0E0E6; color:black; font-weight: bold;"> - </td>';
+                                content += '<td style="background-color:white; color:black; font-weight: bold;"> - </td>';
                             }
                             
                             output.forEach(function(otp) {
-                                content += '<td>'; flag_off=0;
+                                // content += '<td>'; 
+                                flag_off=0;
                                 data.forEach(function(obj2) {
                                     if(otp == obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
                                         if(obj2.Program == null && obj2.Shift == null){
-                                            content += 'non-reference' + ' ' + 'non-reference' + ' #' + obj2.Booth + '</br>';
+                                            content += '<td style="font-weight: bold;"> non-reference' + ' ' + 'non-reference' + ' #' + obj2.Booth + '</td></br>';
                                         }else if(obj2.Program == null && obj2.Booth == null){
-                                            content += 'non-reference' + ' ' + obj2.Shift + ' #' + 'non-reference' + '</br>';
+                                            content += '<td style="font-weight: bold;"> non-reference' + ' ' + obj2.Shift + ' #' + 'non-reference' + '</td></br>';
                                         }else if(obj2.Shift == null && obj2.Booth == null){
-                                            content += obj2.Program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</br>';
+                                            content += '<td style="font-weight: bold;">' +obj2.Program + ' ' + 'non-reference' + ' #' + 'non-reference' + '</td></br>';
                                         }else if(obj2.Program == null){
-                                            content += 'non-reference' + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                            content += '<td style="font-weight: bold;"> non-reference' + ' ' + obj2.Shift + ' #' + obj2.Booth + '</td></br>';
                                         }else if(obj2.Shift == null){
-                                            content += obj2.Program + ' ' + 'non-reference' + ' #' + obj2.Booth + '</br>';
+                                            content += '<td style="font-weight: bold;">' + obj2.Program + ' ' + 'non-reference' + ' #' + obj2.Booth + '</td></br>';
                                         }else if(obj2.Booth == null){
-                                            content += obj2.Program + ' ' + obj2.Shift + ' #' + 'non-reference' + '</br>';
+                                            content += '<td style="font-weight: bold;">' + obj2.Program + ' ' + obj2.Shift + ' #' + 'non-reference' + '</td></br>';
                                         }else{
-                                            content += obj2.Program + ' ' + obj2.Shift + ' #' + obj2.Booth + '</br>';
+                                            content += '<td style="font-weight: bold;">' + obj2.Program + ' ' + obj2.Shift + ' #' + obj2.Booth + '</td></br>';
                                         }
                                         flag_off = flag_off + 1;
                                     }else if(otp != obj2.Tanggal && obj2.Nama == obj.Nama && obj2.NIK == obj.NIK && obj2.Telp == obj.Telp){
@@ -231,9 +282,9 @@
                                     }
                                 });
                                 if(flag_off==0){
-                                    content += '<h6>OFF</h6>';    
+                                    content += '<td style="background-color:grey; color:black; font-weight: bold;">OFF</td>';
                                 }
-                                content += '</td>';
+                                // content += '</td>';
                             });
 
                             content_td += '<tr>'+content+'</tr>';

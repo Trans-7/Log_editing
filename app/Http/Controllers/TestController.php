@@ -54,10 +54,23 @@ class TestController extends Controller
                     );
                 }
             }
+
+            $data_booth_count[]= array (
+                "booth_name" => "A",
+                "count" => 1
+            );
+
+            $data_booth_count[]= array (
+                "booth_name" => "B",
+                "count" => 1
+            );
+
+            
+
             // echo $data_json;
             // echo json_encode($data_json, true);
-            // echo json_decode($json_file, true);
-            $data = json_encode($data_json, true);
+            // echo json_decode($json_file, true); array('result1'=>$arr1,'result2'=>$arr2)
+            $data = json_encode(array('data_booth_count'=>$data_booth_count,'data_json'=>$data_json), true);
             // $data = json_decode($json, true);
             // dd($data);
             // print_r($data);

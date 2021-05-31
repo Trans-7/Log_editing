@@ -45,6 +45,16 @@ class ReportController extends Controller
 
                 $data_json = array();
                 foreach ($report as $t){
+                    
+                    $shift_name = "";
+                    if($t->logediting_usedshift == 1){
+                        $shift_name = "00";
+                    }else if($t->logediting_usedshift == 2){
+                        $shift_name = "08";
+                    }else{
+                        $shift_name = "16";
+                    }
+                    
                     $data_json[]=  array(
                                     "Nama" => $t->logediting_editor_name,
                                     "NIK" => $t->logediting_editor_nik,
@@ -52,7 +62,7 @@ class ReportController extends Controller
                                     "Nama" => $t->logediting_editor_name,
                                     "Tanggal" => date('Y-m-d', strtotime($t->logediting_useddate)),
                                     "Program" => $t->logediting_program,
-                                    "Shift" =>  $t->logediting_usedshift,
+                                    "Shift" =>  $shift_name,
                                     "Booth" => $t->nama_booth
                     );
                 }
