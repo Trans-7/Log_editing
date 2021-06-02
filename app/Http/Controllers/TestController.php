@@ -53,35 +53,28 @@ class TestController extends Controller
                                     "Type_booth" => $t->type_booth
                     );
                 }
+                $booth = Transaction_logediting::leftJoin(('master_booth_logediting'),
+                    ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
+                    // ->where('logediting_useddate', '>=', '2021-05-01 00:00:00.000')
+                    // ->where('logediting_useddate', '<=', '2021-06-06 00:00:00.000')
+                    ->where('logediting_useddate', '>=', array($start))
+                    ->where('logediting_useddate', '<=', array($end))
+                    ->select('master_booth_logediting.nama_booth', \DB::raw('COUNT(transaction_logediting.logeditingboot_id) AS jumlah_data'))
+                    ->groupBy('master_booth_logediting.nama_booth')
+                    ->get();
+                $data_booth_count = array();
+                foreach ($booth as $b){
+                    $data_booth_count[]=  array(
+                        "Booth" => $b->nama_booth,
+                        "Jumlah_data" => $b->jumlah_data
+                    );
+                }
             }
-
-            $data_booth_count[]= array (
-                "booth_name" => "A",
-                "count" => 1
-            );
-
-            $data_booth_count[]= array (
-                "booth_name" => "B",
-                "count" => 1
-            );
-
             
-
-            // echo $data_json;
-            // echo json_encode($data_json, true);
-            // echo json_decode($json_file, true); array('result1'=>$arr1,'result2'=>$arr2)
             $data = json_encode(array('data_booth_count'=>$data_booth_count,'data_json'=>$data_json), true);
-            // $data = json_decode($json, true);
-            // dd($data);
-            // print_r($data);
+            
             echo $data;
-            // echo json_decode(json_encode($data_json, true)),true;
-            // echo $data;
-            // $json_file = json_encode($data_json, true);
-            // //print_r($json_file);exit();
-            // $data = json_decode($json_file, true);
-
-            // echo $data;
+            
         }
     }
 }
