@@ -68,7 +68,7 @@
             <div class="table-responsive">
                 <p>*default = data per-7 hari</p>
                 <table width="100%" border="1" cellspacing="1" cellpadding="3" align="left">
-                    <thead  class="thead2 table-head text-center" style="background-color:grey; color:black;font-weight: bold;">
+                    <thead  class="thead2 table-head text-center">
                     </thead>
                     <tbody class="tbody2 table-body text-center">
                     </tbody>
@@ -150,7 +150,7 @@ $(document).ready(function(){
 
                     output2 = ''
                     // output2 += '<table border="1"><tr>';
-                    output2 += '<tr><th colspan="3" style="background-color: white;color:black; width:30%;">JADWAL EDITING BOOTH TRANS 7</th>';
+                    output2 += '<tr><th colspan="3" style="background-color: white;color:black; width:20%;">JADWAL EDITING BOOTH TRANS 7</th>';
                     if (days[start1.getDay()] == "Minggu"){
                         output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -158,7 +158,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else if (days[start2.getDay()] == "Minggu") {
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -166,7 +167,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else if (days[start3.getDay()] == "Minggu"){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -174,7 +176,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else if (days[start4.getDay()] == "Minggu"){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -182,7 +185,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else if (days[start5.getDay()] == "Minggu"){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -190,7 +194,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else if (days[start6.getDay()] == "Minggu"){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -198,7 +203,8 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }else{
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start1.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start2.getDay()] +'</th>';
@@ -206,38 +212,42 @@ $(document).ready(function(){
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start4.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start5.getDay()] +'</th>';
                         output2 += '<th style="width:10%; background-color: black;color:white;">'+ days[start6.getDay()] +'</th>';
-                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start7.getDay()] +'</th></tr>';
+                        output2 += '<th style="width:10%; background-color: red;color:white;">'+ days[start7.getDay()] +'</th>';
+                        // output2 += '<th style="width:10%; background-color: white;"></th></tr>';
                     }
-                    output2 += '<tr><td colspan="2">Nama Booth</td><td>Shift</td>';
+                    output2 += '<tr><td colspan="2" style="background-color:grey; color:black;font-weight: bold;">Booth</td><td style="background-color:grey; color:black;font-weight: bold;">Shift</td>';
                     output.forEach(function(x) {
                         console.log(x);
                     });
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[0];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[1];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[2];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[3];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[4];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[5];
                     output2 += '</td>';
-                    output2 += '<td>';
+                    output2 += '<td style="background-color:grey; color:black;font-weight: bold;">';
                     output2 += output[6];
                     output2 += '</td>';
+                    // output2 += '<td style="background-color:black; color:white;"> Jumlah Booth</td>';
                     output2 += '</tr>' ;
                     $('thead.thead2').html(output2);
 
                     booth = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q1", "Q2", "R", "S", "T", "U", "V", "W",
                             "X", "1", "2", "3", "4", "LT1", "10A", "10B", "10C", "10D", "LIVE1", "LIVE2", "DLK"]; //array Booth
+                    // type_booth = ["Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "Premiere",
+                    //         "Premiere", "Premiere", "Premiere", "Premiere", "Premiere", "-", "-", "Premiere", "-", "-", "-", "-", "-"];
                     shift = [1, 2, 3];
 
                     content = '';
@@ -247,16 +257,26 @@ $(document).ready(function(){
                     
                     // data.forEach(function(obj) {
                     booth.forEach(function(obj) {
+                        if (obj == "A" || obj == "B" || obj == "C" || obj == "D" || obj == "E" || obj == "F" || obj == "G" || obj == "H" || obj == "I" || obj == "J" || obj == "K" || obj == "L" || obj == "M" || obj == "N" || obj == "O" || obj == "P" || obj == "Q1" || obj == "Q2" || obj == "R" || obj == "S" || obj == "T" || obj == "U" || obj == "V" || obj == "W" || obj == "X" || obj == "1" || obj == "2" || obj == "3" || obj == "4" || obj == "10B"){
+                            content += '<tr><td align="left" colspan="3" style="font-weight: bold;font-size:13px;">Premiere</td></tr>';
+                        }else{
+                            content += '<tr><td align="left" colspan="3" style="font-weight: bold;font-size:13px;">-</td></tr>';
+                        }
                         shift.forEach(function(s){
                             if(obj != null && s != null && flag_name != obj && flag_s != s){
                                 if(obj != null && obj==obj && s==1){
                                     flag = 0;
-                                    content += '<td rowspan ="3" colspan="2" style="background-color:#32CD32; color:black; font-weight: bold; ">'+ obj +'</td>';
+                                    if (obj == "A" || obj == "B" || obj == "C" || obj == "D" || obj == "E" || obj == "F" || obj == "G" || obj == "H" || obj == "I" || obj == "J" || obj == "K" || obj == "L" || obj == "M" || obj == "N" || obj == "O" || obj == "P" || obj == "Q1" || obj == "Q2" || obj == "R" || obj == "S" || obj == "T" || obj == "U" || obj == "V" || obj == "W" || obj == "X"){
+                                        content += '<td rowspan ="3" colspan="2" style="background-color:#32CD32; color:black; font-weight: bold; font-size:20px;">'+ obj +'</td>';
+                                    }else if (obj == "1" || obj == "2" || obj == "3" || obj == "4"){
+                                        content += '<td rowspan ="3" colspan="2" style="background-color:black; color:white; font-weight: bold; font-size:20px;">'+ obj +'</td>';
+                                    }else{
+                                        content += '<td rowspan ="3" colspan="2" style="background-color:grey; color:black; font-weight: bold; font-size:20px;">'+ obj +'</td>';
+                                    }
                                     flag = flag + 1;
-                                    
                                 }
                                 if(s != null ){
-                                    content += '<td style="background-color:white; color:black; font-weight: bold; ">'+ s +'</td>';
+                                    content += '<td style="background-color:#f2f2f2; color:black; font-weight: bold; ">'+ s +'</td>';
                                 }else{
                                     content += '<td > - </td>';
                                 }
@@ -283,6 +303,8 @@ $(document).ready(function(){
                                     // content += '<tr></tr>';    
                                 });
                                 content_td += '<tr>'+content+'</tr>';
+                                    
+                                // content_td += '<tr>'+content+'<td></td></tr>';
                                 // content_td += '<tr></tr>';
                                 content = '';
                             }else{
