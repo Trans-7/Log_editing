@@ -35,8 +35,13 @@ Route::get('/report', 'ReportController@report');
 Route::get('/report/fetch_data', 'ReportController@fetch_data')->name('report.fetch_data');
 
 
-Route::get('/booth', 'TestController@test');
-Route::get('/booth/fetch_data_test', 'TestController@fetch_data_test')->name('test.fetch_data_test');
+Route::get('/booth', 'BoothController@booth');
+Route::get('/booth/fetch_data_booth', 'BoothController@fetch_data_booth')->name('booth.fetch_data_booth');
+
+Route::get('/laporan', 'LaporanController@laporan');
+Route::get('/laporan/fetch_data_laporan', 'LaporanController@fetch_data_laporan')->name('laporan.fetch_data_laporan');
+
+Route::get('/report/export', 'LaporanController@export');
 
 
 //REFERENCE

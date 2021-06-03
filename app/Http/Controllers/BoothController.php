@@ -12,9 +12,9 @@ use App\Exports\ReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+class BoothController extends Controller
 {
-    public function test(){
+    public function booth(){
         
         $test = Transaction_logediting::leftJoin(('master_booth_logediting'),
                 ('transaction_logediting.logeditingboot_id'),'=',('master_booth_logediting.id'))
@@ -22,9 +22,9 @@ class TestController extends Controller
                 ->get();
         $test2 = DB::table('master_booth_logediting')->get();
         
-        return view('test', compact('test', 'test2'));
+        return view('booth', compact('test', 'test2'));
     }
-    public function fetch_data_test(Request $request){
+    public function fetch_data_booth(Request $request){
         if($request->ajax()){
             $start = $request->start;
             $end = $request->end;

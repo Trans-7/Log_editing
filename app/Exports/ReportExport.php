@@ -11,6 +11,7 @@ class ReportExport implements FromCollection, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
+
     public function headings(): array
     {
         return [
@@ -40,6 +41,9 @@ class ReportExport implements FromCollection, WithHeadings
             'Copy Date',
             'Copy Remark',
             'Code',
+            'Prabudget ID ',
+            'Report Susulan',
+            'Alasan Susulan',
             ' ',
             ' '
         ];

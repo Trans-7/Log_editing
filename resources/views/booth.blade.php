@@ -30,6 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/report">Jadwal Editor</a>
                     <a class="dropdown-item" href="/booth">Jadwal Booth</a>
+                    <a class="dropdown-item" href="/laporan">Log Harian</a>
                 </div>
             </h5>
         </li>
@@ -113,7 +114,7 @@ $(document).ready(function(){
 
         function fetch_data(start = '', end = ''){
             $.ajax({
-                url:"{{ route('test.fetch_data_test')}}",
+                url:"{{ route('booth.fetch_data_booth')}}",
                 method: "GET",
                 data:{start:start, end:end, _token:_token},
                 dataType:"json",

@@ -30,6 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/report">Jadwal Editor</a>
                     <a class="dropdown-item" href="/booth">Jadwal Booth</a>
+                    <a class="dropdown-item" href="/laporan">Log Harian</a>
                 </div>
             </h5>
         </li>
