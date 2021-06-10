@@ -271,6 +271,7 @@
                 }
             });
             $('#editor_nik').select2({
+                theme: "classic",
                 placeholder: '--Select Editor NIK or Name--',
                 ajax: {
                     url: "{{ route('non_reference.autocomplete') }}",
@@ -290,6 +291,7 @@
                 }
             });
             $('#show_name').select2({
+                theme: "classic",
                 placeholder: '--Select Program--',
                 ajax: {
                     url: "{{ route('non_reference.autocomplete_program') }}",

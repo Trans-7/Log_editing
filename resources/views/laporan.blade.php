@@ -45,39 +45,49 @@
     <h5 align="center" style="color:#1b215a;padding-bottom: 1rem"> Hi, <?php echo session()->get('name_priviledge'); ?> - <?php echo session()->get('nik'); ?>! </h5><br />
     <div class="panel panel-default">
     <div class="panel-heading">
+        <!-- <form method="POST" enctype="multipart/form-data">  -->
             <div class="row">
                 </b></div>
                 <center>
                 <div class="col-md-12">
                     <div class="input-group lg-3">
-                        
+         
                         <div class="input-group-prepend">
                             <span class="input-group-text">Select Date</span>
                         </div>
-                        <input type="text" id = "daterange" name="daterange" value=""  class="form-control"/>
+                        <input type="text" id = "daterange" name="daterange" class="form-control"/>
                         <div style="margin-left:15px;"></div>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Editor NIK</span>
-                        </div>
-                        <input type="text" name="nik" id="nik" class="form-control">
-                        <div style="margin-left:15px;"></div>
+                        <!-- <div class="input-group"> -->
+                            <div class="input-group-append">
+                                <span class="input-group-text">Editor NIK / Name</span>
+                                <!-- <select class="select2 form-control" name="nik" id="nik"></select> -->
+                            </div>
+                            <!-- <div class="input-group-append md-6"> -->
+                                <select class="select2 form-control col-2" name="nik" id="nik"></select>
+                            <!-- </div>  -->
+
+                        <!-- <div class="input-group-prepend">
+                            <span class="input-group-text">Editor NIK / Name</span>
+                        </div> -->
+                        <!-- <select class="form-control select2-container input-lg step2-select" name="nik" id="nik"></select> -->
+                        <!-- <div style="margin-left:15px;"></div>
                         <div class="input-group-prepend">
                             <span class="input-group-text">Editor Name</span>
                         </div>
-                        <input type="text" name="name" id="name"  class="form-control">
+                        <input type="text" name="name" id="name" class="form-control" readonly> -->
                         <div style="margin-left:15px;"></div>
                         <div class="input-group-prepend">
                             <span class="input-group-text">Program</span>
                         </div>
-                        <input type="text" name="program" id="program"  class="form-control">
+                        <input type="text" name="program" id="program" class="form-control">
                         <div style="margin-left:15px;"></div>
                         <div class="input-group-prepend">
                             <span class="input-group-text">System Kerja</span>
                         </div>
-                        <input type="text" name="kerja" id="kerja"  class="form-control">
+                        <input type="text" name="kerja" id="kerja" class="form-control">
                         
                         <div class="input-group-prepend"> 
-                            <span class="col-sm"><center><button type="button" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span>
+                            <span class="col-sm"><center><button type="submit" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span> 
                             <!-- <hr> -->
                             
                             <!-- <span class="col-sm"><center><button type="button" href="/report/export" class="btn btn-blue btn-lg">Download Report</button></center></span> -->
@@ -86,15 +96,19 @@
                         
                         
                     </div>
-                   
+                
                 </div>
                 </center>
             </div>
         </div>
         <br>
         <hr>
-        <!-- <span style="display:flex; float: left;"><a class="btn btn-blue btn-md" href="/report/export">Export Report</a></span> -->
-        <br>
+        <!-- <form action="/report/export" method="GET" enctype="multipart/form-data"> -->
+            <!-- <span style="display:flex; float: left;"><center><button type="submit" name="exportExcel" class="btn btn-blue btn-md">Export Report</button></center></span> -->
+            <!-- <span style="display:flex; float: left;"><a class="btn btn-blue btn-md" href="/report/export" name="exportExcel">Export Report</a></span> -->
+            
+        <!-- </form> -->
+        <br><br>
         <div class="panel-body">
             <div class="table-responsive">
                 <table width="100%" border="1" cellspacing="1" cellpadding="3">
@@ -145,6 +159,27 @@ $(document).ready(function(){
         $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
+        $('#nik').select2({
+                theme: "bootstrap",
+                // allowClear: true,
+                placeholder: '--Select Editor NIK or Name--',
+                ajax: {
+                    url: "{{ route('laporan.autocomplete') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.NIK + ' - ' + item.Nama,
+                                    id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+        });
 
         var _token = $('input[name="_token"]').val();
         var daterange = $('#daterange').val();
@@ -157,7 +192,7 @@ $(document).ready(function(){
         var kerja = $('#kerja').val();
 
     
-        fetch_data();
+        fetch_data(start, end);
 
         function fetch_data(start = '', end = '', nik='', name='', program='', kerja=''){
             $.ajax({

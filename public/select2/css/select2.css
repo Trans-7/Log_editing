@@ -479,3 +479,17 @@
 
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb; }
+
+
+/* tambahan*/
+
+.input-group>.select2-container--bootstrap {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.input-group>.select2-container--bootstrap .select2-selection--single {
+  height: 100%;
+  line-height: inherit;
+  padding: 1rem 1rem;
+}
