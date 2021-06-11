@@ -63,7 +63,7 @@
                                 <!-- <select class="select2 form-control" name="nik" id="nik"></select> -->
                             </div>
                             <!-- <div class="input-group-append md-6"> -->
-                                <select class="select2 form-control col-2" name="nik" id="nik"></select>
+                                <select class="select2 form-control col-2" name="nik" id="nik"><option value="">--Select Editor NIK / Name--</option></select>
                             <!-- </div>  -->
 
                         <!-- <div class="input-group-prepend">
@@ -76,15 +76,25 @@
                         </div>
                         <input type="text" name="name" id="name" class="form-control" readonly> -->
                         <div style="margin-left:15px;"></div>
-                        <div class="input-group-prepend">
+                        <div class="input-group-append">
+                                <span class="input-group-text">Program</span>
+                            </div>
+                                <select class="select2 form-control col-2" name="program" id="program"><option value="">--Select Program--</option></select>
+                        <!-- <div class="input-group-prepend">
                             <span class="input-group-text">Program</span>
                         </div>
-                        <input type="text" name="program" id="program" class="form-control">
+                        <input type="text" name="program" id="program" class="form-control"> -->
                         <div style="margin-left:15px;"></div>
                         <div class="input-group-prepend">
                             <span class="input-group-text">System Kerja</span>
                         </div>
-                        <input type="text" name="kerja" id="kerja" class="form-control">
+                        <select size="1" type="text" name="kerja" id="kerja" class="form-control" style="font-size:14px;">
+                            <option value="">--Select System Kerja--</option>
+                            <option value="WFH (Remote Anydesk)">WFH (Remote Anydesk)</option>
+                            <option value="WFH (Copy Materi)">WFH (Copy Materi)</option>
+                            <option value="WFO (Edit di Kantor)">WFO (Edit di Kantor)</option>
+                            <option value="STBY">STBY</option>
+                        </select>
                         
                         <div class="input-group-prepend"> 
                             <span class="col-sm"><center><button type="submit" name="filter" id="filter" class="btn btn-blue btn-lg">SEARCH</button></center></span> 
@@ -159,10 +169,13 @@ $(document).ready(function(){
         $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
+        // $('input[name="daterange"]').val('');
+        // $('input[name="daterange"]').attr("placeholder","Date");
+        
         $('#nik').select2({
                 theme: "bootstrap",
                 // allowClear: true,
-                placeholder: '--Select Editor NIK or Name--',
+                // placeholder: '--Select Editor NIK or Name--',
                 ajax: {
                     url: "{{ route('laporan.autocomplete') }}",
                     dataType: 'json',
@@ -173,6 +186,27 @@ $(document).ready(function(){
                                 return {
                                     text: item.NIK + ' - ' + item.Nama,
                                     id: item.NIK
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+        });
+        $('#program').select2({
+                theme: "bootstrap",
+                // allowClear: true,
+                // placeholder: '--Select Program--',
+                ajax: {
+                    url: "{{ route('laporan.autocomplete_program_laporan') }}",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results:  $.map(data, function (item) {
+                                return {
+                                    text: item.show_name,
+                                    id: item.show_name
                                 }
                             })
                         };

@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use App\User;
 use App\Transaction_report;
 use App\Transaction_logediting;
+use App\Transaction_bookingediting;
 use App\Exports\ReportExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -33,6 +34,22 @@ class LaporanController extends Controller
 
         return response()->json($data);
     }
+    public function autocomplete_program_laporan(Request $request)
+    {
+        $data = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $data = Transaction_bookingediting::select('show_name')
+                    ->where('bookingediting_createddate','>=','2020-02-08')
+                    ->where('show_name','LIKE',"%$search%")
+                    ->distinct()
+                    // ->orderBy('show_name', 'asc')
+                    ->get();
+            		
+        }
+
+        return response()->json($data);
+    }
     public function export(Request $request)
     {
         /*request
@@ -41,9 +58,10 @@ class LaporanController extends Controller
         // $method = $req->method();
         // if ($req->isMethod('post')){
         //     $program = $req->input('program');
-        //     if($req->has('exportExcel')){
-        //         return Excel::download(new ReportExport($program), 'log_harian.xlsx');
-        //     }
+            // if($req->has('program')){
+            //     $program = $req->program;
+            //     return Excel::download(new ReportExport($program), 'log_harian.xlsx');
+            // }
         // }
         // if($request->ajax()){
         //     $nik = $request->nik;
@@ -68,7 +86,7 @@ class LaporanController extends Controller
         // if ($request->isMethod('post')) {
         //     return Excel::download(new ReportExport('ssj'), 'log_harian.xlsx');
         // }
-        $program = $request->get('program','ssj');
+        $program = $request->get('program','ada show');
         // $program = Request::post('program');
         // dd($program);exit();
         return Excel::download(new ReportExport($program), 'log_harian.xlsx');

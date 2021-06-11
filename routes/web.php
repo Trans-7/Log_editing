@@ -43,6 +43,7 @@ Route::get('/laporan/fetch_data_laporan', 'LaporanController@fetch_data_laporan'
 
 Route::get('/report/export', 'LaporanController@export');
 Route::get('/report/autocomplete', 'LaporanController@autocomplete_laporan')->name('laporan.autocomplete');
+Route::get('/report/autocomplete_program_laporan', 'LaporanController@autocomplete_program_laporan')->name('laporan.autocomplete_program_laporan');
 
 
 
